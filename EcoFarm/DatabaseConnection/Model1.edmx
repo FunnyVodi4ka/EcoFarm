@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ModelDB" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CurrentWorks">
+          <Key>
+            <PropertyRef Name="IdField" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdField" Type="int" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="DateOfNextWork" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fields">
+          <Key>
+            <PropertyRef Name="IdField" />
+          </Key>
+          <Property Name="IdField" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdPlant" Type="int" Nullable="false" />
+          <Property Name="BoardingDate" Type="date" Nullable="false" />
+          <Property Name="Size" Type="float" />
+        </EntityType>
+        <EntityType Name="LandingHistory">
+          <Key>
+            <PropertyRef Name="IdLandingHistory" />
+          </Key>
+          <Property Name="IdLandingHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlantName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="BoardingDate" Type="date" Nullable="false" />
+          <Property Name="HarvestDate" Type="date" Nullable="false" />
+          <Property Name="FieldSize" Type="int" Nullable="false" />
+          <Property Name="HarvestVolume" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListOfWorks">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plants">
+          <Key>
+            <PropertyRef Name="IdPlant" />
+          </Key>
+          <Property Name="IdPlant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="GrowthPeriodInDays" Type="int" Nullable="false" />
+          <Property Name="ImageOfThePlant" Type="text" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlantWork">
+          <Key>
+            <PropertyRef Name="IdPlant" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdPlant" Type="int" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="PeriodInDays" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkHistory">
+          <Key>
+            <PropertyRef Name="IdWorkHistory" />
+          </Key>
+          <Property Name="IdWorkHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlantName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="WorkName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfWork" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CurrentWorks_Fields">
+          <End Role="Fields" Type="Self.Fields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorks" Type="Self.CurrentWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fields">
+              <PropertyRef Name="IdField" />
+            </Principal>
+            <Dependent Role="CurrentWorks">
+              <PropertyRef Name="IdField" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentWorks_ListOfWorks">
+          <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorks" Type="Self.CurrentWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorks">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="CurrentWorks">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fields_Plants">
+          <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Fields" Type="Self.Fields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plants">
+              <PropertyRef Name="IdPlant" />
+            </Principal>
+            <Dependent Role="Fields">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlantWork_ListOfWorks">
+          <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlantWork" Type="Self.PlantWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorks">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="PlantWork">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlantWork_Plants">
+          <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlantWork" Type="Self.PlantWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plants">
+              <PropertyRef Name="IdPlant" />
+            </Principal>
+            <Dependent Role="PlantWork">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelDBContainer">
+          <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plants" EntityType="Self.Plants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantWork" EntityType="Self.PlantWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkHistory" EntityType="Self.WorkHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
+            <End Role="Fields" EntitySet="Fields" />
+            <End Role="CurrentWorks" EntitySet="CurrentWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentWorks_ListOfWorks" Association="Self.FK_CurrentWorks_ListOfWorks">
+            <End Role="ListOfWorks" EntitySet="ListOfWorks" />
+            <End Role="CurrentWorks" EntitySet="CurrentWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fields_Plants" Association="Self.FK_Fields_Plants">
+            <End Role="Plants" EntitySet="Plants" />
+            <End Role="Fields" EntitySet="Fields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlantWork_ListOfWorks" Association="Self.FK_PlantWork_ListOfWorks">
+            <End Role="ListOfWorks" EntitySet="ListOfWorks" />
+            <End Role="PlantWork" EntitySet="PlantWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlantWork_Plants" Association="Self.FK_PlantWork_Plants">
+            <End Role="Plants" EntitySet="Plants" />
+            <End Role="PlantWork" EntitySet="PlantWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CurrentWorks">
+          <Key>
+            <PropertyRef Name="IdField" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdField" Type="Int32" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="DateOfNextWork" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Fields" Relationship="Self.FK_CurrentWorks_Fields" FromRole="CurrentWorks" ToRole="Fields" />
+          <NavigationProperty Name="ListOfWorks" Relationship="Self.FK_CurrentWorks_ListOfWorks" FromRole="CurrentWorks" ToRole="ListOfWorks" />
+        </EntityType>
+        <EntityType Name="Fields">
+          <Key>
+            <PropertyRef Name="IdField" />
+          </Key>
+          <Property Name="IdField" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPlant" Type="Int32" Nullable="false" />
+          <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Size" Type="Double" />
+          <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_Fields" FromRole="Fields" ToRole="CurrentWorks" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_Fields_Plants" FromRole="Fields" ToRole="Plants" />
+        </EntityType>
+        <EntityType Name="LandingHistory">
+          <Key>
+            <PropertyRef Name="IdLandingHistory" />
+          </Key>
+          <Property Name="IdLandingHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlantName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HarvestDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FieldSize" Type="Int32" Nullable="false" />
+          <Property Name="HarvestVolume" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListOfWorks">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_ListOfWorks" FromRole="ListOfWorks" ToRole="CurrentWorks" />
+          <NavigationProperty Name="PlantWork" Relationship="Self.FK_PlantWork_ListOfWorks" FromRole="ListOfWorks" ToRole="PlantWork" />
+        </EntityType>
+        <EntityType Name="Plants">
+          <Key>
+            <PropertyRef Name="IdPlant" />
+          </Key>
+          <Property Name="IdPlant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrowthPeriodInDays" Type="Int32" Nullable="false" />
+          <Property Name="ImageOfThePlant" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fields" Relationship="Self.FK_Fields_Plants" FromRole="Plants" ToRole="Fields" />
+          <NavigationProperty Name="PlantWork" Relationship="Self.FK_PlantWork_Plants" FromRole="Plants" ToRole="PlantWork" />
+        </EntityType>
+        <EntityType Name="PlantWork">
+          <Key>
+            <PropertyRef Name="IdPlant" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdPlant" Type="Int32" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="PeriodInDays" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ListOfWorks" Relationship="Self.FK_PlantWork_ListOfWorks" FromRole="PlantWork" ToRole="ListOfWorks" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_PlantWork_Plants" FromRole="PlantWork" ToRole="Plants" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="WorkHistory">
+          <Key>
+            <PropertyRef Name="IdWorkHistory" />
+          </Key>
+          <Property Name="IdWorkHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlantName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfWork" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <Association Name="FK_CurrentWorks_Fields">
+          <End Role="Fields" Type="Self.Fields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorks" Type="Self.CurrentWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fields">
+              <PropertyRef Name="IdField" />
+            </Principal>
+            <Dependent Role="CurrentWorks">
+              <PropertyRef Name="IdField" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentWorks_ListOfWorks">
+          <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorks" Type="Self.CurrentWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorks">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="CurrentWorks">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fields_Plants">
+          <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Fields" Type="Self.Fields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plants">
+              <PropertyRef Name="IdPlant" />
+            </Principal>
+            <Dependent Role="Fields">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlantWork_ListOfWorks">
+          <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlantWork" Type="Self.PlantWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorks">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="PlantWork">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlantWork_Plants">
+          <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlantWork" Type="Self.PlantWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plants">
+              <PropertyRef Name="IdPlant" />
+            </Principal>
+            <Dependent Role="PlantWork">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EcoFarmDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" />
+          <EntitySet Name="Fields" EntityType="Self.Fields" />
+          <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" />
+          <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" />
+          <EntitySet Name="Plants" EntityType="Self.Plants" />
+          <EntitySet Name="PlantWork" EntityType="Self.PlantWork" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WorkHistory" EntityType="Self.WorkHistory" />
+          <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
+            <End Role="Fields" EntitySet="Fields" />
+            <End Role="CurrentWorks" EntitySet="CurrentWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentWorks_ListOfWorks" Association="Self.FK_CurrentWorks_ListOfWorks">
+            <End Role="ListOfWorks" EntitySet="ListOfWorks" />
+            <End Role="CurrentWorks" EntitySet="CurrentWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fields_Plants" Association="Self.FK_Fields_Plants">
+            <End Role="Plants" EntitySet="Plants" />
+            <End Role="Fields" EntitySet="Fields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlantWork_ListOfWorks" Association="Self.FK_PlantWork_ListOfWorks">
+            <End Role="ListOfWorks" EntitySet="ListOfWorks" />
+            <End Role="PlantWork" EntitySet="PlantWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlantWork_Plants" Association="Self.FK_PlantWork_Plants">
+            <End Role="Plants" EntitySet="Plants" />
+            <End Role="PlantWork" EntitySet="PlantWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelDBContainer" CdmEntityContainer="EcoFarmDBEntities">
+          <EntitySetMapping Name="CurrentWorks">
+            <EntityTypeMapping TypeName="ModelDB.CurrentWorks">
+              <MappingFragment StoreEntitySet="CurrentWorks">
+                <ScalarProperty Name="IdField" ColumnName="IdField" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="DateOfNextWork" ColumnName="DateOfNextWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fields">
+            <EntityTypeMapping TypeName="ModelDB.Fields">
+              <MappingFragment StoreEntitySet="Fields">
+                <ScalarProperty Name="IdField" ColumnName="IdField" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
+                <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LandingHistory">
+            <EntityTypeMapping TypeName="ModelDB.LandingHistory">
+              <MappingFragment StoreEntitySet="LandingHistory">
+                <ScalarProperty Name="IdLandingHistory" ColumnName="IdLandingHistory" />
+                <ScalarProperty Name="FieldNumber" ColumnName="FieldNumber" />
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
+                <ScalarProperty Name="HarvestDate" ColumnName="HarvestDate" />
+                <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
+                <ScalarProperty Name="HarvestVolume" ColumnName="HarvestVolume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListOfWorks">
+            <EntityTypeMapping TypeName="ModelDB.ListOfWorks">
+              <MappingFragment StoreEntitySet="ListOfWorks">
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plants">
+            <EntityTypeMapping TypeName="ModelDB.Plants">
+              <MappingFragment StoreEntitySet="Plants">
+                <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GrowthPeriodInDays" ColumnName="GrowthPeriodInDays" />
+                <ScalarProperty Name="ImageOfThePlant" ColumnName="ImageOfThePlant" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantWork">
+            <EntityTypeMapping TypeName="ModelDB.PlantWork">
+              <MappingFragment StoreEntitySet="PlantWork">
+                <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="PeriodInDays" ColumnName="PeriodInDays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ModelDB.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ModelDB.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ModelDB.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkHistory">
+            <EntityTypeMapping TypeName="ModelDB.WorkHistory">
+              <MappingFragment StoreEntitySet="WorkHistory">
+                <ScalarProperty Name="IdWorkHistory" ColumnName="IdWorkHistory" />
+                <ScalarProperty Name="FieldNumber" ColumnName="FieldNumber" />
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+                <ScalarProperty Name="DateOfWork" ColumnName="DateOfWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

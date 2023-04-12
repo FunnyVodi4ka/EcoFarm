@@ -1,0 +1,42 @@
+﻿<Page x:Class="EcoFarm.CropProduction.PageAddEditField"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.CropProduction"
+      mc:Ignorable="d" 
+      d:DesignHeight="250" d:DesignWidth="600"
+      Title="PageAddEditField" MinHeight="250" MaxHeight="550" MinWidth="600">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Номер поля:" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Растение:" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <ComboBox x:Name="comboBoxPlant" Style="{StaticResource ComboBoxMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Дата посадки:" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <DatePicker x:Name="dpDate" Style="{StaticResource DatePickerMain}" SelectedDate="{Binding BoardingDate}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Размер поля (м²):" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <TextBox x:Name="tbSize" Style="{StaticResource TextBoxMain}" Text="{Binding Size}" PreviewTextInput="tbSize_PreviewTextInput" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>
+                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnBack_Click" IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

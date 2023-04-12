@@ -1,0 +1,61 @@
+﻿<Page x:Class="EcoFarm.CropProduction.PageListOfWorks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.CropProduction"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="PageListOfWorks" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="900">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock x:Name="tblAdd" Text="Новый вид работ" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
+                <TextBox x:Name="tbAdd" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnReset" Content="Отменить" Style="{StaticResource ButtonGreen}" Click="btnReset_Click" Visibility="Hidden"/>
+                <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
+                <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <ListView Grid.Row="1" Name="ListViewListOfWorks" Style="{StaticResource ListViewMain}" MouseDoubleClick="LbListOfWorks_MouseDoubleClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Height" Value="auto"/>
+                    <Setter Property="BorderBrush" Value="#649138" />
+                    <Setter Property="BorderThickness" Value="1" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource TextBlockMain}" Width="auto">
+                            <Run Text="{Binding Name}"/>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+            <TextBlock x:Name="tbCounter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
+        </StackPanel>
+    </Grid>
+</Page>

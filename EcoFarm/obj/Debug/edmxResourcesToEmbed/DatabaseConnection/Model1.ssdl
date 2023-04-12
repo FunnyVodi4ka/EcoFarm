@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ModelDB" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CurrentWorks">
+    <Key>
+      <PropertyRef Name="IdField" />
+      <PropertyRef Name="IdWork" />
+    </Key>
+    <Property Name="IdField" Type="int" Nullable="false" />
+    <Property Name="IdWork" Type="int" Nullable="false" />
+    <Property Name="DateOfNextWork" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fields">
+    <Key>
+      <PropertyRef Name="IdField" />
+    </Key>
+    <Property Name="IdField" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdPlant" Type="int" Nullable="false" />
+    <Property Name="BoardingDate" Type="date" Nullable="false" />
+    <Property Name="Size" Type="float" />
+  </EntityType>
+  <EntityType Name="LandingHistory">
+    <Key>
+      <PropertyRef Name="IdLandingHistory" />
+    </Key>
+    <Property Name="IdLandingHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FieldNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlantName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="BoardingDate" Type="date" Nullable="false" />
+    <Property Name="HarvestDate" Type="date" Nullable="false" />
+    <Property Name="FieldSize" Type="int" Nullable="false" />
+    <Property Name="HarvestVolume" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListOfWorks">
+    <Key>
+      <PropertyRef Name="IdWork" />
+    </Key>
+    <Property Name="IdWork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plants">
+    <Key>
+      <PropertyRef Name="IdPlant" />
+    </Key>
+    <Property Name="IdPlant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="GrowthPeriodInDays" Type="int" Nullable="false" />
+    <Property Name="ImageOfThePlant" Type="text" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlantWork">
+    <Key>
+      <PropertyRef Name="IdPlant" />
+      <PropertyRef Name="IdWork" />
+    </Key>
+    <Property Name="IdPlant" Type="int" Nullable="false" />
+    <Property Name="IdWork" Type="int" Nullable="false" />
+    <Property Name="PeriodInDays" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="IdRole" />
+    </Key>
+    <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdRole" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkHistory">
+    <Key>
+      <PropertyRef Name="IdWorkHistory" />
+    </Key>
+    <Property Name="IdWorkHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FieldNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlantName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="WorkName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateOfWork" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CurrentWorks_Fields">
+    <End Role="Fields" Type="Self.Fields" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CurrentWorks" Type="Self.CurrentWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fields">
+        <PropertyRef Name="IdField" />
+      </Principal>
+      <Dependent Role="CurrentWorks">
+        <PropertyRef Name="IdField" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CurrentWorks_ListOfWorks">
+    <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CurrentWorks" Type="Self.CurrentWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListOfWorks">
+        <PropertyRef Name="IdWork" />
+      </Principal>
+      <Dependent Role="CurrentWorks">
+        <PropertyRef Name="IdWork" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fields_Plants">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Fields" Type="Self.Fields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="IdPlant" />
+      </Principal>
+      <Dependent Role="Fields">
+        <PropertyRef Name="IdPlant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlantWork_ListOfWorks">
+    <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PlantWork" Type="Self.PlantWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListOfWorks">
+        <PropertyRef Name="IdWork" />
+      </Principal>
+      <Dependent Role="PlantWork">
+        <PropertyRef Name="IdWork" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlantWork_Plants">
+    <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PlantWork" Type="Self.PlantWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plants">
+        <PropertyRef Name="IdPlant" />
+      </Principal>
+      <Dependent Role="PlantWork">
+        <PropertyRef Name="IdPlant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRole" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ModelDBContainer">
+    <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plants" EntityType="Self.Plants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlantWork" EntityType="Self.PlantWork" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkHistory" EntityType="Self.WorkHistory" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
+      <End Role="Fields" EntitySet="Fields" />
+      <End Role="CurrentWorks" EntitySet="CurrentWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CurrentWorks_ListOfWorks" Association="Self.FK_CurrentWorks_ListOfWorks">
+      <End Role="ListOfWorks" EntitySet="ListOfWorks" />
+      <End Role="CurrentWorks" EntitySet="CurrentWorks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fields_Plants" Association="Self.FK_Fields_Plants">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="Fields" EntitySet="Fields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlantWork_ListOfWorks" Association="Self.FK_PlantWork_ListOfWorks">
+      <End Role="ListOfWorks" EntitySet="ListOfWorks" />
+      <End Role="PlantWork" EntitySet="PlantWork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlantWork_Plants" Association="Self.FK_PlantWork_Plants">
+      <End Role="Plants" EntitySet="Plants" />
+      <End Role="PlantWork" EntitySet="PlantWork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

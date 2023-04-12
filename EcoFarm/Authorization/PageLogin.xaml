@@ -1,0 +1,29 @@
+﻿<Page x:Class="EcoFarm.Authorization.PageLogin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.Authorization"
+      mc:Ignorable="d" 
+      d:DesignHeight="150" d:DesignWidth="500"
+      Title="PageLogin">
+
+    <Grid>
+        <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Введите логин:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="textBoxLogin" Style="{StaticResource TextBoxMain}"/>
+            </StackPanel>
+            
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Введите пароль:" Style="{StaticResource LabelMain}"/>
+                <PasswordBox x:Name="PasswordBoxEnter" Style="{StaticResource PasswordBoxMain}"/>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Button Style="{StaticResource ButtonGreen}" x:Name="buttonEnter" Content="Войти" Click="buttonEnter_Click" IsDefault="True"/>
+                <Button  Style="{StaticResource ButtonGreen}" x:Name="buttonRegistration" Content="Регистрация" Click="buttonRegistration_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

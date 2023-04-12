@@ -1,0 +1,76 @@
+﻿<Page x:Class="EcoFarm.CropProduction.PagePlants"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.CropProduction"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="650"
+      Title="PagePlants" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="650">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Сортировка" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+                <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
+                <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ListView x:Name="ListPlants" Grid.Row="1" Height="auto"  Width="auto" MouseDoubleClick="ListPlants_MouseDoubleClick" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Height" Value="auto"/>
+                    <Setter Property="BorderBrush" Value="#649138" />
+                    <Setter Property="BorderThickness" Value="1" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="600"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="{Binding CorrectImage}"></Image>
+                        <StackPanel Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10,0,0,0">
+                            <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="{Binding Name }"/>
+                                <Run Text=" (Период роста " FontSize="14"/>
+                                <Run Text="{Binding GrowthPeriodInDays }" FontSize="14"/>
+                                <Run Text=" д)" FontSize="14"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Описание: "/>
+                                <Run Text="{Binding Description}" FontSize="18"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
+        </StackPanel>
+    </Grid>
+</Page>

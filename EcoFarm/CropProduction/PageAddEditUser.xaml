@@ -1,0 +1,54 @@
+﻿<Page x:Class="EcoFarm.CropProduction.PageAddEditUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.CropProduction"
+      mc:Ignorable="d" 
+      d:DesignHeight="270" d:DesignWidth="500"
+      Title="PageAddEditUser" MinHeight="270" MaxHeight="550" MinWidth="500">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Фамилия:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbSurname" Style="{StaticResource TextBoxMain}" Text="{Binding Surname}" PreviewTextInput="tbSurname_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Имя:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" PreviewTextInput="tbName_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Отчество:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbPatronymic" Style="{StaticResource TextBoxMain}" Text="{Binding Patronymic}" PreviewTextInput="tbPatronymic_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Логин:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}" Text="{Binding Login}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Пароль:" Style="{StaticResource TextBlockMain}"/>
+                <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Email:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}" Text="{Binding Email}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Роль:" Style="{StaticResource TextBlockMain}"/>
+                <ComboBox x:Name="comboBoxRole" Style="{StaticResource ComboBoxMain}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>
+                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnBack_Click" IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

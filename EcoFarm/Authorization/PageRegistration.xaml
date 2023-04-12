@@ -1,0 +1,43 @@
+﻿<Page x:Class="EcoFarm.Authorization.PageRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.Authorization"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="500"
+      Title="PageRegistration">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Фамилия:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="tbSurname" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbSurname_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Имя:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbName_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Отчество:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="tbPatronymic" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbPatronymic_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Email:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Логин:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Пароль:" Style="{StaticResource LabelMain}"/>
+                <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Button Style="{StaticResource ButtonGreen}" x:Name="btnRegister" Content="Зарегистрироваться" Click="buttonRegCreate_Click"/>
+                <Button Style="{StaticResource ButtonGreen}" x:Name="btnBack" Content="Назад" Click="ButtonBack"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
