@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppSupportClass\SelectedMenuTab.cs" />
     <Compile Include="Authentication\AccessVerification.cs" />
     <Compile Include="CropProduction\DateTimeToBrushConvector.cs" />
     <Compile Include="CropProduction\PageAddEditField.xaml.cs">

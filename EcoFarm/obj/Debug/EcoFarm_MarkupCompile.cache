@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\App.xaml
 122096043138
 2-297283055
-36-866108891
+381520237106
 18-242689727
 Authorization\PageLogin.xaml;Authorization\PageRegistration.xaml;Authorization\WindowCaptcha.xaml;CropProduction\PageAddEditField.xaml;CropProduction\PageAddEditPlant.xaml;CropProduction\PageAddEditUser.xaml;CropProduction\PageFields.xaml;CropProduction\PageListOfWorks.xaml;CropProduction\PagePlants.xaml;CropProduction\PageTasksToday.xaml;CropProduction\PageUsers.xaml;MainWindow.xaml;
 
-False
+True
 

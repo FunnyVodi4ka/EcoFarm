@@ -1,4 +1,5 @@
 ﻿using EcoFarm.AppConnection;
+using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.CropProduction;
 using System;
@@ -37,6 +38,7 @@ namespace EcoFarm.Authorization
             {
                 attemptCounter = 0;
                 AuthorizedUser.user = userObj;
+                SelectedMenuTab.selectedMenuTab = "PageTasksToday";
                 AppFrame.frameMain.Navigate(new PageTasksToday());
             }
             else
