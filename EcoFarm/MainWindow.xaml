@@ -22,7 +22,7 @@
         </StackPanel>
 
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" HorizontalAlignment="Center">
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" HorizontalAlignment="Left">
             <StackPanel x:Name="stackPanelB1" Style="{StaticResource StackPanelEmpty}">
                 <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениводство" Width="210" Click="btnPageCropProduction_Click"/>
             </StackPanel>
@@ -37,7 +37,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Style="{DynamicResource ButtonMenu}" Content="Выйти" Width="86" Click="btnExit_Click"/>
+        <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Style="{DynamicResource ButtonMenu}" Content="Выйти" Width="100" Click="btnExit_Click"/>
 
         <Frame x:Name="frmMain" Padding="0" Content="" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Navigated="frmMain_Navigated"/>
     </Grid>

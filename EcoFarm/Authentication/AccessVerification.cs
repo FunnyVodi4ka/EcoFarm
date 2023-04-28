@@ -40,5 +40,25 @@ namespace EcoFarm.Authentication
                 AppFrame.frameMain.Navigate(new PageTasksToday());
             }
         }
+
+        public bool CheckAdminAccessBoolResult()
+        {
+            string role = AuthorizedUser.user.Roles.Name;
+            if (role == "Администратор")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckMenegerAccessBoolResult()
+        {
+            string role = AuthorizedUser.user.Roles.Name;
+            if (role == "Администратор" || role == "Менеджер")
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -151,20 +151,29 @@ namespace EcoFarm.CropProduction
 
         private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PageFields());
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PageFields());
+            }
         }
 
         private void TabBarPlants_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PagePlants());
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PagePlants());
+            }
         }
 
         private void TabBarListOfWorks_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PageListOfWorks());
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PageListOfWorks());
+            }
         }
     }
 }

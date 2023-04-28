@@ -35,6 +35,8 @@ namespace EcoFarm.CropProduction
 
             InitializeComponent();
 
+            TabBarAccess();
+
             SetFilter();
             SetSort();
             ListTasks.ItemsSource = SortFilterTasks();
@@ -137,20 +139,46 @@ namespace EcoFarm.CropProduction
 
         private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PageFields());
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PageFields());
+            }
         }
 
         private void TabBarPlants_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PagePlants());
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PagePlants());
+            }
         }
 
         private void TabBarListOfWorks_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PageListOfWorks());
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PageListOfWorks());
+            }
+        }
+
+        private void TabBarAccess()
+        {
+            string color;
+            if (!access.CheckMenegerAccessBoolResult())
+            {
+                color = "#C41E3A";
+            }
+            else
+            {
+                color = "#5D5D5D";
+            }
+
+            stTabBarFields.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
+            stTabBarPlants.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
+            stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
         }
     }
 }
