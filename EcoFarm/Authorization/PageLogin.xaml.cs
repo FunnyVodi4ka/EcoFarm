@@ -38,7 +38,7 @@ namespace EcoFarm.Authorization
             {
                 attemptCounter = 0;
                 AuthorizedUser.user = userObj;
-                SelectedMenuTab.selectedMenuTab = "PageTasksToday";
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
                 AppFrame.frameMain.Navigate(new PageTasksToday());
             }
             else

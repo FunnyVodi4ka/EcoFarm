@@ -5,15 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="900"
-      Title="PageTasksToday" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="900">
+      d:DesignHeight="450" d:DesignWidth="950"
+      Title="PageTasksToday" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="950">
     <Page.Resources>
         <local:DateTimeToBrushConverter x:Key="dateTimeToBrushConverter"/>
     </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="62"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="90"/>
@@ -26,7 +27,27 @@
             </ContextMenu>
         </Grid.ContextMenu>
 
-        <StackPanel Grid.Row="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
+        <StackPanel Grid.RowSpan="3" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#649138"/>
+                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarFields" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarFields" Source="/Resources/AppImages/field.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFields_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarPlants" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarPlants" Source="/Resources/AppImages/plant.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarPlants_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarListOfWorks" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarListOfWorks" Source="/Resources/AppImages/work-in-progress.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarListOfWorks_MouseLeftButtonDown"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
@@ -41,7 +62,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="ListTasks" Grid.Row="1" Height="auto" Style="{StaticResource ListViewMain}">
+        <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -58,9 +79,12 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="0">
                             <Run Text="Поле:"/>
                             <Run Text="{Binding Fields.Number}"/>
@@ -78,7 +102,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="2" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
             <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>

@@ -265,6 +265,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AppImages\work-in-progress.png" />
+    <Resource Include="Resources\AppImages\to-do-list.png" />
+    <Resource Include="Resources\AppImages\plant.png" />
+    <Resource Include="Resources\AppImages\field.png" />
+    <Resource Include="Resources\AppImages\calendar.png" />
+    <Resource Include="Resources\AppImages\IconDeadline.png" />
+    <Resource Include="Resources\AppImages\iconField.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

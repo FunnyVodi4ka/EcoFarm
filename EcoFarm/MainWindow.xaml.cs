@@ -44,24 +44,20 @@ namespace EcoFarm
             stackPanelB2.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
             stackPanelB3.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
             stackPanelB4.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
-            stackPanelB5.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
 
             switch(SelectedMenuTab.selectedMenuTab)
             {
-                case "PageTasksToday":
+                case "PageCropProduction":
                     stackPanelB1.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
                     break;
-                case "PageFields":
+                case "PageFishFarming":
                     stackPanelB2.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
                     break;
-                case "PagePlants":
+                case "PageReports":
                     stackPanelB3.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
                     break;
-                case "PageListOfWorks":
-                    stackPanelB4.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
-                    break;
                 case "PageUsers":
-                    stackPanelB5.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+                    stackPanelB4.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
                     break;
             }
         }
@@ -99,50 +95,24 @@ namespace EcoFarm
 
         private void ShowButtonsForMenegers()
         {
-            btnPageFields.Visibility = Visibility.Visible;
-            btnPagePlants.Visibility = Visibility.Visible;
-            btnPageListOfWorks.Visibility = Visibility.Visible;
+            btnPageReports.Visibility = Visibility.Visible;
             ShowButtonsForEmployees();
         }
 
         private void ShowButtonsForEmployees()
         {
-            btnPageTasksForDay.Visibility = Visibility.Visible;
+            btnPageCropProduction.Visibility = Visibility.Visible;
+            btnPageFishFarming.Visibility = Visibility.Visible;
             btnExit.Visibility = Visibility.Visible;
         }
 
         private void HiddenButtons()
         {
-            btnPageTasksForDay.Visibility = Visibility.Hidden;
-            btnPageFields.Visibility = Visibility.Hidden;
-            btnPagePlants.Visibility = Visibility.Hidden;
-            btnPageListOfWorks.Visibility = Visibility.Hidden;
+            btnPageCropProduction.Visibility = Visibility.Hidden;
+            btnPageFishFarming.Visibility = Visibility.Hidden;
+            btnPageReports.Visibility = Visibility.Hidden;
             btnPageUsers.Visibility = Visibility.Hidden;
             btnExit.Visibility = Visibility.Hidden;
-        }
-
-        private void btnPageTasksForDay_Click(object sender, RoutedEventArgs e)
-        {
-            SelectedMenuTab.selectedMenuTab = "PageTasksToday";
-            frmMain.Navigate(new PageTasksToday());
-        }
-
-        private void btnPageFields_Click(object sender, RoutedEventArgs e)
-        {
-            SelectedMenuTab.selectedMenuTab = "PageFields";
-            frmMain.Navigate(new PageFields());
-        }
-
-        private void btnPagePlants_Click(object sender, RoutedEventArgs e)
-        {
-            SelectedMenuTab.selectedMenuTab = "PagePlants";
-            frmMain.Navigate(new PagePlants());
-        }
-
-        private void btnPageListOfWorks_Click(object sender, RoutedEventArgs e)
-        {
-            SelectedMenuTab.selectedMenuTab = "PageListOfWorks";
-            frmMain.Navigate(new PageListOfWorks());
         }
 
         private void btnPageUsers_Click(object sender, RoutedEventArgs e)
@@ -157,6 +127,24 @@ namespace EcoFarm
             AuthorizedUser.user = null;
             SelectedMenuTab.selectedMenuTab = null;
             frmMain.Navigate(new PageLogin());
+        }
+
+        private void btnPageCropProduction_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+            frmMain.Navigate(new PageTasksToday());
+        }
+
+        private void btnPageFishFarming_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+            //frmMain.Navigate(new PageTasksToday());
+        }
+
+        private void btnPageReports_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageReports";
+            //frmMain.Navigate(new PageTasksToday());
         }
     }
 }

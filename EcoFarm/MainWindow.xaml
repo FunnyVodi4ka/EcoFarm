@@ -8,7 +8,8 @@
         Title="ECOFARM" Height="auto" Width="auto" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/Logo-mini.png">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -16,32 +17,28 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left" Margin="2,0,0,0">
+        <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left" Grid.Row="0" Grid.ColumnSpan="2">
             <Image Source="/Resources/AppImages/Logo.png"/>
         </StackPanel>
 
-        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1">
-        </StackPanel>
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" HorizontalAlignment="Center">
             <StackPanel x:Name="stackPanelB1" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageTasksForDay" Style="{DynamicResource ButtonMenu}" Content="Работы на день" Width="186" Click="btnPageTasksForDay_Click"/>
+                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениводство" Width="210" Click="btnPageCropProduction_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB2" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageFields" Style="{DynamicResource ButtonMenu}" Content="Мои посадки" Width="154" Click="btnPageFields_Click"/>
+                <Button x:Name="btnPageFishFarming" Style="{DynamicResource ButtonMenu}" Content="Рыбоводство" Width="170" Click="btnPageFishFarming_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB3" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPagePlants" Style="{DynamicResource ButtonMenu}" Content="Растения" Width="118" Click="btnPagePlants_Click"/>
+                <Button x:Name="btnPageReports" Style="{DynamicResource ButtonMenu}" Content="Отчёты" Width="120" Click="btnPageReports_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB4" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageListOfWorks" Style="{DynamicResource ButtonMenu}" Content="Виды работ" Width="145" Click="btnPageListOfWorks_Click"/>
+                <Button x:Name="btnPageUsers" Style="{DynamicResource ButtonMenu}" Content="Панель администратора" Width="320" Click="btnPageUsers_Click"/>
             </StackPanel>
-            <StackPanel x:Name="stackPanelB5" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageUsers" Style="{DynamicResource ButtonMenu}" Content="Пользователи" Width="170" Click="btnPageUsers_Click"/>
-            </StackPanel>
-            <Button x:Name="btnExit" Style="{DynamicResource ButtonMenu}" Content="Выйти" Width="85" Click="btnExit_Click"/>
         </StackPanel>
-        
 
-        <Frame x:Name="frmMain" Padding="10" Content="" Grid.Row="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Navigated="frmMain_Navigated"/>
+        <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Style="{DynamicResource ButtonMenu}" Content="Выйти" Width="86" Click="btnExit_Click"/>
+
+        <Frame x:Name="frmMain" Padding="0" Content="" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Navigated="frmMain_Navigated"/>
     </Grid>
 </Window>

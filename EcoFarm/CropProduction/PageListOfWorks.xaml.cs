@@ -1,4 +1,5 @@
 ﻿using EcoFarm.AppConnection;
+using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
 using System;
@@ -149,6 +150,30 @@ namespace EcoFarm.CropProduction
             tbAdd.Text = currentWork.Name;
             btnAdd.Content = "Изменить";
             btnReset.Visibility = Visibility.Visible;
+        }
+
+        private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+            AppFrame.frameMain.Navigate(new PageTasksToday());
+        }
+
+        private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+            AppFrame.frameMain.Navigate(new PageFields());
+        }
+
+        private void TabBarPlants_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+            AppFrame.frameMain.Navigate(new PagePlants());
+        }
+
+        private void TabBarListOfWorks_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+            AppFrame.frameMain.Navigate(new PageListOfWorks());
         }
     }
 }
