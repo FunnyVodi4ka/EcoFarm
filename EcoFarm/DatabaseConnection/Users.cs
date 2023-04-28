@@ -21,6 +21,7 @@ namespace EcoFarm.DatabaseConnection
         public string Name { get; set; }
         public string Patronymic { get; set; }
         public int IdRole { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
     
         public virtual Roles Roles { get; set; }

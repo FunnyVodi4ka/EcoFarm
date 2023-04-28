@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9f819e82008a4ba389021171561cccd5" Name="Diagram1">
+      <Diagram DiagramId="63b963048b86486a8361238b4358517b" Name="Diagram1">
         <EntityTypeShape EntityType="ModelDB.CurrentWorks" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Fields" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.LandingHistory" Width="1.5" PointX="2.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.ListOfWorks" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.LandingHistory" Width="1.5" PointX="2.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.ListOfWorks" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.PlantWork" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="5.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Users" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.WorkHistory" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Users" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.WorkHistory" Width="1.5" PointX="7.75" PointY="6.375" IsExpanded="true" />
         <AssociationConnector Association="ModelDB.FK_CurrentWorks_Fields" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_CurrentWorks_ListOfWorks" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_Fields_Plants" ManuallyRouted="false" />

@@ -18,6 +18,7 @@
     <Property Name="IdPlant" Type="int" Nullable="false" />
     <Property Name="BoardingDate" Type="date" Nullable="false" />
     <Property Name="Size" Type="float" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="LandingHistory">
     <Key>
@@ -46,7 +47,8 @@
     <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="GrowthPeriodInDays" Type="int" Nullable="false" />
     <Property Name="ImageOfThePlant" Type="text" />
-    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="PlantWork">
     <Key>
@@ -83,8 +85,9 @@
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IdRole" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
   <EntityType Name="WorkHistory">

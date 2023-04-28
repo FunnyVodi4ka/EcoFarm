@@ -20,6 +20,7 @@
     <Property Name="IdPlant" Type="Int32" Nullable="false" />
     <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Size" Type="Double" />
+    <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_Fields" FromRole="Fields" ToRole="CurrentWorks" />
     <NavigationProperty Name="Plants" Relationship="Self.FK_Fields_Plants" FromRole="Fields" ToRole="Plants" />
   </EntityType>
@@ -52,7 +53,8 @@
     <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GrowthPeriodInDays" Type="Int32" Nullable="false" />
     <Property Name="ImageOfThePlant" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Fields" Relationship="Self.FK_Fields_Plants" FromRole="Plants" ToRole="Fields" />
     <NavigationProperty Name="PlantWork" Relationship="Self.FK_PlantWork_Plants" FromRole="Plants" ToRole="PlantWork" />
   </EntityType>
@@ -94,8 +96,9 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IdRole" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
   </EntityType>

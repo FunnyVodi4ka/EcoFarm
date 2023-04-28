@@ -79,9 +79,19 @@ namespace EcoFarm.Validation
             return false;
         }
 
+        public bool CheckUniquePhone(string str, int idRow)
+        {
+            var uniquePhone = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Phone == str);
+            if (uniquePhone == null || uniquePhone.IdUser == idRow)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool CheckPhone(string phone)
         {
-            string pattern = "^8-\\d{3}-\\d{3}-\\d{2}-\\d{2}";
+            string pattern = "^8\\d{3}\\d{3}\\d{2}\\d{2}";
             Match isMatch = Regex.Match(phone, pattern, RegexOptions.IgnoreCase);
             return isMatch.Success;
         }

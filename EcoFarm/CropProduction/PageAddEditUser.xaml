@@ -42,6 +42,10 @@
                 <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}" Text="{Binding Email}"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Телефон:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbPhone" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" PreviewTextInput="tbPhone_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Роль:" Style="{StaticResource TextBlockMain}"/>
                 <ComboBox x:Name="comboBoxRole" Style="{StaticResource ComboBoxMain}"/>
             </StackPanel>

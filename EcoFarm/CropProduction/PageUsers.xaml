@@ -43,11 +43,11 @@
                     <Setter Property="Height" Value="auto"/>
                     <Setter Property="BorderBrush" Value="#649138" />
                     <Setter Property="BorderThickness" Value="1" />
-                    <Style.Triggers>
+                    <!--<Style.Triggers>
                         <DataTrigger Binding="{Binding IdUser}" Value="1">
                             <Setter Property="Background" Value="Red"/>
                         </DataTrigger>
-                    </Style.Triggers>
+                    </Style.Triggers>-->
                 </Style>
             </ListView.ItemContainerStyle>
 
@@ -71,6 +71,10 @@
                             <TextBlock TextWrapping="Wrap" Padding="0,3,0,3">
                                 <Run Text="Email: "/>
                                 <Run Text="{Binding Email}"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="0,3,0,3">
+                                <Run Text="Номер телефона: "/>
+                                <Run Text="{Binding Phone}"/>
                             </TextBlock>
                         </StackPanel>
 

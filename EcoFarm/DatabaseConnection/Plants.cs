@@ -26,6 +26,7 @@ namespace EcoFarm.DatabaseConnection
         public int GrowthPeriodInDays { get; set; }
         public string ImageOfThePlant { get; set; }
         public string Description { get; set; }
+        public string Note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fields> Fields { get; set; }

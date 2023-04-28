@@ -37,8 +37,9 @@ namespace EcoFarm.Authorization
             tbSurname.BorderBrush = Brushes.Black;
             tbName.BorderBrush = Brushes.Black;
             tbPatronymic.BorderBrush = Brushes.Black;
-            tbLogin.BorderBrush = Brushes.Black;
             tbEmail.BorderBrush = Brushes.Black;
+            tbPhone.BorderBrush = Brushes.Black;
+            tbLogin.BorderBrush = Brushes.Black;
             pbPassword.BorderBrush = Brushes.Black;
 
             if (!validation.CheckStringData(tbSurname.Text, 2, 50))
@@ -69,6 +70,30 @@ namespace EcoFarm.Authorization
             {
                 tbEmail.BorderBrush = Brushes.Red;
                 MessageBox.Show("Ошибка: Некорректная почта!");
+                return false;
+            }
+            if (!validation.CheckUniqueEmail(tbEmail.Text, newUser.IdUser))
+            {
+                tbEmail.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Пользователь с такой почтой уже зарегистрирован!");
+                return false;
+            }
+            if (!validation.CheckEmail(tbEmail.Text))
+            {
+                tbEmail.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Некорректная почта!");
+                return false;
+            }
+            if (!validation.CheckUniquePhone(tbPhone.Text, newUser.IdUser))
+            {
+                tbPhone.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Пользователь с таким телефоном уже зарегистрирован!");
+                return false;
+            }
+            if (!validation.CheckPhone(tbPhone.Text))
+            {
+                tbPhone.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Некорректный телефон (Пример: 89998887766)!");
                 return false;
             }
             if (!validation.CheckUniqueLogin(tbLogin.Text, newUser.IdUser))
@@ -135,6 +160,7 @@ namespace EcoFarm.Authorization
                     var role = AppConnect.ModelDB.Roles.FirstOrDefault(x => x.Name == "Сотрудник");
                     newUser.IdRole = role.IdRole;
                     newUser.Email = tbEmail.Text;
+                    newUser.Phone = tbPhone.Text;
 
                     AppConnect.ModelDB.Users.Add(newUser);
 
@@ -148,6 +174,14 @@ namespace EcoFarm.Authorization
                 {
                     MessageBox.Show("Ошибка, попробуйте зарегистрироваться позже!", "Ошибка регистрации", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if(!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9]") || tbPhone.Text.Length >= 11)
+            {
+                e.Handled = true;
             }
         }
     }

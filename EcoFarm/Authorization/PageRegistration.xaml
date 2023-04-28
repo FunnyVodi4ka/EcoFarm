@@ -27,6 +27,10 @@
                 <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Label Content="Телефон:" Style="{StaticResource LabelMain}"/>
+                <TextBox x:Name="tbPhone" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbPhone_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Label Content="Логин:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}"/>
             </StackPanel>

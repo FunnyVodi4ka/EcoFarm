@@ -18,10 +18,8 @@ namespace EcoFarm.DatabaseConnection
         private static EcoFarmDBEntities _context;
         public static EcoFarmDBEntities GetContext()
         {
-            if(_context == null)
-            {
+            if( _context == null )
                 _context = new EcoFarmDBEntities();
-            }
             return _context;
         }
 

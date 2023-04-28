@@ -107,6 +107,18 @@ namespace EcoFarm.CropProduction
                 MessageBox.Show("Ошибка: Некорректная почта!");
                 return false;
             }
+            if (!validation.CheckUniquePhone(tbPhone.Text, currentUser.IdUser))
+            {
+                tbPhone.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Пользователь с таким телефоном уже зарегистрирован!");
+                return false;
+            }
+            if (!validation.CheckEmail(tbPhone.Text))
+            {
+                tbPhone.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Ошибка: Некорректный телефон (Пример: 89998887766)!");
+                return false;
+            }
             if (!validation.CheckUniqueLogin(tbLogin.Text, currentUser.IdUser))
             {
                 tbLogin.BorderBrush = Brushes.Red;
@@ -199,6 +211,7 @@ namespace EcoFarm.CropProduction
                     currentUser.Name = tbName.Text;
                     currentUser.Patronymic = tbPatronymic.Text;
                     currentUser.Email = tbEmail.Text;
+                    currentUser.Phone = tbPhone.Text;
                     SetRole();
 
                     if (currentUser.IdUser == 0)
@@ -217,6 +230,14 @@ namespace EcoFarm.CropProduction
                     MessageBox.Show("Ошибка " + Ex.Message.ToString() + "Критическая работа приложения", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+            }
+        }
+
+        private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9]") || tbPhone.Text.Length >= 11)
+            {
+                e.Handled = true;
             }
         }
     }
