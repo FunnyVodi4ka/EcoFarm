@@ -81,6 +81,7 @@ namespace EcoFarm.CropProduction
             tbNumber.BorderBrush = Brushes.Black;
             dpDate.BorderBrush = Brushes.Black;
             tbSize.BorderBrush = Brushes.Black;
+            tbNote.BorderBrush = Brushes.Black;
 
             if (!validation.CheckUniqueFieldNumber(tbNumber.Text, currentField.IdField))
             {
@@ -105,6 +106,15 @@ namespace EcoFarm.CropProduction
                 dpDate.BorderBrush = Brushes.Red;
                 MessageBox.Show("Ошибка: Некорректная дата посадки!");
                 return false;
+            }
+            if (tbNote.Text.Length > 0)
+            {
+                if (!validation.CheckStringData(tbNote.Text, 2, 500))
+                {
+                    tbNote.BorderBrush = Brushes.Red;
+                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!");
+                    return false;
+                }
             }
             if (!CheckPlant())
             {
@@ -157,6 +167,7 @@ namespace EcoFarm.CropProduction
                     SetPlant();
                     currentField.BoardingDate = DateTime.Parse(dpDate.Text);
                     currentField.Size = double.Parse(tbSize.Text.Replace('.', ','));
+                    currentField.Note = tbNote.Text;
 
                     if (currentField.IdField == 0)
                     {

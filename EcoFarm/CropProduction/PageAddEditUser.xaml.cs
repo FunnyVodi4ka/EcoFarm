@@ -75,6 +75,7 @@ namespace EcoFarm.CropProduction
             tbPatronymic.BorderBrush = Brushes.Black;
             tbLogin.BorderBrush = Brushes.Black;
             tbEmail.BorderBrush = Brushes.Black;
+            tbPhone.BorderBrush = Brushes.Black;
             pbPassword.BorderBrush = Brushes.Black;
 
             if (!validation.CheckStringData(tbSurname.Text, 2, 50))

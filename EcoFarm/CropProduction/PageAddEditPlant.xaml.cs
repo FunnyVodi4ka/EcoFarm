@@ -99,6 +99,7 @@ namespace EcoFarm.CropProduction
             tbName.BorderBrush = Brushes.Black;
             tbDescription.BorderBrush = Brushes.Black;
             tbGrowthPeriodInDays.BorderBrush = Brushes.Black;
+            tbNote.BorderBrush = Brushes.Black;
 
             if (!validation.CheckUniquePlantName(tbName.Text, currentPlant.IdPlant))
             {
@@ -112,11 +113,20 @@ namespace EcoFarm.CropProduction
                 MessageBox.Show("Ошибка: Название не может содержать меньше 2 и больше 150 символов!");
                 return false;
             }
-            if (!validation.CheckStringData(tbDescription.Text, 2, 250))
+            if (!validation.CheckStringData(tbDescription.Text, 2, 500))
             {
                 tbDescription.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Описание не может содержать меньше 2 и больше 250 символов!");
+                MessageBox.Show("Ошибка: Описание не может содержать меньше 2 и больше 500 символов!");
                 return false;
+            }
+            if (tbNote.Text.Length > 0)
+            {
+                if (!validation.CheckStringData(tbNote.Text, 2, 500))
+                {
+                    tbNote.BorderBrush = Brushes.Red;
+                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!");
+                    return false;
+                }
             }
             if (!validation.CheckIntData(tbGrowthPeriodInDays.Text))
             {
@@ -137,6 +147,7 @@ namespace EcoFarm.CropProduction
                 {
                     currentPlant.Name = tbName.Text;
                     currentPlant.Description = tbDescription.Text;
+                    currentPlant.Note = tbNote.Text;
                     currentPlant.GrowthPeriodInDays = Int32.Parse(tbGrowthPeriodInDays.Text);
                     if (SaveFilename != null)
                     {

@@ -23,7 +23,11 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Описание:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="100"/>
+                <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="80"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="390" HorizontalAlignment="Stretch" Height="40"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Период созревания:" Style="{StaticResource TextBlockMain}" Width="290"/>
@@ -52,7 +56,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <ListView x:Name="ListViewPlantWork" Style="{StaticResource ListViewMain}" Width="390" Height="100">
+                <ListView x:Name="ListViewPlantWork" Style="{StaticResource ListViewMain}" Width="390" Height="80">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalAlignment" Value="Stretch"/>

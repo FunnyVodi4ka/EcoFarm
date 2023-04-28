@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
-      d:DesignHeight="250" d:DesignWidth="600"
-      Title="PageAddEditField" MinHeight="250" MaxHeight="550" MinWidth="600">
+      d:DesignHeight="300" d:DesignWidth="600"
+      Title="PageAddEditField" MinHeight="300" MaxHeight="550" MinWidth="600">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,6 +32,10 @@
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Размер поля (м²):" Style="{StaticResource TextBlockMain}" Width="220"/>
                 <TextBox x:Name="tbSize" Style="{StaticResource TextBoxMain}" Text="{Binding Size}" PreviewTextInput="tbSize_PreviewTextInput" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
+                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="524" HorizontalAlignment="Stretch" Height="80"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>

@@ -43,7 +43,7 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Телефон:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbPhone" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" PreviewTextInput="tbPhone_PreviewTextInput"/>
+                <TextBox x:Name="tbPhone" Style="{StaticResource TextBoxMain}" Text="{Binding Phone}" PreviewTextInput="tbPhone_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Роль:" Style="{StaticResource TextBlockMain}"/>

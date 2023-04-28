@@ -62,6 +62,10 @@
                                 <Run Text="Описание: "/>
                                 <Run Text="{Binding Description}" FontSize="18"/>
                             </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Заметки к растению: "/>
+                                <Run Text="{Binding Note}" FontSize="18"/>
+                            </TextBlock>
                         </StackPanel>
 
                     </Grid>

@@ -69,6 +69,10 @@
                                 <Run Text="{Binding Size}"/>
                                 <Run Text="м²"/>
                             </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Заметки к полю: "/>
+                                <Run Text="{Binding Note}" FontSize="18"/>
+                            </TextBlock>
                         </StackPanel>
 
                     </Grid>
