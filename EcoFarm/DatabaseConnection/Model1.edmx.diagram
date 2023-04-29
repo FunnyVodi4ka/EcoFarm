@@ -4,20 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="63b963048b86486a8361238b4358517b" Name="Diagram1">
-        <EntityTypeShape EntityType="ModelDB.CurrentWorks" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Fields" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.LandingHistory" Width="1.5" PointX="2.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.ListOfWorks" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.PlantWork" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Users" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.WorkHistory" Width="1.5" PointX="7.75" PointY="6.375" IsExpanded="true" />
+      <Diagram DiagramId="3bc81f205f71423e9a813fa9ac86101b" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelDB.AlbumFish" Width="1.5" PointX="10" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.AlbumPlants" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Aquariums" Width="1.5" PointX="10" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.CurrentWorks" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.CurrentWorksForFishFarming" Width="1.5" PointX="12.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Fields" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Fish" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.FishWork" Width="1.5" PointX="13" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.LandingHistory" Width="1.5" PointX="8.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.ListOfWorks" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.ListOfWorksForFishFarming" Width="1.5" PointX="10.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.PlantWork" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.sysdiagrams" Width="1.5" PointX="10.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Users" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.WorkHistory" Width="1.5" PointX="12.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="ModelDB.FK_AlbumFish_Fish" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDB.FK_AlbumPlants_Plants" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDB.FK_Aquariums_Fish" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDB.FK_CurrentWorksForFishFarming_Aquariums" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_CurrentWorks_Fields" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_CurrentWorks_ListOfWorks" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDB.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_Fields_Plants" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDB.FK_FishWork_Fish" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDB.FK_FishWork_ListOfWorksForFishFarming" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_PlantWork_ListOfWorks" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_PlantWork_Plants" ManuallyRouted="false" />
         <AssociationConnector Association="ModelDB.FK_Users_Roles" ManuallyRouted="false" />

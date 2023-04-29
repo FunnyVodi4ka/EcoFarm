@@ -1,10 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище ModelDBContainer" CdmEntityContainer="EcoFarmDBEntities">
+    <EntitySetMapping Name="AlbumFish">
+      <EntityTypeMapping TypeName="ModelDB.AlbumFish">
+        <MappingFragment StoreEntitySet="AlbumFish">
+          <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
+          <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlbumPlants">
+      <EntityTypeMapping TypeName="ModelDB.AlbumPlants">
+        <MappingFragment StoreEntitySet="AlbumPlants">
+          <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
+          <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aquariums">
+      <EntityTypeMapping TypeName="ModelDB.Aquariums">
+        <MappingFragment StoreEntitySet="Aquariums">
+          <ScalarProperty Name="IdAquarium" ColumnName="IdAquarium" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+          <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CurrentWorks">
       <EntityTypeMapping TypeName="ModelDB.CurrentWorks">
         <MappingFragment StoreEntitySet="CurrentWorks">
           <ScalarProperty Name="IdField" ColumnName="IdField" />
+          <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+          <ScalarProperty Name="DateOfNextWork" ColumnName="DateOfNextWork" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentWorksForFishFarming">
+      <EntityTypeMapping TypeName="ModelDB.CurrentWorksForFishFarming">
+        <MappingFragment StoreEntitySet="CurrentWorksForFishFarming">
+          <ScalarProperty Name="IdAquarium" ColumnName="IdAquarium" />
           <ScalarProperty Name="IdWork" ColumnName="IdWork" />
           <ScalarProperty Name="DateOfNextWork" ColumnName="DateOfNextWork" />
         </MappingFragment>
@@ -19,6 +59,27 @@
           <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fish">
+      <EntityTypeMapping TypeName="ModelDB.Fish">
+        <MappingFragment StoreEntitySet="Fish">
+          <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GrowthPeriodInDays" ColumnName="GrowthPeriodInDays" />
+          <ScalarProperty Name="ImageOfTheFish" ColumnName="ImageOfTheFish" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FishWork">
+      <EntityTypeMapping TypeName="ModelDB.FishWork">
+        <MappingFragment StoreEntitySet="FishWork">
+          <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+          <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+          <ScalarProperty Name="PeriodInDays" ColumnName="PeriodInDays" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -38,6 +99,14 @@
     <EntitySetMapping Name="ListOfWorks">
       <EntityTypeMapping TypeName="ModelDB.ListOfWorks">
         <MappingFragment StoreEntitySet="ListOfWorks">
+          <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListOfWorksForFishFarming">
+      <EntityTypeMapping TypeName="ModelDB.ListOfWorksForFishFarming">
+        <MappingFragment StoreEntitySet="ListOfWorksForFishFarming">
           <ScalarProperty Name="IdWork" ColumnName="IdWork" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>

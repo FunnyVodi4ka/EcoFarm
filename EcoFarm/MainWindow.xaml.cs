@@ -4,6 +4,7 @@ using EcoFarm.Authentication;
 using EcoFarm.Authorization;
 using EcoFarm.CropProduction;
 using EcoFarm.DatabaseConnection;
+using EcoFarm.FishFarming;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -138,7 +139,7 @@ namespace EcoFarm
         private void btnPageFishFarming_Click(object sender, RoutedEventArgs e)
         {
             SelectedMenuTab.selectedMenuTab = "PageFishFarming";
-            //frmMain.Navigate(new PageTasksToday());
+            frmMain.Navigate(new PageTasksTodayForFishFarming());
         }
 
         private void btnPageReports_Click(object sender, RoutedEventArgs e)

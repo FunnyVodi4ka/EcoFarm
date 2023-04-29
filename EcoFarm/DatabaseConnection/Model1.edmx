@@ -5,12 +5,51 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище ModelDB" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6005: Тип данных "sql_variant" в настоящее время не поддерживается для целевой версии платформы Entity Framework; столбец "Photo" в таблице "EcoFarmDB.dbo.AlbumFish" был исключен.-->
+        <EntityType Name="AlbumFish">
+          <Key>
+            <PropertyRef Name="IdAlbumPhoto" />
+          </Key>
+          <Property Name="IdAlbumPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFish" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AlbumPlants">
+          <Key>
+            <PropertyRef Name="IdAlbumPhoto" />
+          </Key>
+          <Property Name="IdAlbumPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPlant" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="text" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Aquariums">
+          <Key>
+            <PropertyRef Name="IdAquarium" />
+          </Key>
+          <Property Name="IdAquarium" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdFish" Type="int" Nullable="false" />
+          <Property Name="BoardingDate" Type="date" Nullable="false" />
+          <Property Name="Size" Type="float" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="CurrentWorks">
           <Key>
             <PropertyRef Name="IdField" />
             <PropertyRef Name="IdWork" />
           </Key>
           <Property Name="IdField" Type="int" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="DateOfNextWork" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrentWorksForFishFarming">
+          <Key>
+            <PropertyRef Name="IdAquarium" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdAquarium" Type="int" Nullable="false" />
           <Property Name="IdWork" Type="int" Nullable="false" />
           <Property Name="DateOfNextWork" Type="date" Nullable="false" />
         </EntityType>
@@ -22,8 +61,28 @@
           <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdPlant" Type="int" Nullable="false" />
           <Property Name="BoardingDate" Type="date" Nullable="false" />
-          <Property Name="Size" Type="float" />
+          <Property Name="Size" Type="float" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Fish">
+          <Key>
+            <PropertyRef Name="IdFish" />
+          </Key>
+          <Property Name="IdFish" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="GrowthPeriodInDays" Type="int" Nullable="false" />
+          <Property Name="ImageOfTheFish" Type="text" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="FishWork">
+          <Key>
+            <PropertyRef Name="IdFish" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdFish" Type="int" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="PeriodInDays" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LandingHistory">
           <Key>
@@ -38,6 +97,13 @@
           <Property Name="HarvestVolume" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ListOfWorks">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListOfWorksForFishFarming">
           <Key>
             <PropertyRef Name="IdWork" />
           </Key>
@@ -105,6 +171,48 @@
           <Property Name="WorkName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DateOfWork" Type="date" Nullable="false" />
         </EntityType>
+        <Association Name="FK_AlbumFish_Fish">
+          <End Role="Fish" Type="Self.Fish" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AlbumFish" Type="Self.AlbumFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fish">
+              <PropertyRef Name="IdFish" />
+            </Principal>
+            <Dependent Role="AlbumFish">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AlbumPlants_Plants">
+          <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AlbumPlants" Type="Self.AlbumPlants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plants">
+              <PropertyRef Name="IdPlant" />
+            </Principal>
+            <Dependent Role="AlbumPlants">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aquariums_Fish">
+          <End Role="Fish" Type="Self.Fish" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aquariums" Type="Self.Aquariums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fish">
+              <PropertyRef Name="IdFish" />
+            </Principal>
+            <Dependent Role="Aquariums">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CurrentWorks_Fields">
           <End Role="Fields" Type="Self.Fields" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -133,6 +241,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CurrentWorksForFishFarming_Aquariums">
+          <End Role="Aquariums" Type="Self.Aquariums" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorksForFishFarming" Type="Self.CurrentWorksForFishFarming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aquariums">
+              <PropertyRef Name="IdAquarium" />
+            </Principal>
+            <Dependent Role="CurrentWorksForFishFarming">
+              <PropertyRef Name="IdAquarium" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming">
+          <End Role="ListOfWorksForFishFarming" Type="Self.ListOfWorksForFishFarming" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorksForFishFarming" Type="Self.CurrentWorksForFishFarming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorksForFishFarming">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="CurrentWorksForFishFarming">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Fields_Plants">
           <End Role="Plants" Type="Self.Plants" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -144,6 +280,34 @@
             </Principal>
             <Dependent Role="Fields">
               <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FishWork_Fish">
+          <End Role="Fish" Type="Self.Fish" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FishWork" Type="Self.FishWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fish">
+              <PropertyRef Name="IdFish" />
+            </Principal>
+            <Dependent Role="FishWork">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FishWork_ListOfWorksForFishFarming">
+          <End Role="ListOfWorksForFishFarming" Type="Self.ListOfWorksForFishFarming" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FishWork" Type="Self.FishWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorksForFishFarming">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="FishWork">
+              <PropertyRef Name="IdWork" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,16 +354,35 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelDBContainer">
+          <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aquariums" EntityType="Self.Aquariums" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentWorksForFishFarming" EntityType="Self.CurrentWorksForFishFarming" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fish" EntityType="Self.Fish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FishWork" EntityType="Self.FishWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListOfWorksForFishFarming" EntityType="Self.ListOfWorksForFishFarming" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plants" EntityType="Self.Plants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlantWork" EntityType="Self.PlantWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkHistory" EntityType="Self.WorkHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
+            <End Role="Fish" EntitySet="Fish" />
+            <End Role="AlbumFish" EntitySet="AlbumFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AlbumPlants_Plants" Association="Self.FK_AlbumPlants_Plants">
+            <End Role="Plants" EntitySet="Plants" />
+            <End Role="AlbumPlants" EntitySet="AlbumPlants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aquariums_Fish" Association="Self.FK_Aquariums_Fish">
+            <End Role="Fish" EntitySet="Fish" />
+            <End Role="Aquariums" EntitySet="Aquariums" />
+          </AssociationSet>
           <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
             <End Role="Fields" EntitySet="Fields" />
             <End Role="CurrentWorks" EntitySet="CurrentWorks" />
@@ -208,9 +391,25 @@
             <End Role="ListOfWorks" EntitySet="ListOfWorks" />
             <End Role="CurrentWorks" EntitySet="CurrentWorks" />
           </AssociationSet>
+          <AssociationSet Name="FK_CurrentWorksForFishFarming_Aquariums" Association="Self.FK_CurrentWorksForFishFarming_Aquariums">
+            <End Role="Aquariums" EntitySet="Aquariums" />
+            <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" Association="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming">
+            <End Role="ListOfWorksForFishFarming" EntitySet="ListOfWorksForFishFarming" />
+            <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
+          </AssociationSet>
           <AssociationSet Name="FK_Fields_Plants" Association="Self.FK_Fields_Plants">
             <End Role="Plants" EntitySet="Plants" />
             <End Role="Fields" EntitySet="Fields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FishWork_Fish" Association="Self.FK_FishWork_Fish">
+            <End Role="Fish" EntitySet="Fish" />
+            <End Role="FishWork" EntitySet="FishWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FishWork_ListOfWorksForFishFarming" Association="Self.FK_FishWork_ListOfWorksForFishFarming">
+            <End Role="ListOfWorksForFishFarming" EntitySet="ListOfWorksForFishFarming" />
+            <End Role="FishWork" EntitySet="FishWork" />
           </AssociationSet>
           <AssociationSet Name="FK_PlantWork_ListOfWorks" Association="Self.FK_PlantWork_ListOfWorks">
             <End Role="ListOfWorks" EntitySet="ListOfWorks" />
@@ -230,6 +429,38 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ModelDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AlbumFish">
+          <Key>
+            <PropertyRef Name="IdAlbumPhoto" />
+          </Key>
+          <Property Name="IdAlbumPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFish" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fish" Relationship="Self.FK_AlbumFish_Fish" FromRole="AlbumFish" ToRole="Fish" />
+        </EntityType>
+        <EntityType Name="AlbumPlants">
+          <Key>
+            <PropertyRef Name="IdAlbumPhoto" />
+          </Key>
+          <Property Name="IdAlbumPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPlant" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plants" Relationship="Self.FK_AlbumPlants_Plants" FromRole="AlbumPlants" ToRole="Plants" />
+        </EntityType>
+        <EntityType Name="Aquariums">
+          <Key>
+            <PropertyRef Name="IdAquarium" />
+          </Key>
+          <Property Name="IdAquarium" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdFish" Type="Int32" Nullable="false" />
+          <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Size" Type="Double" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fish" Relationship="Self.FK_Aquariums_Fish" FromRole="Aquariums" ToRole="Fish" />
+          <NavigationProperty Name="CurrentWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_Aquariums" FromRole="Aquariums" ToRole="CurrentWorksForFishFarming" />
+        </EntityType>
         <EntityType Name="CurrentWorks">
           <Key>
             <PropertyRef Name="IdField" />
@@ -241,6 +472,17 @@
           <NavigationProperty Name="Fields" Relationship="Self.FK_CurrentWorks_Fields" FromRole="CurrentWorks" ToRole="Fields" />
           <NavigationProperty Name="ListOfWorks" Relationship="Self.FK_CurrentWorks_ListOfWorks" FromRole="CurrentWorks" ToRole="ListOfWorks" />
         </EntityType>
+        <EntityType Name="CurrentWorksForFishFarming">
+          <Key>
+            <PropertyRef Name="IdAquarium" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdAquarium" Type="Int32" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="DateOfNextWork" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Aquariums" Relationship="Self.FK_CurrentWorksForFishFarming_Aquariums" FromRole="CurrentWorksForFishFarming" ToRole="Aquariums" />
+          <NavigationProperty Name="ListOfWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" FromRole="CurrentWorksForFishFarming" ToRole="ListOfWorksForFishFarming" />
+        </EntityType>
         <EntityType Name="Fields">
           <Key>
             <PropertyRef Name="IdField" />
@@ -249,10 +491,35 @@
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdPlant" Type="Int32" Nullable="false" />
           <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Size" Type="Double" />
+          <Property Name="Size" Type="Double" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_Fields" FromRole="Fields" ToRole="CurrentWorks" />
           <NavigationProperty Name="Plants" Relationship="Self.FK_Fields_Plants" FromRole="Fields" ToRole="Plants" />
+        </EntityType>
+        <EntityType Name="Fish">
+          <Key>
+            <PropertyRef Name="IdFish" />
+          </Key>
+          <Property Name="IdFish" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrowthPeriodInDays" Type="Int32" Nullable="false" />
+          <Property Name="ImageOfTheFish" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AlbumFish" Relationship="Self.FK_AlbumFish_Fish" FromRole="Fish" ToRole="AlbumFish" />
+          <NavigationProperty Name="Aquariums" Relationship="Self.FK_Aquariums_Fish" FromRole="Fish" ToRole="Aquariums" />
+          <NavigationProperty Name="FishWork" Relationship="Self.FK_FishWork_Fish" FromRole="Fish" ToRole="FishWork" />
+        </EntityType>
+        <EntityType Name="FishWork">
+          <Key>
+            <PropertyRef Name="IdFish" />
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdFish" Type="Int32" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="PeriodInDays" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fish" Relationship="Self.FK_FishWork_Fish" FromRole="FishWork" ToRole="Fish" />
+          <NavigationProperty Name="ListOfWorksForFishFarming" Relationship="Self.FK_FishWork_ListOfWorksForFishFarming" FromRole="FishWork" ToRole="ListOfWorksForFishFarming" />
         </EntityType>
         <EntityType Name="LandingHistory">
           <Key>
@@ -275,6 +542,15 @@
           <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_ListOfWorks" FromRole="ListOfWorks" ToRole="CurrentWorks" />
           <NavigationProperty Name="PlantWork" Relationship="Self.FK_PlantWork_ListOfWorks" FromRole="ListOfWorks" ToRole="PlantWork" />
         </EntityType>
+        <EntityType Name="ListOfWorksForFishFarming">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CurrentWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" FromRole="ListOfWorksForFishFarming" ToRole="CurrentWorksForFishFarming" />
+          <NavigationProperty Name="FishWork" Relationship="Self.FK_FishWork_ListOfWorksForFishFarming" FromRole="ListOfWorksForFishFarming" ToRole="FishWork" />
+        </EntityType>
         <EntityType Name="Plants">
           <Key>
             <PropertyRef Name="IdPlant" />
@@ -285,6 +561,7 @@
           <Property Name="ImageOfThePlant" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AlbumPlants" Relationship="Self.FK_AlbumPlants_Plants" FromRole="Plants" ToRole="AlbumPlants" />
           <NavigationProperty Name="Fields" Relationship="Self.FK_Fields_Plants" FromRole="Plants" ToRole="Fields" />
           <NavigationProperty Name="PlantWork" Relationship="Self.FK_PlantWork_Plants" FromRole="Plants" ToRole="PlantWork" />
         </EntityType>
@@ -342,6 +619,62 @@
           <Property Name="WorkName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfWork" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
+        <Association Name="FK_AlbumFish_Fish">
+          <End Role="Fish" Type="Self.Fish" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AlbumFish" Type="Self.AlbumFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fish">
+              <PropertyRef Name="IdFish" />
+            </Principal>
+            <Dependent Role="AlbumFish">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AlbumPlants_Plants">
+          <End Role="Plants" Type="Self.Plants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AlbumPlants" Type="Self.AlbumPlants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plants">
+              <PropertyRef Name="IdPlant" />
+            </Principal>
+            <Dependent Role="AlbumPlants">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aquariums_Fish">
+          <End Role="Fish" Type="Self.Fish" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aquariums" Type="Self.Aquariums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fish">
+              <PropertyRef Name="IdFish" />
+            </Principal>
+            <Dependent Role="Aquariums">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentWorksForFishFarming_Aquariums">
+          <End Role="Aquariums" Type="Self.Aquariums" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorksForFishFarming" Type="Self.CurrentWorksForFishFarming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aquariums">
+              <PropertyRef Name="IdAquarium" />
+            </Principal>
+            <Dependent Role="CurrentWorksForFishFarming">
+              <PropertyRef Name="IdAquarium" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CurrentWorks_Fields">
           <End Role="Fields" Type="Self.Fields" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -370,6 +703,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming">
+          <End Role="ListOfWorksForFishFarming" Type="Self.ListOfWorksForFishFarming" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurrentWorksForFishFarming" Type="Self.CurrentWorksForFishFarming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorksForFishFarming">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="CurrentWorksForFishFarming">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Fields_Plants">
           <End Role="Plants" Type="Self.Plants" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -381,6 +728,34 @@
             </Principal>
             <Dependent Role="Fields">
               <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FishWork_Fish">
+          <End Role="Fish" Type="Self.Fish" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FishWork" Type="Self.FishWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fish">
+              <PropertyRef Name="IdFish" />
+            </Principal>
+            <Dependent Role="FishWork">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FishWork_ListOfWorksForFishFarming">
+          <End Role="ListOfWorksForFishFarming" Type="Self.ListOfWorksForFishFarming" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FishWork" Type="Self.FishWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListOfWorksForFishFarming">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="FishWork">
+              <PropertyRef Name="IdWork" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -427,16 +802,39 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EcoFarmDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" />
+          <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" />
+          <EntitySet Name="Aquariums" EntityType="Self.Aquariums" />
           <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" />
+          <EntitySet Name="CurrentWorksForFishFarming" EntityType="Self.CurrentWorksForFishFarming" />
           <EntitySet Name="Fields" EntityType="Self.Fields" />
+          <EntitySet Name="Fish" EntityType="Self.Fish" />
+          <EntitySet Name="FishWork" EntityType="Self.FishWork" />
           <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" />
           <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" />
+          <EntitySet Name="ListOfWorksForFishFarming" EntityType="Self.ListOfWorksForFishFarming" />
           <EntitySet Name="Plants" EntityType="Self.Plants" />
           <EntitySet Name="PlantWork" EntityType="Self.PlantWork" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="WorkHistory" EntityType="Self.WorkHistory" />
+          <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
+            <End Role="Fish" EntitySet="Fish" />
+            <End Role="AlbumFish" EntitySet="AlbumFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AlbumPlants_Plants" Association="Self.FK_AlbumPlants_Plants">
+            <End Role="Plants" EntitySet="Plants" />
+            <End Role="AlbumPlants" EntitySet="AlbumPlants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aquariums_Fish" Association="Self.FK_Aquariums_Fish">
+            <End Role="Fish" EntitySet="Fish" />
+            <End Role="Aquariums" EntitySet="Aquariums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentWorksForFishFarming_Aquariums" Association="Self.FK_CurrentWorksForFishFarming_Aquariums">
+            <End Role="Aquariums" EntitySet="Aquariums" />
+            <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
+          </AssociationSet>
           <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
             <End Role="Fields" EntitySet="Fields" />
             <End Role="CurrentWorks" EntitySet="CurrentWorks" />
@@ -445,9 +843,21 @@
             <End Role="ListOfWorks" EntitySet="ListOfWorks" />
             <End Role="CurrentWorks" EntitySet="CurrentWorks" />
           </AssociationSet>
+          <AssociationSet Name="FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" Association="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming">
+            <End Role="ListOfWorksForFishFarming" EntitySet="ListOfWorksForFishFarming" />
+            <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
+          </AssociationSet>
           <AssociationSet Name="FK_Fields_Plants" Association="Self.FK_Fields_Plants">
             <End Role="Plants" EntitySet="Plants" />
             <End Role="Fields" EntitySet="Fields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FishWork_Fish" Association="Self.FK_FishWork_Fish">
+            <End Role="Fish" EntitySet="Fish" />
+            <End Role="FishWork" EntitySet="FishWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FishWork_ListOfWorksForFishFarming" Association="Self.FK_FishWork_ListOfWorksForFishFarming">
+            <End Role="ListOfWorksForFishFarming" EntitySet="ListOfWorksForFishFarming" />
+            <End Role="FishWork" EntitySet="FishWork" />
           </AssociationSet>
           <AssociationSet Name="FK_PlantWork_ListOfWorks" Association="Self.FK_PlantWork_ListOfWorks">
             <End Role="ListOfWorks" EntitySet="ListOfWorks" />
@@ -468,10 +878,50 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ModelDBContainer" CdmEntityContainer="EcoFarmDBEntities">
+          <EntitySetMapping Name="AlbumFish">
+            <EntityTypeMapping TypeName="ModelDB.AlbumFish">
+              <MappingFragment StoreEntitySet="AlbumFish">
+                <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
+                <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlbumPlants">
+            <EntityTypeMapping TypeName="ModelDB.AlbumPlants">
+              <MappingFragment StoreEntitySet="AlbumPlants">
+                <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
+                <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aquariums">
+            <EntityTypeMapping TypeName="ModelDB.Aquariums">
+              <MappingFragment StoreEntitySet="Aquariums">
+                <ScalarProperty Name="IdAquarium" ColumnName="IdAquarium" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+                <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CurrentWorks">
             <EntityTypeMapping TypeName="ModelDB.CurrentWorks">
               <MappingFragment StoreEntitySet="CurrentWorks">
                 <ScalarProperty Name="IdField" ColumnName="IdField" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="DateOfNextWork" ColumnName="DateOfNextWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrentWorksForFishFarming">
+            <EntityTypeMapping TypeName="ModelDB.CurrentWorksForFishFarming">
+              <MappingFragment StoreEntitySet="CurrentWorksForFishFarming">
+                <ScalarProperty Name="IdAquarium" ColumnName="IdAquarium" />
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
                 <ScalarProperty Name="DateOfNextWork" ColumnName="DateOfNextWork" />
               </MappingFragment>
@@ -486,6 +936,27 @@
                 <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
                 <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fish">
+            <EntityTypeMapping TypeName="ModelDB.Fish">
+              <MappingFragment StoreEntitySet="Fish">
+                <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GrowthPeriodInDays" ColumnName="GrowthPeriodInDays" />
+                <ScalarProperty Name="ImageOfTheFish" ColumnName="ImageOfTheFish" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FishWork">
+            <EntityTypeMapping TypeName="ModelDB.FishWork">
+              <MappingFragment StoreEntitySet="FishWork">
+                <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="PeriodInDays" ColumnName="PeriodInDays" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -505,6 +976,14 @@
           <EntitySetMapping Name="ListOfWorks">
             <EntityTypeMapping TypeName="ModelDB.ListOfWorks">
               <MappingFragment StoreEntitySet="ListOfWorks">
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListOfWorksForFishFarming">
+            <EntityTypeMapping TypeName="ModelDB.ListOfWorksForFishFarming">
+              <MappingFragment StoreEntitySet="ListOfWorksForFishFarming">
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>

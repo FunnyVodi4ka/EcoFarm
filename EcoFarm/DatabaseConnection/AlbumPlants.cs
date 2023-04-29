@@ -12,23 +12,13 @@ namespace EcoFarm.DatabaseConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class Fields
+    public partial class AlbumPlants
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fields()
-        {
-            this.CurrentWorks = new HashSet<CurrentWorks>();
-        }
-    
-        public int IdField { get; set; }
-        public string Number { get; set; }
+        public int IdAlbumPhoto { get; set; }
         public int IdPlant { get; set; }
-        public System.DateTime BoardingDate { get; set; }
-        public double Size { get; set; }
+        public string Photo { get; set; }
         public string Note { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrentWorks> CurrentWorks { get; set; }
         public virtual Plants Plants { get; set; }
     }
 }

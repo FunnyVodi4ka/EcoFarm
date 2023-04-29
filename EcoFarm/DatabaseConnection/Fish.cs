@@ -12,28 +12,28 @@ namespace EcoFarm.DatabaseConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class Plants
+    public partial class Fish
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Plants()
+        public Fish()
         {
-            this.AlbumPlants = new HashSet<AlbumPlants>();
-            this.Fields = new HashSet<Fields>();
-            this.PlantWork = new HashSet<PlantWork>();
+            this.AlbumFish = new HashSet<AlbumFish>();
+            this.Aquariums = new HashSet<Aquariums>();
+            this.FishWork = new HashSet<FishWork>();
         }
     
-        public int IdPlant { get; set; }
+        public int IdFish { get; set; }
         public string Name { get; set; }
         public int GrowthPeriodInDays { get; set; }
-        public string ImageOfThePlant { get; set; }
+        public string ImageOfTheFish { get; set; }
         public string Description { get; set; }
         public string Note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlbumPlants> AlbumPlants { get; set; }
+        public virtual ICollection<AlbumFish> AlbumFish { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fields> Fields { get; set; }
+        public virtual ICollection<Aquariums> Aquariums { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlantWork> PlantWork { get; set; }
+        public virtual ICollection<FishWork> FishWork { get; set; }
     }
 }

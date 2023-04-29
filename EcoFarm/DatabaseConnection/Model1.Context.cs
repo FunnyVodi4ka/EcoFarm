@@ -18,11 +18,10 @@ namespace EcoFarm.DatabaseConnection
         private static EcoFarmDBEntities _context;
         public static EcoFarmDBEntities GetContext()
         {
-            if( _context == null )
+            if (_context == null)
                 _context = new EcoFarmDBEntities();
             return _context;
         }
-
         public EcoFarmDBEntities()
             : base("name=EcoFarmDBEntities")
         {
@@ -33,10 +32,17 @@ namespace EcoFarm.DatabaseConnection
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AlbumFish> AlbumFish { get; set; }
+        public virtual DbSet<AlbumPlants> AlbumPlants { get; set; }
+        public virtual DbSet<Aquariums> Aquariums { get; set; }
         public virtual DbSet<CurrentWorks> CurrentWorks { get; set; }
+        public virtual DbSet<CurrentWorksForFishFarming> CurrentWorksForFishFarming { get; set; }
         public virtual DbSet<Fields> Fields { get; set; }
+        public virtual DbSet<Fish> Fish { get; set; }
+        public virtual DbSet<FishWork> FishWork { get; set; }
         public virtual DbSet<LandingHistory> LandingHistory { get; set; }
         public virtual DbSet<ListOfWorks> ListOfWorks { get; set; }
+        public virtual DbSet<ListOfWorksForFishFarming> ListOfWorksForFishFarming { get; set; }
         public virtual DbSet<Plants> Plants { get; set; }
         public virtual DbSet<PlantWork> PlantWork { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }

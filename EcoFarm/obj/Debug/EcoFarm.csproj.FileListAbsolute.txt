@@ -45,3 +45,5 @@ C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\CropProduction\PageAddEdit
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\CropProduction\PageTasksToday.g.cs
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\CropProduction\PageTasksToday.baml
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageTasksTodayForFishFarming.g.cs
+C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageTasksTodayForFishFarming.baml

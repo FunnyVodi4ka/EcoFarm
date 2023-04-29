@@ -4,8 +4,6 @@ using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +17,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EcoFarm.CropProduction
+namespace EcoFarm.FishFarming
 {
     /// <summary>
-    /// Логика взаимодействия для PageTasksToday.xaml
+    /// Логика взаимодействия для PageTasksTodayForFishFarming.xaml
     /// </summary>
-    public partial class PageTasksToday : Page
+    public partial class PageTasksTodayForFishFarming : Page
     {
         AccessVerification access = new AccessVerification();
-        CurrentWorks currentWorks = new CurrentWorks();
+        CurrentWorksForFishFarming currentWorks = new CurrentWorksForFishFarming();
 
-        public PageTasksToday()
+        public PageTasksTodayForFishFarming()
         {
             access.CheckAuthorization();
 
@@ -42,13 +40,13 @@ namespace EcoFarm.CropProduction
             ListTasks.ItemsSource = SortFilterTasks();
         }
 
-        CurrentWorks[] SortFilterTasks()
+        CurrentWorksForFishFarming[] SortFilterTasks()
         {
-            List<CurrentWorks> tasks = AppConnect.ModelDB.CurrentWorks.ToList();
+            List<CurrentWorksForFishFarming> tasks = AppConnect.ModelDB.CurrentWorksForFishFarming.ToList();
             var CounterALL = tasks;
             if (textBoxSearch.Text != null)
             {
-                tasks = tasks.Where(x => x.Fields.Number.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
+                tasks = tasks.Where(x => x.Aquariums.Number.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
 
                 switch (comboBoxSort.SelectedIndex)
                 {
@@ -63,7 +61,7 @@ namespace EcoFarm.CropProduction
 
             if (comboBoxFilter.SelectedIndex > 0)
             {
-                tasks = tasks.Where(x => x.Fields.Plants.Name == comboBoxFilter.SelectedItem.ToString()).ToList();
+                tasks = tasks.Where(x => x.Aquariums.Fish.Name == comboBoxFilter.SelectedItem.ToString()).ToList();
             }
 
             if (tasks.Count != 0)
@@ -89,10 +87,10 @@ namespace EcoFarm.CropProduction
 
         private void SetFilter()
         {
-            comboBoxFilter.Items.Add("Все растения");
-            foreach (var plants in AppConnect.ModelDB.Plants)
+            comboBoxFilter.Items.Add("Все рыбы");
+            foreach (var fish in AppConnect.ModelDB.Fish)
             {
-                comboBoxFilter.Items.Add(plants.Name);
+                comboBoxFilter.Items.Add(fish.Name);
             }
 
             comboBoxFilter.SelectedIndex = 0;
@@ -121,9 +119,9 @@ namespace EcoFarm.CropProduction
 
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
-            currentWorks = ListTasks.SelectedItems.Cast<CurrentWorks>().ToList().ElementAt(0);
+            currentWorks = ListTasks.SelectedItems.Cast<CurrentWorksForFishFarming>().ToList().ElementAt(0);
 
-            var nextDate = AppConnect.ModelDB.PlantWork.FirstOrDefault(x => x.IdPlant == currentWorks.Fields.IdPlant && x.IdWork == currentWorks.IdWork);
+            var nextDate = AppConnect.ModelDB.FishWork.FirstOrDefault(x => x.IdFish == currentWorks.Aquariums.IdFish && x.IdWork == currentWorks.IdWork);
 
             currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
             AppConnect.ModelDB.SaveChanges();
@@ -133,16 +131,16 @@ namespace EcoFarm.CropProduction
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PageTasksToday());
+            SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+            AppFrame.frameMain.Navigate(new PageTasksTodayForFishFarming());
         }
 
         private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-                AppFrame.frameMain.Navigate(new PageFields());
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                //AppFrame.frameMain.Navigate(new PageFields());
             }
         }
 
@@ -150,8 +148,8 @@ namespace EcoFarm.CropProduction
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-                AppFrame.frameMain.Navigate(new PagePlants());
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                //AppFrame.frameMain.Navigate(new PagePlants());
             }
         }
 
@@ -159,8 +157,8 @@ namespace EcoFarm.CropProduction
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "Зфпу";
-                AppFrame.frameMain.Navigate(new PageListOfWorks());
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                //AppFrame.frameMain.Navigate(new PageListOfWorks());
             }
         }
 
@@ -176,8 +174,8 @@ namespace EcoFarm.CropProduction
                 color = "#5D5D5D";
             }
 
-            stTabBarFields.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
-            stTabBarPlants.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
+            stTabBarAquariums.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
+            stTabBarFish.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
             stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
         }
     }
