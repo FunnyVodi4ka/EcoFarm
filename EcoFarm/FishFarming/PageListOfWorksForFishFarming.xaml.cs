@@ -5,7 +5,6 @@ using EcoFarm.DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,18 +17,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EcoFarm.CropProduction
+namespace EcoFarm.FishFarming
 {
     /// <summary>
-    /// Логика взаимодействия для PageListOfWorks.xaml
+    /// Логика взаимодействия для PageListOfWorksForFishFarming.xaml
     /// </summary>
-    public partial class PageListOfWorks : Page
+    public partial class PageListOfWorksForFishFarming : Page
     {
         AccessVerification access = new AccessVerification();
 
-        private ListOfWorks currentWork = new ListOfWorks();
+        private ListOfWorksForFishFarming currentWork = new ListOfWorksForFishFarming();
 
-        public PageListOfWorks()
+        public PageListOfWorksForFishFarming()
         {
             access.CheckMenegerAccess();
 
@@ -38,9 +37,9 @@ namespace EcoFarm.CropProduction
             ListViewListOfWorks.ItemsSource = SortFilterListOfWorks();
         }
 
-        ListOfWorks[] SortFilterListOfWorks()
+        ListOfWorksForFishFarming[] SortFilterListOfWorks()
         {
-            List<ListOfWorks> rows = AppConnect.ModelDB.ListOfWorks.ToList();
+            List<ListOfWorksForFishFarming> rows = AppConnect.ModelDB.ListOfWorksForFishFarming.ToList();
             var CounterALL = rows;
             if (textBoxSearch.Text != null)
             {
@@ -64,10 +63,10 @@ namespace EcoFarm.CropProduction
         {
             try
             {
-                var currentRow = ListViewListOfWorks.SelectedItems.Cast<ListOfWorks>().ToList().ElementAt(0);
+                var currentRow = ListViewListOfWorks.SelectedItems.Cast<ListOfWorksForFishFarming>().ToList().ElementAt(0);
                 if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    AppConnect.ModelDB.ListOfWorks.Remove(currentRow);
+                    AppConnect.ModelDB.ListOfWorksForFishFarming.Remove(currentRow);
                     AppConnect.ModelDB.SaveChanges();
                     ListViewListOfWorks.ItemsSource = SortFilterListOfWorks();
 
@@ -82,7 +81,7 @@ namespace EcoFarm.CropProduction
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var uniqueName = AppConnect.ModelDB.ListOfWorks.FirstOrDefault(x => x.Name == tbAdd.Text);
+            var uniqueName = AppConnect.ModelDB.ListOfWorksForFishFarming.FirstOrDefault(x => x.Name == tbAdd.Text);
             if (tbAdd.Text.Length >= 2 && tbAdd.Text.Length <= 100)
             {
                 if (uniqueName == null)
@@ -92,7 +91,7 @@ namespace EcoFarm.CropProduction
                         currentWork.Name = tbAdd.Text;
                         if (currentWork.IdWork == 0)
                         {
-                            EcoFarmDBEntities.GetContext().ListOfWorks.Add(currentWork);
+                            EcoFarmDBEntities.GetContext().ListOfWorksForFishFarming.Add(currentWork);
                         }
                         EcoFarmDBEntities.GetContext().SaveChanges();
                         AppConnect.ModelDB.SaveChanges();
@@ -131,7 +130,7 @@ namespace EcoFarm.CropProduction
 
         private void ResetEditRow()
         {
-            currentWork = new ListOfWorks();
+            currentWork = new ListOfWorksForFishFarming();
             tblAdd.Text = "Новый вид работ";
             tbAdd.Text = "";
             btnAdd.Content = "Добавить";
@@ -145,7 +144,7 @@ namespace EcoFarm.CropProduction
 
         private void LbListOfWorks_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            currentWork = ListViewListOfWorks.SelectedItem as ListOfWorks;
+            currentWork = ListViewListOfWorks.SelectedItem as ListOfWorksForFishFarming;
             tblAdd.Text = "Изменение работы";
             tbAdd.Text = currentWork.Name;
             btnAdd.Content = "Изменить";
@@ -154,25 +153,25 @@ namespace EcoFarm.CropProduction
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-            AppFrame.frameMain.Navigate(new PageTasksToday());
+            SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+            AppFrame.frameMain.Navigate(new PageTasksTodayForFishFarming());
         }
 
-        private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TabBarAquariums_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-                AppFrame.frameMain.Navigate(new PageFields());
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                AppFrame.frameMain.Navigate(new PageAquariums());
             }
         }
 
-        private void TabBarPlants_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TabBarFish_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-                AppFrame.frameMain.Navigate(new PagePlants());
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                AppFrame.frameMain.Navigate(new PageFish());
             }
         }
 
@@ -180,8 +179,8 @@ namespace EcoFarm.CropProduction
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
-                AppFrame.frameMain.Navigate(new PageListOfWorks());
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                AppFrame.frameMain.Navigate(new PageListOfWorksForFishFarming());
             }
         }
     }

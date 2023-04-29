@@ -135,21 +135,21 @@ namespace EcoFarm.FishFarming
             AppFrame.frameMain.Navigate(new PageTasksTodayForFishFarming());
         }
 
-        private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TabBarAquariums_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (access.CheckMenegerAccessBoolResult())
             {
                 SelectedMenuTab.selectedMenuTab = "PageFishFarming";
-                //AppFrame.frameMain.Navigate(new PageFields());
+                AppFrame.frameMain.Navigate(new PageAquariums());
             }
         }
 
-        private void TabBarPlants_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TabBarFish_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (access.CheckMenegerAccessBoolResult())
             {
                 SelectedMenuTab.selectedMenuTab = "PageFishFarming";
-                //AppFrame.frameMain.Navigate(new PagePlants());
+                AppFrame.frameMain.Navigate(new PageFish());
             }
         }
 
@@ -158,7 +158,7 @@ namespace EcoFarm.FishFarming
             if (access.CheckMenegerAccessBoolResult())
             {
                 SelectedMenuTab.selectedMenuTab = "PageFishFarming";
-                //AppFrame.frameMain.Navigate(new PageListOfWorks());
+                AppFrame.frameMain.Navigate(new PageListOfWorksForFishFarming());
             }
         }
 

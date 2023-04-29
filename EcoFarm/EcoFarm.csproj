@@ -158,6 +158,15 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="FishFarming\DateTimeToBrushConverter.cs" />
+    <Compile Include="FishFarming\PageAquariums.xaml.cs">
+      <DependentUpon>PageAquariums.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FishFarming\PageFish.xaml.cs">
+      <DependentUpon>PageFish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FishFarming\PageListOfWorksForFishFarming.xaml.cs">
+      <DependentUpon>PageListOfWorksForFishFarming.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FishFarming\PageTasksTodayForFishFarming.xaml.cs">
       <DependentUpon>PageTasksTodayForFishFarming.xaml</DependentUpon>
     </Compile>
@@ -204,6 +213,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CropProduction\PageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FishFarming\PageAquariums.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FishFarming\PageFish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FishFarming\PageListOfWorksForFishFarming.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
