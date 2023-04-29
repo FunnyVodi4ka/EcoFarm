@@ -25,4 +25,22 @@ namespace EcoFarm.DatabaseConnection
             }
         }
     }
+
+    public partial class Fish
+    {
+        public string CorrectImage
+        {
+            get
+            {
+                if (File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\" + ImageOfTheFish))
+                {
+                    return System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\" + ImageOfTheFish;
+                }
+                else
+                {
+                    return "/Resources/AppImages/DefaultPicture.png";
+                }
+            }
+        }
+    }
 }

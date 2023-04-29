@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\App.xaml
-162021628422
+182050619984
 2-297283055
-491828167669
+51-1465299305
 18-242689727
-Authorization\PageLogin.xaml;Authorization\PageRegistration.xaml;Authorization\WindowCaptcha.xaml;CropProduction\PageAddEditField.xaml;CropProduction\PageAddEditPlant.xaml;CropProduction\PageAddEditUser.xaml;CropProduction\PageFields.xaml;CropProduction\PageListOfWorks.xaml;CropProduction\PagePlants.xaml;CropProduction\PageTasksToday.xaml;CropProduction\PageUsers.xaml;FishFarming\PageAquariums.xaml;FishFarming\PageFish.xaml;FishFarming\PageListOfWorksForFishFarming.xaml;FishFarming\PageTasksTodayForFishFarming.xaml;MainWindow.xaml;
+Authorization\PageLogin.xaml;Authorization\PageRegistration.xaml;Authorization\WindowCaptcha.xaml;CropProduction\PageAddEditField.xaml;CropProduction\PageAddEditPlant.xaml;CropProduction\PageAddEditUser.xaml;CropProduction\PageFields.xaml;CropProduction\PageListOfWorks.xaml;CropProduction\PagePlants.xaml;CropProduction\PageTasksToday.xaml;CropProduction\PageUsers.xaml;FishFarming\PageAddEditAquariums.xaml;FishFarming\PageAddEditFish.xaml;FishFarming\PageAquariums.xaml;FishFarming\PageFish.xaml;FishFarming\PageListOfWorksForFishFarming.xaml;FishFarming\PageTasksTodayForFishFarming.xaml;MainWindow.xaml;
 
 False
 

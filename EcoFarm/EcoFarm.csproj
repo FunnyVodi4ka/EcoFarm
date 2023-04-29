@@ -158,6 +158,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="FishFarming\DateTimeToBrushConverter.cs" />
+    <Compile Include="FishFarming\PageAddEditAquariums.xaml.cs">
+      <DependentUpon>PageAddEditAquariums.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FishFarming\PageAddEditFish.xaml.cs">
+      <DependentUpon>PageAddEditFish.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FishFarming\PageAquariums.xaml.cs">
       <DependentUpon>PageAquariums.xaml</DependentUpon>
     </Compile>
@@ -213,6 +219,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CropProduction\PageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FishFarming\PageAddEditAquariums.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FishFarming\PageAddEditFish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,6 +306,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\FishImages\" />
     <Folder Include="Resources\PlantsImages\" />
   </ItemGroup>
   <ItemGroup>

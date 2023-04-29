@@ -18,54 +18,53 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace EcoFarm.CropProduction
+namespace EcoFarm.FishFarming
 {
     /// <summary>
-    /// Логика взаимодействия для PageAddEditPlant.xaml
+    /// Логика взаимодействия для PageAddEditFish.xaml
     /// </summary>
-    public partial class PageAddEditPlant : Page
+    public partial class PageAddEditFish : Page
     {
         AccessVerification access = new AccessVerification();
         ValidationClass validation = new ValidationClass();
-        private Plants currentPlant = new Plants();
-        private PlantWork plantWork = new PlantWork();
+        private Fish currentFish = new Fish();
+        private FishWork fishWork = new FishWork();
         string SaveFilename, newImageName;
 
-        public PageAddEditPlant(Plants plant)
+        public PageAddEditFish(Fish fish)
         {
             access.CheckMenegerAccess();
 
             InitializeComponent();
 
             SetWorks();
-            if (plant != null)
+            if (fish != null)
             {
-                currentPlant = plant;
+                currentFish = fish;
 
                 spListOfWork.Visibility = Visibility.Visible;
-                ListViewPlantWork.Visibility = Visibility.Visible;
+                ListViewFishWork.Visibility = Visibility.Visible;
                 FindWorks();
             }
             else
             {
                 spListOfWork.Visibility = Visibility.Hidden;
-                ListViewPlantWork.Visibility = Visibility.Hidden;
+                ListViewFishWork.Visibility = Visibility.Hidden;
             }
 
-            DataContext = currentPlant;
+            DataContext = currentFish;
         }
 
         private void FindWorks()
         {
-            ListViewPlantWork.ItemsSource = listPlantWork();
+            ListViewFishWork.ItemsSource = listPlantWork();
         }
 
-        PlantWork[] listPlantWork()
+        FishWork[] listPlantWork()
         {
-            List<PlantWork> rows = EcoFarmDBEntities.GetContext().PlantWork.ToList();
-            rows = rows.Where(x => x.IdPlant == currentPlant.IdPlant).ToList();
+            List<FishWork> rows = EcoFarmDBEntities.GetContext().FishWork.ToList();
+            rows = rows.Where(x => x.IdFish == currentFish.IdFish).ToList();
 
             return rows.ToArray();
         }
@@ -73,7 +72,7 @@ namespace EcoFarm.CropProduction
         private void SetWorks()
         {
             comboBoxWorks.Items.Add("Выберите");
-            foreach (var works in AppConnect.ModelDB.ListOfWorks)
+            foreach (var works in AppConnect.ModelDB.ListOfWorksForFishFarming)
             {
                 comboBoxWorks.Items.Add(works.Name);
             }
@@ -100,7 +99,7 @@ namespace EcoFarm.CropProduction
             tbGrowthPeriodInDays.BorderBrush = Brushes.Black;
             tbNote.BorderBrush = Brushes.Black;
 
-            if (!validation.CheckUniquePlantName(tbName.Text, currentPlant.IdPlant))
+            if (!validation.CheckUniquePlantName(tbName.Text, currentFish.IdFish))
             {
                 tbName.BorderBrush = Brushes.Red;
                 MessageBox.Show("Ошибка: Растение с таким названием уже есть!");
@@ -133,7 +132,7 @@ namespace EcoFarm.CropProduction
                 MessageBox.Show("Ошибка: Некорректное число!");
                 return false;
             }
-            
+
             return true;
         }
 
@@ -144,19 +143,19 @@ namespace EcoFarm.CropProduction
             {
                 try
                 {
-                    currentPlant.Name = tbName.Text;
-                    currentPlant.Description = tbDescription.Text;
-                    currentPlant.Note = tbNote.Text;
-                    currentPlant.GrowthPeriodInDays = Int32.Parse(tbGrowthPeriodInDays.Text);
+                    currentFish.Name = tbName.Text;
+                    currentFish.Description = tbDescription.Text;
+                    currentFish.Note = tbNote.Text;
+                    currentFish.GrowthPeriodInDays = Int32.Parse(tbGrowthPeriodInDays.Text);
                     if (SaveFilename != null)
                     {
                         LoadImageInDirectory();
-                        currentPlant.ImageOfThePlant = newImageName;
+                        currentFish.ImageOfTheFish = newImageName;
                     }
 
-                    if (currentPlant.IdPlant == 0)
+                    if (currentFish.IdFish == 0)
                     {
-                        EcoFarmDBEntities.GetContext().Plants.Add(currentPlant);
+                        EcoFarmDBEntities.GetContext().Fish.Add(currentFish);
                     }
                     EcoFarmDBEntities.GetContext().SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
@@ -189,62 +188,62 @@ namespace EcoFarm.CropProduction
 
         private void FindWorkItem()
         {
-            var work = EcoFarmDBEntities.GetContext().ListOfWorks.FirstOrDefault(x => x.Name == comboBoxWorks.SelectedItem.ToString());
+            var work = EcoFarmDBEntities.GetContext().ListOfWorksForFishFarming.FirstOrDefault(x => x.Name == comboBoxWorks.SelectedItem.ToString());
             if (work == null)
             {
                 MessageBox.Show("Такого элемента нет!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                plantWork.IdWork = work.IdWork;
+                fishWork.IdWork = work.IdWork;
             }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckPlantWorkRow())
+            if (CheckPlantWorkRow())
             {
                 try
                 {
-                    plantWork = new PlantWork();
-                    plantWork.IdPlant = currentPlant.IdPlant;
+                    fishWork = new FishWork();
+                    fishWork.IdFish = currentFish.IdFish;
                     FindWorkItem();
-                    plantWork.PeriodInDays = Int32.Parse(tbPeriod.Text);
+                    fishWork.PeriodInDays = Int32.Parse(tbPeriod.Text);
 
-                    List<PlantWork> rows = EcoFarmDBEntities.GetContext().PlantWork.ToList();
-                    rows = rows.Where(x => x.IdPlant == currentPlant.IdPlant && x.IdWork == plantWork.IdWork).ToList();
+                    List<FishWork> rows = EcoFarmDBEntities.GetContext().FishWork.ToList();
+                    rows = rows.Where(x => x.IdFish == currentFish.IdFish && x.IdWork == fishWork.IdWork).ToList();
                     if (rows.Count > 0)
                     {
                         MessageBox.Show("Такая работа уже добавлена!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
                     {
-                        EcoFarmDBEntities.GetContext().PlantWork.Add(plantWork);
+                        EcoFarmDBEntities.GetContext().FishWork.Add(fishWork);
                         EcoFarmDBEntities.GetContext().SaveChanges();
 
-                        ListViewPlantWork.ItemsSource = listPlantWork();
+                        ListViewFishWork.ItemsSource = listPlantWork();
                     }
                 }
-                    catch (Exception)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка: Критическая работа приложения", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-            //ListViewPlantWork.Items.Add(plantWork);
+            //ListViewFishWork.Items.Add(fishWork);
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var currentRow = ListViewPlantWork.SelectedItems.Cast<PlantWork>().ToList().ElementAt(0);
+                var currentRow = ListViewFishWork.SelectedItems.Cast<FishWork>().ToList().ElementAt(0);
                 if (MessageBox.Show("Вы уверены, что хотите удалить работу?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    EcoFarmDBEntities.GetContext().PlantWork.Remove(currentRow);
+                    EcoFarmDBEntities.GetContext().FishWork.Remove(currentRow);
                     EcoFarmDBEntities.GetContext().SaveChanges();
-                    //ListViewPlantWork.Items.Remove(currentRow);
-                    ListViewPlantWork.ItemsSource = listPlantWork();
+                    //ListViewFishWork.Items.Remove(currentRow);
+                    ListViewFishWork.ItemsSource = listPlantWork();
                 }
             }
             catch
@@ -264,12 +263,12 @@ namespace EcoFarm.CropProduction
                 newImageName = rnd.Next(10000, 100000).ToString() + rnd.Next(10000, 100000).ToString() + ".png";
 
                 SaveFilename = dialog.FileName;
-                
+
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(SaveFilename);
                 bitmap.EndInit();
-                imagePlant.Source = bitmap;
+                imageFish.Source = bitmap;
                 //tblCurrentImage.Text = newImageName;
             }
             catch { }
@@ -279,7 +278,7 @@ namespace EcoFarm.CropProduction
         {
             try
             {
-                File.Copy(SaveFilename, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\" + newImageName);
+                File.Copy(SaveFilename, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\" + newImageName);
             }
             catch
             {

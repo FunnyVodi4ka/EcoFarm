@@ -26,8 +26,6 @@ namespace EcoFarm.CropProduction
     public partial class PagePlants : Page
     {
         AccessVerification access = new AccessVerification();
-        ValidationClass validation = new ValidationClass();
-        private Plants currentPlant = new Plants();
 
         public PagePlants()
         {

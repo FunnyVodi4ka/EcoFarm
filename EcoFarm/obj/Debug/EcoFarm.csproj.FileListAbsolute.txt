@@ -53,3 +53,7 @@ C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageListOfWork
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAquariums.baml
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageFish.baml
 C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageListOfWorksForFishFarming.baml
+C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAddEditAquariums.g.cs
+C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAddEditFish.g.cs
+C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAddEditAquariums.baml
+C:\Users\AlexZ\source\repos\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAddEditFish.baml
