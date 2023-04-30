@@ -64,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminPanel\PageAddEditUser.xaml.cs">
+      <DependentUpon>PageAddEditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\PageUsers.xaml.cs">
+      <DependentUpon>PageUsers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppSupportClass\SelectedMenuTab.cs" />
     <Compile Include="Authentication\AccessVerification.cs" />
     <Compile Include="CropProduction\DateTimeToBrushConverter.cs" />
@@ -72,9 +78,6 @@
     </Compile>
     <Compile Include="CropProduction\PageAddEditPlant.xaml.cs">
       <DependentUpon>PageAddEditPlant.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CropProduction\PageAddEditUser.xaml.cs">
-      <DependentUpon>PageAddEditUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="CropProduction\PageFields.xaml.cs">
       <DependentUpon>PageFields.xaml</DependentUpon>
@@ -87,9 +90,6 @@
     </Compile>
     <Compile Include="CropProduction\PageTasksToday.xaml.cs">
       <DependentUpon>PageTasksToday.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CropProduction\PageUsers.xaml.cs">
-      <DependentUpon>PageUsers.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection\AlbumFish.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -178,6 +178,14 @@
     </Compile>
     <Compile Include="ImageLoader\CorrectImage.cs" />
     <Compile Include="Validation\ValidationClass.cs" />
+    <Page Include="AdminPanel\PageAddEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPanel\PageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Authorization\PageLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,10 +206,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CropProduction\PageAddEditUser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CropProduction\PageFields.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,10 +219,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CropProduction\PageTasksToday.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CropProduction\PageUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,6 +306,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Reports\" />
     <Folder Include="Resources\FishImages\" />
     <Folder Include="Resources\PlantsImages\" />
   </ItemGroup>
