@@ -146,9 +146,12 @@ namespace EcoFarm.FishFarming
                 {
                     currentFish.Name = tbName.Text;
                     currentFish.Description = tbDescription.Text;
-                    currentFish.Note = tbNote.Text;
+                    if (tbNote.Text.Length <= 0)
+                        currentFish.Note = null;
+                    else
+                        currentFish.Note = tbNote.Text;
                     currentFish.GrowthPeriodInDays = Int32.Parse(tbGrowthPeriodInDays.Text);
-                    if (SaveFilename != null)
+                    if (!string.IsNullOrEmpty(SaveFilename))
                     {
                         LoadImageInDirectory();
                         currentFish.ImageOfTheFish = newImageName;
@@ -198,6 +201,12 @@ namespace EcoFarm.FishFarming
             {
                 fishWork.IdWork = work.IdWork;
             }
+        }
+
+        private void btnOpenAlbum_Click(object sender, RoutedEventArgs e)
+        {
+            Fish fish = currentFish;
+            AppFrame.frameMain.Navigate(new PageAlbumFish(fish));
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

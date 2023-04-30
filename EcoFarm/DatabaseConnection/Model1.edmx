@@ -5,14 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище ModelDB" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6005: Тип данных "sql_variant" в настоящее время не поддерживается для целевой версии платформы Entity Framework; столбец "Photo" в таблице "EcoFarmDB.dbo.AlbumFish" был исключен.-->
         <EntityType Name="AlbumFish">
           <Key>
             <PropertyRef Name="IdAlbumPhoto" />
           </Key>
           <Property Name="IdAlbumPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdFish" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="text" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="AlbumPlants">
@@ -435,6 +434,7 @@
           </Key>
           <Property Name="IdAlbumPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdFish" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Fish" Relationship="Self.FK_AlbumFish_Fish" FromRole="AlbumFish" ToRole="Fish" />
         </EntityType>
@@ -883,6 +883,7 @@
               <MappingFragment StoreEntitySet="AlbumFish">
                 <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
                 <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
               </MappingFragment>
             </EntityTypeMapping>

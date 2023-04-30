@@ -43,4 +43,40 @@ namespace EcoFarm.DatabaseConnection
             }
         }
     }
+
+    public partial class AlbumPlants
+    {
+        public string CorrectImage
+        {
+            get
+            {
+                if (File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\AlbumPlants\\" + Photo))
+                {
+                    return System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\AlbumPlants\\" + Photo;
+                }
+                else
+                {
+                    return "/Resources/AppImages/DefaultPicture.png";
+                }
+            }
+        }
+    }
+
+    public partial class AlbumFish
+    {
+        public string CorrectImage
+        {
+            get
+            {
+                if (File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\AlbumFish\\" + Photo))
+                {
+                    return System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\AlbumFish\\" + Photo;
+                }
+                else
+                {
+                    return "/Resources/AppImages/DefaultPicture.png";
+                }
+            }
+        }
+    }
 }

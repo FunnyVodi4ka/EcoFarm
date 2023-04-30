@@ -16,6 +16,7 @@ namespace EcoFarm.DatabaseConnection
     {
         public int IdAlbumPhoto { get; set; }
         public int IdFish { get; set; }
+        public string Photo { get; set; }
         public string Note { get; set; }
     
         public virtual Fish Fish { get; set; }

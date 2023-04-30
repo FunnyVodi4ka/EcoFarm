@@ -86,8 +86,8 @@
                                 <Run Text="{Binding Description}" FontSize="18"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Заметки к растению: "/>
-                                <Run Text="{Binding Note}" FontSize="18"/>
+                                <Run Text="Заметки к виду рыбы: "/>
+                                <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="18"/>
                             </TextBlock>
                         </StackPanel>
 

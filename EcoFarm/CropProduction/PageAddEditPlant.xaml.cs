@@ -47,12 +47,14 @@ namespace EcoFarm.CropProduction
 
                 spListOfWork.Visibility = Visibility.Visible;
                 ListViewPlantWork.Visibility = Visibility.Visible;
+                btnOpenAlbum.Visibility = Visibility.Visible;
                 FindWorks();
             }
             else
             {
                 spListOfWork.Visibility = Visibility.Hidden;
                 ListViewPlantWork.Visibility = Visibility.Hidden;
+                btnOpenAlbum.Visibility = Visibility.Hidden;
             }
 
             DataContext = currentPlant;
@@ -147,9 +149,12 @@ namespace EcoFarm.CropProduction
                 {
                     currentPlant.Name = tbName.Text;
                     currentPlant.Description = tbDescription.Text;
-                    currentPlant.Note = tbNote.Text;
+                    if (tbNote.Text.Length <= 0)
+                        currentPlant.Note = null;
+                    else
+                        currentPlant.Note = tbNote.Text;
                     currentPlant.GrowthPeriodInDays = Int32.Parse(tbGrowthPeriodInDays.Text);
-                    if (SaveFilename != null)
+                    if (!string.IsNullOrEmpty(SaveFilename))
                     {
                         LoadImageInDirectory();
                         currentPlant.ImageOfThePlant = newImageName;
@@ -286,6 +291,12 @@ namespace EcoFarm.CropProduction
             {
                 MessageBox.Show("Ошибка загрузки изображения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnOpenAlbum_Click(object sender, RoutedEventArgs e)
+        {
+            Plants plant = currentPlant;
+            AppFrame.frameMain.Navigate(new PageAlbumPlants(plant));
         }
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

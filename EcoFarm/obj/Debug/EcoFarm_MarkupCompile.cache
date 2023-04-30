@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\App.xaml
-18-1679465572
+20118635839
 2-297283055
-51622886539
+53-8522364
 182018746931
-AdminPanel\PageAddEditUser.xaml;AdminPanel\PageUsers.xaml;Authorization\PageLogin.xaml;Authorization\PageRegistration.xaml;Authorization\WindowCaptcha.xaml;CropProduction\PageAddEditField.xaml;CropProduction\PageAddEditPlant.xaml;CropProduction\PageFields.xaml;CropProduction\PageListOfWorks.xaml;CropProduction\PagePlants.xaml;CropProduction\PageTasksToday.xaml;FishFarming\PageAddEditAquariums.xaml;FishFarming\PageAddEditFish.xaml;FishFarming\PageAquariums.xaml;FishFarming\PageFish.xaml;FishFarming\PageListOfWorksForFishFarming.xaml;FishFarming\PageTasksTodayForFishFarming.xaml;MainWindow.xaml;
+AdminPanel\PageAddEditUser.xaml;AdminPanel\PageUsers.xaml;Authorization\PageLogin.xaml;Authorization\PageRegistration.xaml;Authorization\WindowCaptcha.xaml;CropProduction\PageAddEditField.xaml;CropProduction\PageAddEditPlant.xaml;CropProduction\PageAlbumPlants.xaml;CropProduction\PageFields.xaml;CropProduction\PageListOfWorks.xaml;CropProduction\PagePlants.xaml;CropProduction\PageTasksToday.xaml;FishFarming\PageAddEditAquariums.xaml;FishFarming\PageAddEditFish.xaml;FishFarming\PageAlbumFish.xaml;FishFarming\PageAquariums.xaml;FishFarming\PageFish.xaml;FishFarming\PageListOfWorksForFishFarming.xaml;FishFarming\PageTasksTodayForFishFarming.xaml;MainWindow.xaml;
 
 False
 

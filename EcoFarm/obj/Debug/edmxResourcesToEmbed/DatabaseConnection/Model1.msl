@@ -6,6 +6,7 @@
         <MappingFragment StoreEntitySet="AlbumFish">
           <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
           <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="Note" ColumnName="Note" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -116,3 +116,7 @@ C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\EcoFarm.Prope
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\EcoFarm.csproj.GenerateResource.cache
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\EcoFarm.csproj.CoreCompileInputs.cache
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\EcoFarm.csproj.CopyComplete
+C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\CropProduction\PageAlbumPlants.g.cs
+C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\CropProduction\PageAlbumPlants.baml
+C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAlbumFish.g.cs
+C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAlbumFish.baml

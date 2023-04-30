@@ -79,6 +79,9 @@
     <Compile Include="CropProduction\PageAddEditPlant.xaml.cs">
       <DependentUpon>PageAddEditPlant.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CropProduction\PageAlbumPlants.xaml.cs">
+      <DependentUpon>PageAlbumPlants.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CropProduction\PageFields.xaml.cs">
       <DependentUpon>PageFields.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,9 @@
     <Compile Include="FishFarming\PageAddEditFish.xaml.cs">
       <DependentUpon>PageAddEditFish.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FishFarming\PageAlbumFish.xaml.cs">
+      <DependentUpon>PageAlbumFish.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FishFarming\PageAquariums.xaml.cs">
       <DependentUpon>PageAquariums.xaml</DependentUpon>
     </Compile>
@@ -206,6 +212,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CropProduction\PageAlbumPlants.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CropProduction\PageFields.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FishFarming\PageAddEditFish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FishFarming\PageAlbumFish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,9 +320,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DatabaseConnection\DESKTOP-8I0USR8\" />
     <Folder Include="Reports\" />
-    <Folder Include="Resources\FishImages\" />
-    <Folder Include="Resources\PlantsImages\" />
+    <Folder Include="Resources\FishImages\AlbumFish\" />
+    <Folder Include="Resources\PlantsImages\AlbumPlants\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AppImages\Logo-mini.png" />
@@ -330,6 +345,10 @@
     <Resource Include="Resources\AppImages\iconField.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\AppImages\gold-fish.png" />
+    <Resource Include="Resources\AppImages\fish-in-fishbowl.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DatabaseConnection\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -340,8 +359,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\AppImages\gold-fish.png" />
-    <Resource Include="Resources\AppImages\fish-in-fishbowl.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

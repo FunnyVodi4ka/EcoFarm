@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3bc81f205f71423e9a813fa9ac86101b" Name="Diagram1">
+      <Diagram DiagramId="9cea9ab2dbb24ec8865a37d99f609169" Name="Diagram1">
         <EntityTypeShape EntityType="ModelDB.AlbumFish" Width="1.5" PointX="10" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.AlbumPlants" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Aquariums" Width="1.5" PointX="10" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Aquariums" Width="1.5" PointX="10" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.CurrentWorks" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.CurrentWorksForFishFarming" Width="1.5" PointX="12.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.CurrentWorksForFishFarming" Width="1.5" PointX="12.25" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Fields" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.Fish" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.FishWork" Width="1.5" PointX="13" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.Fish" Width="1.5" PointX="7.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.FishWork" Width="1.5" PointX="13" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.LandingHistory" Width="1.5" PointX="8.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.ListOfWorks" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.ListOfWorksForFishFarming" Width="1.5" PointX="10.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.ListOfWorksForFishFarming" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.PlantWork" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />

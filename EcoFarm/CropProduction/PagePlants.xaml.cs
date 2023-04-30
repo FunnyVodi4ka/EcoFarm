@@ -5,6 +5,7 @@ using EcoFarm.DatabaseConnection;
 using EcoFarm.Validation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,9 +111,11 @@ namespace EcoFarm.CropProduction
             {
                 if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
+                    string fileNameForDelete = currentRow.ImageOfThePlant;
                     AppConnect.ModelDB.Plants.Remove(currentRow);
                     AppConnect.ModelDB.SaveChanges();
                     ListPlants.ItemsSource = SortFilterPlants();
+                    //DeletePhotoFromDirectory(fileNameForDelete);
                 }
             }
             catch
@@ -120,6 +123,18 @@ namespace EcoFarm.CropProduction
                 MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        //private void DeletePhotoFromDirectory(string row)
+        //{
+        //    try
+        //    {
+        //        File.Move(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\" + row, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\" + "ForDelete" + row);
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Ошибка удаления изображения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

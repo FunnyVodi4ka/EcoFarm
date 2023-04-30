@@ -168,7 +168,10 @@ namespace EcoFarm.CropProduction
                     SetPlant();
                     currentField.BoardingDate = DateTime.Parse(dpDate.Text);
                     currentField.Size = double.Parse(tbSize.Text.Replace('.', ','));
-                    currentField.Note = tbNote.Text;
+                    if (tbNote.Text.Length <= 0)
+                        currentField.Note = null;
+                    else
+                        currentField.Note = tbNote.Text;
 
                     if (currentField.IdField == 0)
                     {

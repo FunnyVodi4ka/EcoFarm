@@ -166,7 +166,10 @@ namespace EcoFarm.FishFarming
                     SetIdFish();
                     currentAquarium.BoardingDate = DateTime.Parse(dpDate.Text);
                     currentAquarium.Size = double.Parse(tbSize.Text.Replace('.', ','));
-                    currentAquarium.Note = tbNote.Text;
+                    if (tbNote.Text.Length <= 0)
+                        currentAquarium.Note = null;
+                    else
+                        currentAquarium.Note = tbNote.Text;
 
                     if (currentAquarium.IdAquarium == 0)
                     {

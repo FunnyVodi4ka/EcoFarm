@@ -55,12 +55,15 @@
                 <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="100"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Center">
-                <TextBlock Text="Фото:" Style="{StaticResource TextBlockMain}" Width="120"/>
-                <Image x:Name="imagePlant" Source="{Binding CorrectImage}" Width="70" Height="70"></Image>
+                <TextBlock Text="Фото:" Style="{StaticResource TextBlockMain}" Width="90"/>
+                <Image x:Name="imagePlant" Source="{Binding CorrectImage}" Width="70" Height="70" Margin="15,0,15,0"></Image>
                 <!--<TextBlock x:Name="tblCurrentImage" Style="{StaticResource TextBlockMain}" Text="{Binding ImageOfThePlant}" Width="290"/>-->
             <!--</StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">-->
-                <Button x:Name="btnSaveImage" Content="Загрузить изображение" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Click="btnSaveImage_Click"/>
+                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Width="200">
+                    <Button x:Name="btnSaveImage" Content="Загрузить изображение" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnSaveImage_Click"/>
+                    <Button x:Name="btnOpenAlbum" Content="Альбом фотографий" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnOpenAlbum_Click"/>
+                </StackPanel>
             </StackPanel>
             <StackPanel x:Name="spListOfWork" Style="{StaticResource StackPanelMainStyle}">
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
