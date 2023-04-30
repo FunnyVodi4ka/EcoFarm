@@ -10,13 +10,34 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="62"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Column="0"/>
+        <StackPanel Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarAquariums" Width="4" Height="56" Background="#649138"/>
+                <Image x:Name="TabBarAquariums" Source="/Resources/AppImages/fish-in-fishbowl.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarAquariums_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarFish" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarFish" Source="/Resources/AppImages/gold-fish.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFish_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarListOfWorks" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarListOfWorks" Source="/Resources/AppImages/work-in-progress.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarListOfWorks_MouseLeftButtonDown"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Номер аквариума:" Style="{StaticResource TextBlockMain}" Width="220"/>
                 <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300"/>

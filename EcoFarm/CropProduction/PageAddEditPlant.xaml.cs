@@ -1,4 +1,5 @@
 ﻿using EcoFarm.AppConnection;
+using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
 using EcoFarm.Validation;
@@ -284,6 +285,39 @@ namespace EcoFarm.CropProduction
             catch
             {
                 MessageBox.Show("Ошибка загрузки изображения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+            AppFrame.frameMain.Navigate(new PageTasksToday());
+        }
+
+        private void TabBarFields_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PageFields());
+            }
+        }
+
+        private void TabBarPlants_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PagePlants());
+            }
+        }
+
+        private void TabBarListOfWorks_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
+                AppFrame.frameMain.Navigate(new PageListOfWorks());
             }
         }
     }

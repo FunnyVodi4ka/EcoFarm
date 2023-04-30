@@ -1,4 +1,5 @@
 ﻿using EcoFarm.AppConnection;
+using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
 using EcoFarm.Validation;
@@ -202,6 +203,39 @@ namespace EcoFarm.FishFarming
                 newCurrentWork.DateOfNextWork = currentAquarium.BoardingDate;
 
                 EcoFarmDBEntities.GetContext().CurrentWorksForFishFarming.Add(newCurrentWork);
+            }
+        }
+
+        private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+            AppFrame.frameMain.Navigate(new PageTasksTodayForFishFarming());
+        }
+
+        private void TabBarAquariums_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                AppFrame.frameMain.Navigate(new PageAquariums());
+            }
+        }
+
+        private void TabBarFish_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                AppFrame.frameMain.Navigate(new PageFish());
+            }
+        }
+
+        private void TabBarListOfWorks_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageFishFarming";
+                AppFrame.frameMain.Navigate(new PageListOfWorksForFishFarming());
             }
         }
     }

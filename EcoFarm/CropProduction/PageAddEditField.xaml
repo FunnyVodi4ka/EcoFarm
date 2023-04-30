@@ -10,13 +10,34 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="62"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Column="0"/>
+        <StackPanel Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarFields" Width="4" Height="56" Background="#649138"/>
+                <Image x:Name="TabBarFields" Source="/Resources/AppImages/field.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFields_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarPlants" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarPlants" Source="/Resources/AppImages/plant.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarPlants_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarListOfWorks" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarListOfWorks" Source="/Resources/AppImages/work-in-progress.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarListOfWorks_MouseLeftButtonDown"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Номер поля:" Style="{StaticResource TextBlockMain}" Width="220"/>
                 <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300"/>
