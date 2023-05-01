@@ -124,9 +124,27 @@ namespace EcoFarm.FishFarming
             var nextDate = AppConnect.ModelDB.FishWork.FirstOrDefault(x => x.IdFish == currentWorks.Aquariums.IdFish && x.IdWork == currentWorks.IdWork);
 
             currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
+            WriteToHistory(currentWorks);
             AppConnect.ModelDB.SaveChanges();
 
             ListTasks.ItemsSource = SortFilterTasks();
+        }
+
+        private void WriteToHistory(CurrentWorksForFishFarming work)
+        {
+            CompletedWorkHistory record = new CompletedWorkHistory();
+
+            var place = AppConnect.ModelDB.WorkPlaceForHistory.FirstOrDefault(x => x.Name == "Аквариум");
+            record.IdWorkPlace = place.IdWorkPlace;
+            record.Number = work.Aquariums.Number;
+            record.ContentName = work.Aquariums.Fish.Name;
+            record.WorkName = work.ListOfWorksForFishFarming.Name;
+            record.DateOfWork = DateTime.Today;
+            record.UserSurname = AuthorizedUser.user.Surname;
+            record.UserName = AuthorizedUser.user.Name;
+            record.UserPatronymic = AuthorizedUser.user.Patronymic;
+
+            AppConnect.ModelDB.CompletedWorkHistory.Add(record);
         }
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

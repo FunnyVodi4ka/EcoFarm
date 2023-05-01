@@ -24,7 +24,7 @@
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" HorizontalAlignment="Left">
             <StackPanel x:Name="stackPanelB1" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениводство" Width="210" Click="btnPageCropProduction_Click"/>
+                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениеводство" Width="210" Click="btnPageCropProduction_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB2" Style="{StaticResource StackPanelEmpty}">
                 <Button x:Name="btnPageFishFarming" Style="{DynamicResource ButtonMenu}" Content="Рыбоводство" Width="170" Click="btnPageFishFarming_Click"/>

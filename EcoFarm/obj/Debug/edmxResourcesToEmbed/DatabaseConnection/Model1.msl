@@ -33,6 +33,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CompletedWorkHistory">
+      <EntityTypeMapping TypeName="ModelDB.CompletedWorkHistory">
+        <MappingFragment StoreEntitySet="CompletedWorkHistory">
+          <ScalarProperty Name="IdWorkHistory" ColumnName="IdWorkHistory" />
+          <ScalarProperty Name="IdWorkPlace" ColumnName="IdWorkPlace" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="DateOfWork" ColumnName="DateOfWork" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CurrentWorks">
       <EntityTypeMapping TypeName="ModelDB.CurrentWorks">
         <MappingFragment StoreEntitySet="CurrentWorks">
@@ -168,14 +183,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="WorkHistory">
-      <EntityTypeMapping TypeName="ModelDB.WorkHistory">
-        <MappingFragment StoreEntitySet="WorkHistory">
-          <ScalarProperty Name="IdWorkHistory" ColumnName="IdWorkHistory" />
-          <ScalarProperty Name="FieldNumber" ColumnName="FieldNumber" />
-          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
-          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
-          <ScalarProperty Name="DateOfWork" ColumnName="DateOfWork" />
+    <EntitySetMapping Name="WorkPlaceForHistory">
+      <EntityTypeMapping TypeName="ModelDB.WorkPlaceForHistory">
+        <MappingFragment StoreEntitySet="WorkPlaceForHistory">
+          <ScalarProperty Name="IdWorkPlace" ColumnName="IdWorkPlace" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

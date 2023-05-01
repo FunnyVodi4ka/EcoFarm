@@ -12,12 +12,18 @@ namespace EcoFarm.DatabaseConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkHistory
+    public partial class WorkPlaceForHistory
     {
-        public int IdWorkHistory { get; set; }
-        public string FieldNumber { get; set; }
-        public string PlantName { get; set; }
-        public string WorkName { get; set; }
-        public System.DateTime DateOfWork { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public WorkPlaceForHistory()
+        {
+            this.CompletedWorkHistory = new HashSet<CompletedWorkHistory>();
+        }
+    
+        public int IdWorkPlace { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CompletedWorkHistory> CompletedWorkHistory { get; set; }
     }
 }

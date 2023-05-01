@@ -120,3 +120,5 @@ C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\CropProductio
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\CropProduction\PageAlbumPlants.baml
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAlbumFish.g.cs
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAlbumFish.baml
+C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageCompletedWorks.g.cs
+C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageCompletedWorks.baml

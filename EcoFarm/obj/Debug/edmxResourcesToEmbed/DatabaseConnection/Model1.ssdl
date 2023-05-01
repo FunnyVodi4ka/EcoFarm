@@ -29,6 +29,20 @@
     <Property Name="Size" Type="float" Nullable="false" />
     <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="CompletedWorkHistory">
+    <Key>
+      <PropertyRef Name="IdWorkHistory" />
+    </Key>
+    <Property Name="IdWorkHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdWorkPlace" Type="int" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="WorkName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateOfWork" Type="date" Nullable="false" />
+    <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="CurrentWorks">
     <Key>
       <PropertyRef Name="IdField" />
@@ -155,15 +169,12 @@
     <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
-  <EntityType Name="WorkHistory">
+  <EntityType Name="WorkPlaceForHistory">
     <Key>
-      <PropertyRef Name="IdWorkHistory" />
+      <PropertyRef Name="IdWorkPlace" />
     </Key>
-    <Property Name="IdWorkHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FieldNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="PlantName" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="WorkName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DateOfWork" Type="date" Nullable="false" />
+    <Property Name="IdWorkPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <Association Name="FK_AlbumFish_Fish">
     <End Role="Fish" Type="Self.Fish" Multiplicity="1">
@@ -204,6 +215,20 @@
       </Principal>
       <Dependent Role="Aquariums">
         <PropertyRef Name="IdFish" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompletedWorkHistory_WorkPlaceForHistory">
+    <End Role="WorkPlaceForHistory" Type="Self.WorkPlaceForHistory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CompletedWorkHistory" Type="Self.CompletedWorkHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkPlaceForHistory">
+        <PropertyRef Name="IdWorkPlace" />
+      </Principal>
+      <Dependent Role="CompletedWorkHistory">
+        <PropertyRef Name="IdWorkPlace" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -351,6 +376,7 @@
     <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Aquariums" EntityType="Self.Aquariums" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompletedWorkHistory" EntityType="Self.CompletedWorkHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CurrentWorksForFishFarming" EntityType="Self.CurrentWorksForFishFarming" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
@@ -364,7 +390,7 @@
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="WorkHistory" EntityType="Self.WorkHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkPlaceForHistory" EntityType="Self.WorkPlaceForHistory" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
       <End Role="Fish" EntitySet="Fish" />
       <End Role="AlbumFish" EntitySet="AlbumFish" />
@@ -376,6 +402,10 @@
     <AssociationSet Name="FK_Aquariums_Fish" Association="Self.FK_Aquariums_Fish">
       <End Role="Fish" EntitySet="Fish" />
       <End Role="Aquariums" EntitySet="Aquariums" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompletedWorkHistory_WorkPlaceForHistory" Association="Self.FK_CompletedWorkHistory_WorkPlaceForHistory">
+      <End Role="WorkPlaceForHistory" EntitySet="WorkPlaceForHistory" />
+      <End Role="CompletedWorkHistory" EntitySet="CompletedWorkHistory" />
     </AssociationSet>
     <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
       <End Role="Fields" EntitySet="Fields" />

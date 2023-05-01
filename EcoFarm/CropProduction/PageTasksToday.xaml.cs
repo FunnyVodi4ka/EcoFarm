@@ -126,9 +126,27 @@ namespace EcoFarm.CropProduction
             var nextDate = AppConnect.ModelDB.PlantWork.FirstOrDefault(x => x.IdPlant == currentWorks.Fields.IdPlant && x.IdWork == currentWorks.IdWork);
 
             currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
+            WriteToHistory(currentWorks);
             AppConnect.ModelDB.SaveChanges();
 
             ListTasks.ItemsSource = SortFilterTasks();
+        }
+
+        private void WriteToHistory(CurrentWorks work)
+        {
+            CompletedWorkHistory record = new CompletedWorkHistory();
+
+            var place = AppConnect.ModelDB.WorkPlaceForHistory.FirstOrDefault(x => x.Name == "Поле");
+            record.IdWorkPlace = place.IdWorkPlace;
+            record.Number = work.Fields.Number;
+            record.ContentName = work.Fields.Plants.Name;
+            record.WorkName = work.ListOfWorks.Name;
+            record.DateOfWork = DateTime.Today;
+            record.UserSurname = AuthorizedUser.user.Surname;
+            record.UserName = AuthorizedUser.user.Name;
+            record.UserPatronymic = AuthorizedUser.user.Patronymic;
+
+            AppConnect.ModelDB.CompletedWorkHistory.Add(record);
         }
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -159,7 +177,7 @@ namespace EcoFarm.CropProduction
         {
             if (access.CheckMenegerAccessBoolResult())
             {
-                SelectedMenuTab.selectedMenuTab = "Зфпу";
+                SelectedMenuTab.selectedMenuTab = "PageCropProduction";
                 AppFrame.frameMain.Navigate(new PageListOfWorks());
             }
         }
