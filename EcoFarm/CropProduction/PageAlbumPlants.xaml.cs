@@ -3,6 +3,7 @@ using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
 using EcoFarm.Validation;
+using Microsoft.VisualBasic;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace EcoFarm.CropProduction
 
         AlbumPlants[] SortFilterAlbum()
         {
-            List<AlbumPlants> photos = AppConnect.ModelDB.AlbumPlants.Where(x => x.IdPlant == idRecord).ToList();
+            List <AlbumPlants> photos = AppConnect.ModelDB.AlbumPlants.Where(x => x.IdPlant == idRecord).ToList();
 
             if (photos.Count != 0)
             {
@@ -125,8 +126,8 @@ namespace EcoFarm.CropProduction
                     else
                         newRow.Note = tbNote.Text;
 
-                    EcoFarmDBEntities.GetContext().AlbumPlants.Add(newRow);
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.AlbumPlants.Add(newRow);
+                    AppConnect.ModelDB.SaveChanges();
 
                     ListAlbum.ItemsSource = SortFilterAlbum();
 
@@ -175,6 +176,7 @@ namespace EcoFarm.CropProduction
                 if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     string fileNameForDelete = currentRow.Photo;
+
                     AppConnect.ModelDB.AlbumPlants.Remove(currentRow);
                     AppConnect.ModelDB.SaveChanges();
 
@@ -193,11 +195,11 @@ namespace EcoFarm.CropProduction
         {
             try
             {
-                File.Move(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\AlbumPlants\\" + row, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\AlbumPlants\\" + "ForDelete" + row);
+                File.Move(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\AlbumPlants\\" + row, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FilesToDelete\\" + "ForDelete" + row);
             }
             catch
             {
-                //MessageBox.Show("Ошибка удаления изображения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

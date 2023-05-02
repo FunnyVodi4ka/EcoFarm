@@ -75,7 +75,7 @@
         <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource StackPanelMainStyle}" VerticalAlignment="Top" Orientation="Vertical">
             <TextBlock Text="ДОБАВИТЬ ФОТО" Style="{StaticResource TextBlockMain}" Width="auto" HorizontalAlignment="Center"/>
             <Image x:Name="imagePhoto" Source="/Resources/AppImages/DefaultPicture.png" Width="200" Height="150"/>
-            <Button x:Name="btnLoadPhoto" Content="Добавить" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Width="auto" Click="btnLoadPhoto_Click"/>
+            <Button x:Name="btnLoadPhoto" Content="Выбрать фото" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Width="auto" Click="btnLoadPhoto_Click"/>
             <TextBlock Text="Заметки к фото:" Style="{StaticResource TextBlockMain}" Width="auto"/>
             <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" HorizontalAlignment="Stretch" Height="120" Width="auto"/>
             <Button x:Name="btnSavePhoto" Content="Сохранить запись" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Width="auto" Click="btnSavePhoto_Click"/>
