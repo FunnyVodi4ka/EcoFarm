@@ -48,10 +48,10 @@ namespace EcoFarm.Reports
             }
             switch (comboBoxSort.SelectedIndex)
             {
-                case 1:
+                case 0:
                     tasks = tasks.OrderByDescending(x => x.DateOfWork).ToList();
                     break;
-                case 2:
+                case 1:
                     tasks = tasks.OrderBy(x => x.DateOfWork).ToList();
                     break;
             }
@@ -80,11 +80,10 @@ namespace EcoFarm.Reports
 
         private void SetSort()
         {
-            comboBoxSort.Items.Add("Без сортировки");
             comboBoxSort.Items.Add("От новых к старым");
             comboBoxSort.Items.Add("От старых к новым");
 
-            comboBoxSort.SelectedIndex = 1;
+            comboBoxSort.SelectedIndex = 0;
         }
 
         private void SetFilter()

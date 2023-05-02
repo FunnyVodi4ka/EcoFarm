@@ -75,7 +75,35 @@
 
                 </ListView.ItemContainerStyle>
 
-                <ListView.ItemTemplate>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="   Номер аквариума   "  Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding Aquariums.Number}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="   Рыба в аквариуме   " Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1" Text="{Binding Aquariums.Fish.Name}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="   Дата работы   " Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="2" Text="{Binding DateOfNextWork, StringFormat='dd.MM.yyyy'}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+
+                <!--<ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -88,11 +116,11 @@
                             </Grid.RowDefinitions>
                             <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="0">
                             <Run Text="Поле:"/>
-                            <Run Text="{Binding Fields.Number}"/>
+                            <Run Text="{Binding Aquariums.Number}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="1">
                             <Run Text="   Название рыбы:"/>
-                            <Run Text="{Binding Fields.Plants.Name }"/>
+                            <Run Text="{Binding Aquariums.Fish.Name }"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="2">
                             <Run Text="   Дата работы:"/>
@@ -100,7 +128,7 @@
                             </TextBlock>
                         </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
+                </ListView.ItemTemplate>-->
             </ListView>
 
             <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">

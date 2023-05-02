@@ -50,10 +50,10 @@ namespace EcoFarm.FishFarming
 
                 switch (comboBoxSort.SelectedIndex)
                 {
-                    case 1:
+                    case 0:
                         tasks = tasks.OrderBy(x => x.DateOfNextWork).ToList();
                         break;
-                    case 2:
+                    case 1:
                         tasks = tasks.OrderByDescending(x => x.DateOfNextWork).ToList();
                         break;
                 }
@@ -78,11 +78,10 @@ namespace EcoFarm.FishFarming
 
         private void SetSort()
         {
-            comboBoxSort.Items.Add("Без сортировки");
-            comboBoxSort.Items.Add("Ближние работы");
-            comboBoxSort.Items.Add("Дальние работы");
+            comboBoxSort.Items.Add("Ближайшие работы");
+            comboBoxSort.Items.Add("Дальнейшие работы");
 
-            comboBoxSort.SelectedIndex = 1;
+            comboBoxSort.SelectedIndex = 0;
         }
 
         private void SetFilter()

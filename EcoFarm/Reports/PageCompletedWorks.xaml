@@ -53,7 +53,47 @@
 
             </ListView.ItemContainerStyle>
 
-            <ListView.ItemTemplate>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="  Место работы  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0">
+                                        <Run Text="{Binding WorkPlaceForHistory.Name }"/>
+                                        <Run Text="{Binding Number }"/>
+                                        <Run Text="{Binding ContentName}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Выполненная работа  " Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
+                                        <Run Text="{Binding DateOfWork, StringFormat='dd.MM.yyyy'}"/>
+                                        <Run Text=" - "/>
+                                        <Run Text="{Binding WorkName}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Работник  " Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="2">
+                                        <Run Text="{Binding UserSurname }"/>
+                                        <Run Text="{Binding UserName }"/>
+                                        <Run Text="{Binding UserPatronymic}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+            
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -83,7 +123,7 @@
                         </TextBlock>
                     </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
