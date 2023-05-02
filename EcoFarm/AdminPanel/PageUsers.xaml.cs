@@ -47,10 +47,10 @@ namespace EcoFarm.AdminPanel
 
                 switch (comboBoxSort.SelectedIndex)
                 {
-                    case 1:
+                    case 0:
                         users = users.OrderBy(x => x.Surname).ToList();
                         break;
-                    case 2:
+                    case 1:
                         users = users.OrderByDescending(x => x.Surname).ToList();
                         break;
                 }
@@ -75,9 +75,8 @@ namespace EcoFarm.AdminPanel
 
         private void SetSort()
         {
-            comboBoxSort.Items.Add("Без сортировки");
-            comboBoxSort.Items.Add("По алфавиту А-Я");
-            comboBoxSort.Items.Add("По алфавиту Я-А");
+            comboBoxSort.Items.Add("По фамилии А-Я");
+            comboBoxSort.Items.Add("По фамилии Я-А");
 
             comboBoxSort.SelectedIndex = 0;
         }
