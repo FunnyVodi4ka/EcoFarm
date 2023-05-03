@@ -50,7 +50,7 @@
 
             <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                    <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Поиск по номеру" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
                     <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">

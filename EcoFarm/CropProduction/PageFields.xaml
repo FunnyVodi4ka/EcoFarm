@@ -41,7 +41,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <TextBlock Text="Поиск по номеру" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
                 <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
@@ -68,6 +68,48 @@
                 </Style>
             </ListView.ItemContainerStyle>
 
+            <!--<ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="  Номер поля  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding Number}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Растение на поле  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding Plants.Name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Дата посадки  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Размер поля  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding Size}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Заметки к полю  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>-->
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -77,26 +119,25 @@
 
                         <StackPanel Grid.Column="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Stretch">
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Номер поля: "/>
+                                <Run Text="Номер поля: " FontWeight="Bold"/>
                                 <Run Text="{Binding Number}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Растение на поле: "/>
-                                <Run Text="{Binding Plants.Name}"/>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Дата посадки: "/>
+                                <Run Text="Дата посадки: " FontWeight="Bold"/>
                                 <Run Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
-                                <Run Text=" Размер поля: "/>
+                                <Run Text=" Размер поля: " FontWeight="Bold"/>
                                 <Run Text="{Binding Size}"/>
                                 <Run Text="м²"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Заметки к полю: "/>
+                                <Run Text="Растение на поле: " FontWeight="Bold"/>
+                                <Run Text="{Binding Plants.Name}"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Заметки к полю: " FontWeight="Bold"/>
                                 <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="18"/>
                             </TextBlock>
                         </StackPanel>
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

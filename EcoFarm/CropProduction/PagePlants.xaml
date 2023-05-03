@@ -41,14 +41,14 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <TextBlock Text="Поиск по названию" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
                 <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Сортировка" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
                 <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
                 <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
             </StackPanel>
@@ -69,24 +69,24 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="140"/>
-                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition Width="700"/>
                         </Grid.ColumnDefinitions>
 
                         <Image Grid.Column="0" Source="{Binding CorrectImage}"></Image>
                         <StackPanel Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10,0,0,0">
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="{Binding Name }"/>
-                                <Run Text=" (Период роста " FontSize="14"/>
-                                <Run Text="{Binding GrowthPeriodInDays }" FontSize="14"/>
-                                <Run Text=" д)" FontSize="14"/>
+                                <Run Text="{Binding Name }" FontSize="20"/>
+                                <Run Text=" (Период роста " FontSize="16"/>
+                                <Run Text="{Binding GrowthPeriodInDays }" FontSize="16"/>
+                                <Run Text=" д)" FontSize="16"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Описание: "/>
-                                <Run Text="{Binding Description}" FontSize="18"/>
+                                <Run Text="Описание: " TextDecorations="Underline"/>
+                                <Run Text="{Binding Description}" FontSize="16"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Заметки к растению: "/>
-                                <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="18"/>
+                                <Run Text="Заметки к растению: " TextDecorations="Underline"/>
+                                <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="16"/>
                             </TextBlock>
                         </StackPanel>
 

@@ -110,11 +110,15 @@
             <Setter Property="Height" Value="auto" />
             <Setter Property="FontFamily" Value="Comfortaa" />
             <Setter Property="HorizontalAlignment" Value="Left" />
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="3"/>
-                </Style>
-            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border x:Name="Border" CornerRadius="3" BorderThickness="0.5" BorderBrush="gray">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="Label" x:Key="LabelMain" >

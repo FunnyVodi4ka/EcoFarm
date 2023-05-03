@@ -42,14 +42,14 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <TextBlock Text="Поиск по названию" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
                 <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Сортировка" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
                 <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
                 <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
             </StackPanel>
@@ -82,11 +82,11 @@
                                 <Run Text=" д)" FontSize="14"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Описание: "/>
+                                <Run Text="Описание: " TextDecorations="Underline"/>
                                 <Run Text="{Binding Description}" FontSize="18"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Заметки к виду рыбы: "/>
+                                <Run Text="Заметки к виду рыбы: " TextDecorations="Underline"/>
                                 <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="18"/>
                             </TextBlock>
                         </StackPanel>

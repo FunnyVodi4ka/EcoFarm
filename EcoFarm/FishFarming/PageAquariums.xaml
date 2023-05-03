@@ -41,7 +41,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Поиск" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
+                <TextBlock Text="Поиск по номеру" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
                 <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
@@ -77,22 +77,22 @@
 
                         <StackPanel Grid.Column="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Stretch">
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Номер аквариума: "/>
+                                <Run Text="Номер аквариума: " FontWeight="Bold"/>
                                 <Run Text="{Binding Number}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Рыбы в аквариуме: "/>
+                                <Run Text="Рыбы в аквариуме: " FontWeight="Bold"/>
                                 <Run Text="{Binding Fish.Name}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Дата запуска в аквариум: "/>
+                                <Run Text="Дата запуска в аквариум: " FontWeight="Bold"/>
                                 <Run Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
-                                <Run Text=" Объём: "/>
+                                <Run Text=" Объём: " FontWeight="Bold"/>
                                 <Run Text="{Binding Size}"/>
                                 <Run Text="л"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Заметки к аквариуму: "/>
+                                <Run Text="Заметки к аквариуму: " FontWeight="Bold"/>
                                 <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="18"/>
                             </TextBlock>
                         </StackPanel>

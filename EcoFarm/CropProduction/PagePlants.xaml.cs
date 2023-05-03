@@ -47,10 +47,10 @@ namespace EcoFarm.CropProduction
 
                 switch (comboBoxSort.SelectedIndex)
                 {
-                    case 1:
+                    case 0:
                         plants = plants.OrderBy(x => x.Name).ToList();
                         break;
-                    case 2:
+                    case 1:
                         plants = plants.OrderByDescending(x => x.Name).ToList();
                         break;
                 }
@@ -70,7 +70,6 @@ namespace EcoFarm.CropProduction
 
         private void SetSort()
         {
-            comboBoxSort.Items.Add("Без сортировки");
             comboBoxSort.Items.Add("По алфавиту А-Я");
             comboBoxSort.Items.Add("По алфавиту Я-А");
 

@@ -55,13 +55,13 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="350"/>
                         </Grid.ColumnDefinitions>
 
                         <Image Grid.Column="0" Source="{Binding CorrectImage}"></Image>
                         <StackPanel Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10,0,0,0">
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Заметки к фото: "/>
+                                <Run Text="Заметки к фото: " FontWeight="Bold" />
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
                                 <Run Text="{Binding Note, TargetNullValue=Нет, FallbackValue=Нет}" FontSize="18"/>

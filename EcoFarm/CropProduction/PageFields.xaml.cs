@@ -47,10 +47,10 @@ namespace EcoFarm.CropProduction
 
                 switch (comboBoxSort.SelectedIndex)
                 {
-                    case 1:
+                    case 0:
                         fields = fields.OrderBy(x => x.Number).ToList();
                         break;
-                    case 2:
+                    case 1:
                         fields = fields.OrderByDescending(x => x.Number).ToList();
                         break;
                 }
@@ -75,7 +75,6 @@ namespace EcoFarm.CropProduction
 
         private void SetSort()
         {
-            comboBoxSort.Items.Add("Без сортировки");
             comboBoxSort.Items.Add("По алфавиту А-Я");
             comboBoxSort.Items.Add("По алфавиту Я-А");
 
@@ -90,7 +89,7 @@ namespace EcoFarm.CropProduction
                 comboBoxFilter.Items.Add(plants.Name);
             }
 
-
+            comboBoxFilter.SelectedIndex = 0;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
