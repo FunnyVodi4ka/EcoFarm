@@ -26,15 +26,16 @@
     <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IdFish" Type="int" Nullable="false" />
     <Property Name="BoardingDate" Type="date" Nullable="false" />
+    <Property Name="CollectionDate" Type="date" Nullable="false" />
     <Property Name="Size" Type="float" Nullable="false" />
     <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="CompletedWorkHistory">
     <Key>
-      <PropertyRef Name="IdWorkHistory" />
+      <PropertyRef Name="IdHistory" />
     </Key>
-    <Property Name="IdWorkHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdWorkPlace" Type="int" Nullable="false" />
+    <Property Name="IdHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPlace" Type="int" Nullable="false" />
     <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="WorkName" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -69,6 +70,7 @@
     <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IdPlant" Type="int" Nullable="false" />
     <Property Name="BoardingDate" Type="date" Nullable="false" />
+    <Property Name="CollectionDate" Type="date" Nullable="false" />
     <Property Name="Size" Type="float" Nullable="false" />
     <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
@@ -91,6 +93,19 @@
     <Property Name="IdFish" Type="int" Nullable="false" />
     <Property Name="IdWork" Type="int" Nullable="false" />
     <Property Name="PeriodInDays" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HarvestingHistory">
+    <Key>
+      <PropertyRef Name="IdHistory" />
+    </Key>
+    <Property Name="IdHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPlace" Type="int" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DateOfHarvest" Type="date" Nullable="false" />
+    <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="LandingHistory">
     <Key>
@@ -116,6 +131,13 @@
       <PropertyRef Name="IdWork" />
     </Key>
     <Property Name="IdWork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlaceForHistory">
+    <Key>
+      <PropertyRef Name="IdPlace" />
+    </Key>
+    <Property Name="IdPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Plants">
@@ -169,13 +191,6 @@
     <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
-  <EntityType Name="WorkPlaceForHistory">
-    <Key>
-      <PropertyRef Name="IdWorkPlace" />
-    </Key>
-    <Property Name="IdWorkPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-  </EntityType>
   <Association Name="FK_AlbumFish_Fish">
     <End Role="Fish" Type="Self.Fish" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -219,16 +234,16 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CompletedWorkHistory_WorkPlaceForHistory">
-    <End Role="WorkPlaceForHistory" Type="Self.WorkPlaceForHistory" Multiplicity="1">
+    <End Role="PlaceForHistory" Type="Self.PlaceForHistory" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="CompletedWorkHistory" Type="Self.CompletedWorkHistory" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="WorkPlaceForHistory">
-        <PropertyRef Name="IdWorkPlace" />
+      <Principal Role="PlaceForHistory">
+        <PropertyRef Name="IdPlace" />
       </Principal>
       <Dependent Role="CompletedWorkHistory">
-        <PropertyRef Name="IdWorkPlace" />
+        <PropertyRef Name="IdPlace" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -330,6 +345,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_HarvestingHistory_PlaceForHistory">
+    <End Role="PlaceForHistory" Type="Self.PlaceForHistory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HarvestingHistory" Type="Self.HarvestingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlaceForHistory">
+        <PropertyRef Name="IdPlace" />
+      </Principal>
+      <Dependent Role="HarvestingHistory">
+        <PropertyRef Name="IdPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PlantWork_ListOfWorks">
     <End Role="ListOfWorks" Type="Self.ListOfWorks" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -382,15 +411,16 @@
     <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fish" EntityType="Self.Fish" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FishWork" EntityType="Self.FishWork" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HarvestingHistory" EntityType="Self.HarvestingHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ListOfWorksForFishFarming" EntityType="Self.ListOfWorksForFishFarming" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlaceForHistory" EntityType="Self.PlaceForHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Plants" EntityType="Self.Plants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlantWork" EntityType="Self.PlantWork" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="WorkPlaceForHistory" EntityType="Self.WorkPlaceForHistory" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
       <End Role="Fish" EntitySet="Fish" />
       <End Role="AlbumFish" EntitySet="AlbumFish" />
@@ -404,7 +434,7 @@
       <End Role="Aquariums" EntitySet="Aquariums" />
     </AssociationSet>
     <AssociationSet Name="FK_CompletedWorkHistory_WorkPlaceForHistory" Association="Self.FK_CompletedWorkHistory_WorkPlaceForHistory">
-      <End Role="WorkPlaceForHistory" EntitySet="WorkPlaceForHistory" />
+      <End Role="PlaceForHistory" EntitySet="PlaceForHistory" />
       <End Role="CompletedWorkHistory" EntitySet="CompletedWorkHistory" />
     </AssociationSet>
     <AssociationSet Name="FK_CurrentWorks_Fields" Association="Self.FK_CurrentWorks_Fields">
@@ -434,6 +464,10 @@
     <AssociationSet Name="FK_FishWork_ListOfWorksForFishFarming" Association="Self.FK_FishWork_ListOfWorksForFishFarming">
       <End Role="ListOfWorksForFishFarming" EntitySet="ListOfWorksForFishFarming" />
       <End Role="FishWork" EntitySet="FishWork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HarvestingHistory_PlaceForHistory" Association="Self.FK_HarvestingHistory_PlaceForHistory">
+      <End Role="PlaceForHistory" EntitySet="PlaceForHistory" />
+      <End Role="HarvestingHistory" EntitySet="HarvestingHistory" />
     </AssociationSet>
     <AssociationSet Name="FK_PlantWork_ListOfWorks" Association="Self.FK_PlantWork_ListOfWorks">
       <End Role="ListOfWorks" EntitySet="ListOfWorks" />

@@ -50,6 +50,7 @@ namespace EcoFarm.CropProduction
             {
                 comboBoxPlant.SelectedIndex = 0;
                 currentField.BoardingDate = DateTime.Now;
+                dpCollectionDate.Text = "Нет";
             }
 
             DataContext = currentField;
@@ -167,6 +168,7 @@ namespace EcoFarm.CropProduction
                     currentField.Number = tbNumber.Text;
                     SetPlant();
                     currentField.BoardingDate = DateTime.Parse(dpDate.Text);
+                    currentField.CollectionDate = DateTime.Parse(dpDate.Text).AddDays(currentField.Plants.GrowthPeriodInDays);
                     currentField.Size = double.Parse(tbSize.Text.Replace('.', ','));
                     if (tbNote.Text.Length <= 0)
                         currentField.Note = null;

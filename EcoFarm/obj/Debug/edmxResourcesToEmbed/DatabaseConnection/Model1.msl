@@ -28,6 +28,7 @@
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="IdFish" ColumnName="IdFish" />
           <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
+          <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Note" ColumnName="Note" />
         </MappingFragment>
@@ -36,8 +37,8 @@
     <EntitySetMapping Name="CompletedWorkHistory">
       <EntityTypeMapping TypeName="ModelDB.CompletedWorkHistory">
         <MappingFragment StoreEntitySet="CompletedWorkHistory">
-          <ScalarProperty Name="IdWorkHistory" ColumnName="IdWorkHistory" />
-          <ScalarProperty Name="IdWorkPlace" ColumnName="IdWorkPlace" />
+          <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
+          <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="ContentName" ColumnName="ContentName" />
           <ScalarProperty Name="WorkName" ColumnName="WorkName" />
@@ -73,6 +74,7 @@
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
           <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
+          <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Note" ColumnName="Note" />
         </MappingFragment>
@@ -96,6 +98,20 @@
           <ScalarProperty Name="IdFish" ColumnName="IdFish" />
           <ScalarProperty Name="IdWork" ColumnName="IdWork" />
           <ScalarProperty Name="PeriodInDays" ColumnName="PeriodInDays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HarvestingHistory">
+      <EntityTypeMapping TypeName="ModelDB.HarvestingHistory">
+        <MappingFragment StoreEntitySet="HarvestingHistory">
+          <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
+          <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+          <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -124,6 +140,14 @@
       <EntityTypeMapping TypeName="ModelDB.ListOfWorksForFishFarming">
         <MappingFragment StoreEntitySet="ListOfWorksForFishFarming">
           <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaceForHistory">
+      <EntityTypeMapping TypeName="ModelDB.PlaceForHistory">
+        <MappingFragment StoreEntitySet="PlaceForHistory">
+          <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -180,14 +204,6 @@
           <ScalarProperty Name="IdRole" ColumnName="IdRole" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="WorkPlaceForHistory">
-      <EntityTypeMapping TypeName="ModelDB.WorkPlaceForHistory">
-        <MappingFragment StoreEntitySet="WorkPlaceForHistory">
-          <ScalarProperty Name="IdWorkPlace" ColumnName="IdWorkPlace" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

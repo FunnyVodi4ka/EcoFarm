@@ -135,8 +135,8 @@ namespace EcoFarm.CropProduction
         {
             CompletedWorkHistory record = new CompletedWorkHistory();
 
-            var place = AppConnect.ModelDB.WorkPlaceForHistory.FirstOrDefault(x => x.Name == "Поле");
-            record.IdWorkPlace = place.IdWorkPlace;
+            var place = AppConnect.ModelDB.PlaceForHistory.FirstOrDefault(x => x.Name == "Поле");
+            record.IdPlace = place.IdPlace;
             record.Number = work.Fields.Number;
             record.ContentName = work.Fields.Plants.Name;
             record.WorkName = work.ListOfWorks.Name;

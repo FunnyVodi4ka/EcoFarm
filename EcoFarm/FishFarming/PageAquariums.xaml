@@ -81,15 +81,17 @@
                                 <Run Text="{Binding Number}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
-                                <Run Text="Рыбы в аквариуме: " FontWeight="Bold"/>
-                                <Run Text="{Binding Fish.Name}"/>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Padding="3">
                                 <Run Text="Дата запуска в аквариум: " FontWeight="Bold"/>
                                 <Run Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
+                                <Run Text="Дата сбора: " FontWeight="Bold"/>
+                                <Run Text="{Binding CollectionDate, StringFormat='dd.MM.yyyy'}"/>
                                 <Run Text=" Объём: " FontWeight="Bold"/>
                                 <Run Text="{Binding Size}"/>
                                 <Run Text="л"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Рыбы в аквариуме: " FontWeight="Bold"/>
+                                <Run Text="{Binding Fish.Name}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
                                 <Run Text="Заметки к аквариуму: " FontWeight="Bold"/>

@@ -59,10 +59,10 @@ namespace EcoFarm.Reports
             switch (comboBoxFilter.SelectedIndex)
             {
                 case 1:
-                    tasks = tasks.Where(x => x.WorkPlaceForHistory.Name == "Поле").ToList();
+                    tasks = tasks.Where(x => x.PlaceForHistory.Name == "Поле").ToList();
                     break;
                 case 2:
-                    tasks = tasks.Where(x => x.WorkPlaceForHistory.Name == "Аквариум").ToList();
+                    tasks = tasks.Where(x => x.PlaceForHistory.Name == "Аквариум").ToList();
                     break;
             }
 

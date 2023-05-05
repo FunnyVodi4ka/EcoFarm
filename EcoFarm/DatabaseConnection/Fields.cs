@@ -24,6 +24,7 @@ namespace EcoFarm.DatabaseConnection
         public string Number { get; set; }
         public int IdPlant { get; set; }
         public System.DateTime BoardingDate { get; set; }
+        public System.DateTime CollectionDate { get; set; }
         public double Size { get; set; }
         public string Note { get; set; }
     

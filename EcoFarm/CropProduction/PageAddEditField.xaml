@@ -51,6 +51,10 @@
                 <DatePicker x:Name="dpDate" Style="{StaticResource DatePickerMain}" SelectedDate="{Binding BoardingDate}" Width="300"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Рекомендуемая дата сбора:" Style="{StaticResource TextBlockMain}" Width="320"/>
+                <TextBlock x:Name="dpCollectionDate" Style="{StaticResource TextBlockMain}" Text="{Binding CollectionDate, StringFormat='dd.MM.yyyy'}" Width="200"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Размер поля (м²):" Style="{StaticResource TextBlockMain}" Width="220"/>
                 <TextBox x:Name="tbSize" Style="{StaticResource TextBoxMain}" Text="{Binding Size}" PreviewTextInput="tbSize_PreviewTextInput" Width="300"/>
             </StackPanel>

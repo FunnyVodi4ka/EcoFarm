@@ -41,14 +41,15 @@ namespace EcoFarm.DatabaseConnection
         public virtual DbSet<Fields> Fields { get; set; }
         public virtual DbSet<Fish> Fish { get; set; }
         public virtual DbSet<FishWork> FishWork { get; set; }
+        public virtual DbSet<HarvestingHistory> HarvestingHistory { get; set; }
         public virtual DbSet<LandingHistory> LandingHistory { get; set; }
         public virtual DbSet<ListOfWorks> ListOfWorks { get; set; }
         public virtual DbSet<ListOfWorksForFishFarming> ListOfWorksForFishFarming { get; set; }
+        public virtual DbSet<PlaceForHistory> PlaceForHistory { get; set; }
         public virtual DbSet<Plants> Plants { get; set; }
         public virtual DbSet<PlantWork> PlantWork { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<WorkPlaceForHistory> WorkPlaceForHistory { get; set; }
     }
 }

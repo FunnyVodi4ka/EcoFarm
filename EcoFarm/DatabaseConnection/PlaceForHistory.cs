@@ -12,24 +12,21 @@ namespace EcoFarm.DatabaseConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class Aquariums
+    public partial class PlaceForHistory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Aquariums()
+        public PlaceForHistory()
         {
-            this.CurrentWorksForFishFarming = new HashSet<CurrentWorksForFishFarming>();
+            this.CompletedWorkHistory = new HashSet<CompletedWorkHistory>();
+            this.HarvestingHistory = new HashSet<HarvestingHistory>();
         }
     
-        public int IdAquarium { get; set; }
-        public string Number { get; set; }
-        public int IdFish { get; set; }
-        public System.DateTime BoardingDate { get; set; }
-        public System.DateTime CollectionDate { get; set; }
-        public double Size { get; set; }
-        public string Note { get; set; }
+        public int IdPlace { get; set; }
+        public string Name { get; set; }
     
-        public virtual Fish Fish { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrentWorksForFishFarming> CurrentWorksForFishFarming { get; set; }
+        public virtual ICollection<CompletedWorkHistory> CompletedWorkHistory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HarvestingHistory> HarvestingHistory { get; set; }
     }
 }

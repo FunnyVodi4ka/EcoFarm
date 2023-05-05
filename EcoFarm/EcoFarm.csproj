@@ -122,6 +122,9 @@
     <Compile Include="DatabaseConnection\FishWork.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseConnection\HarvestingHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseConnection\LandingHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseConnection\PlaceForHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseConnection\Plants.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -159,9 +165,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection\Users.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseConnection\WorkPlaceForHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="FishFarming\DateTimeToBrushConverter.cs" />

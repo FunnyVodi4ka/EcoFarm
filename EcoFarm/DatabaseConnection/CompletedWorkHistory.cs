@@ -14,8 +14,8 @@ namespace EcoFarm.DatabaseConnection
     
     public partial class CompletedWorkHistory
     {
-        public int IdWorkHistory { get; set; }
-        public int IdWorkPlace { get; set; }
+        public int IdHistory { get; set; }
+        public int IdPlace { get; set; }
         public string Number { get; set; }
         public string ContentName { get; set; }
         public string WorkName { get; set; }
@@ -24,6 +24,6 @@ namespace EcoFarm.DatabaseConnection
         public string UserName { get; set; }
         public string UserPatronymic { get; set; }
     
-        public virtual WorkPlaceForHistory WorkPlaceForHistory { get; set; }
+        public virtual PlaceForHistory PlaceForHistory { get; set; }
     }
 }

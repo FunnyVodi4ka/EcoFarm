@@ -133,8 +133,8 @@ namespace EcoFarm.FishFarming
         {
             CompletedWorkHistory record = new CompletedWorkHistory();
 
-            var place = AppConnect.ModelDB.WorkPlaceForHistory.FirstOrDefault(x => x.Name == "Аквариум");
-            record.IdWorkPlace = place.IdWorkPlace;
+            var place = AppConnect.ModelDB.PlaceForHistory.FirstOrDefault(x => x.Name == "Аквариум");
+            record.IdPlace = place.IdPlace;
             record.Number = work.Aquariums.Number;
             record.ContentName = work.Aquariums.Fish.Name;
             record.WorkName = work.ListOfWorksForFishFarming.Name;

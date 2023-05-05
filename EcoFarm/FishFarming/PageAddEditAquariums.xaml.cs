@@ -48,6 +48,7 @@ namespace EcoFarm.FishFarming
             {
                 comboBoxFish.SelectedIndex = 0;
                 currentAquarium.BoardingDate = DateTime.Now;
+                dpCollectionDate.Text = "Нет";
             }
 
             DataContext = currentAquarium;
@@ -165,6 +166,7 @@ namespace EcoFarm.FishFarming
                     currentAquarium.Number = tbNumber.Text;
                     SetIdFish();
                     currentAquarium.BoardingDate = DateTime.Parse(dpDate.Text);
+                    currentAquarium.CollectionDate = DateTime.Parse(dpDate.Text).AddDays(currentAquarium.Fish.GrowthPeriodInDays);
                     currentAquarium.Size = double.Parse(tbSize.Text.Replace('.', ','));
                     if (tbNote.Text.Length <= 0)
                         currentAquarium.Note = null;
