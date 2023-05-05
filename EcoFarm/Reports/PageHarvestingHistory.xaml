@@ -66,19 +66,38 @@
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0">
                                         <Run Text="{Binding PlaceForHistory.Name }"/>
                                         <Run Text="{Binding Number }"/>
-                                        <Run Text=" - "/>
-                                        <Run Text="{Binding ContentName}"/>
                                     </TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="  Выполненная работа  " Width="auto">
+                        <GridViewColumn Header="  Содержимое  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding ContentName}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Собранный урожай  " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
                                         <Run Text="{Binding DateOfHarvest, StringFormat='dd.MM.yyyy'}"/>
                                         <Run Text=" - "/>
-                                        <Run Text="Сбор урожая"/>
+                                        <Run Text="{Binding CropWeight}"/>
+                                        <Run>
+                                            <Run.Style>
+                                                <Style TargetType="{x:Type Run}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Поле">
+                                                            <Setter Property="Text" Value="кг"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Аквариум">
+                                                            <Setter Property="Text" Value="шт"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Run.Style>
+                                        </Run>
                                     </TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

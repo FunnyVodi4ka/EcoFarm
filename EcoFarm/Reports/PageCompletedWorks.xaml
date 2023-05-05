@@ -66,9 +66,14 @@
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0">
                                         <Run Text="{Binding PlaceForHistory.Name }"/>
                                         <Run Text="{Binding Number }"/>
-                                        <Run Text=" - "/>
-                                        <Run Text="{Binding ContentName}"/>
                                     </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="  Содержимое  "  Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding ContentName}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
