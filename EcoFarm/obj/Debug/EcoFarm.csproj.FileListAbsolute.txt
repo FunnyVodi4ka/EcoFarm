@@ -122,3 +122,5 @@ C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\FishFarming\P
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\FishFarming\PageAlbumFish.baml
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageCompletedWorks.g.cs
 C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageCompletedWorks.baml
+C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageHarvestingHistory.g.cs
+C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageHarvestingHistory.baml

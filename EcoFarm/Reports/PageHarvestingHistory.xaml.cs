@@ -1,7 +1,6 @@
 ﻿using EcoFarm.AppConnection;
 using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
-using EcoFarm.CropProduction;
 using EcoFarm.DatabaseConnection;
 using System;
 using System.Collections.Generic;
@@ -21,13 +20,13 @@ using System.Windows.Shapes;
 namespace EcoFarm.Reports
 {
     /// <summary>
-    /// Логика взаимодействия для PageCompletedWorks.xaml
+    /// Логика взаимодействия для PageHarvestingHistory.xaml
     /// </summary>
-    public partial class PageCompletedWorks : Page
+    public partial class PageHarvestingHistory : Page
     {
         AccessVerification access = new AccessVerification();
 
-        public PageCompletedWorks()
+        public PageHarvestingHistory()
         {
             access.CheckAuthorization();
 
@@ -38,9 +37,9 @@ namespace EcoFarm.Reports
             ListTasks.ItemsSource = SortFilterTasks();
         }
 
-        CompletedWorkHistory[] SortFilterTasks()
+        HarvestingHistory[] SortFilterTasks()
         {
-            List<CompletedWorkHistory> tasks = AppConnect.ModelDB.CompletedWorkHistory.ToList();
+            List<HarvestingHistory> tasks = AppConnect.ModelDB.HarvestingHistory.ToList();
             var CounterALL = tasks;
             if (textBoxSearch.Text != null)
             {
@@ -49,10 +48,10 @@ namespace EcoFarm.Reports
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:
-                    tasks = tasks.OrderByDescending(x => x.DateOfWork).ToList();
+                    tasks = tasks.OrderByDescending(x => x.DateOfHarvest).ToList();
                     break;
                 case 1:
-                    tasks = tasks.OrderBy(x => x.DateOfWork).ToList();
+                    tasks = tasks.OrderBy(x => x.DateOfHarvest).ToList();
                     break;
             }
 

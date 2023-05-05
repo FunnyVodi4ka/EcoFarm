@@ -118,7 +118,7 @@ namespace EcoFarm.Validation
             try
             {
                 double correctData = double.Parse(number.Replace('.', ','));
-                if (correctData >= minValue)
+                if (correctData > minValue)
                 {
                     return true;
                 }

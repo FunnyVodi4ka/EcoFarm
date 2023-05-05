@@ -19,6 +19,8 @@ namespace EcoFarm.DatabaseConnection
         public string Number { get; set; }
         public string ContentName { get; set; }
         public System.DateTime DateOfHarvest { get; set; }
+        public double CropWeight { get; set; }
+        public double FieldSize { get; set; }
         public string UserSurname { get; set; }
         public string UserName { get; set; }
         public string UserPatronymic { get; set; }

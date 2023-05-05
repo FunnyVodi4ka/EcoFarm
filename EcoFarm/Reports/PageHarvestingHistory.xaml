@@ -1,4 +1,4 @@
-﻿<Page x:Class="EcoFarm.Reports.PageCompletedWorks"
+﻿<Page x:Class="EcoFarm.Reports.PageHarvestingHistory"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="950"
-      Title="PageCompletedWorks" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="950">
+      Title="PageHarvestingHistory" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="950">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,11 +22,11 @@
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
         <StackPanel Grid.RowSpan="3" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
-                <StackPanel x:Name="stTabBarHistoryWork" Width="4" Height="56" Background="#649138"/>
+                <StackPanel x:Name="stTabBarHistoryWork" Width="4" Height="56" Background="#5D5D5D"/>
                 <Image x:Name="TabBarHistoryWork" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHistoryWork_MouseLeftButtonDown"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#5D5D5D"/>
+                <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#649138"/>
                 <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown"/>
             </StackPanel>
         </StackPanel>
@@ -76,9 +76,9 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
-                                        <Run Text="{Binding DateOfWork, StringFormat='dd.MM.yyyy'}"/>
+                                        <Run Text="{Binding DateOfHarvest, StringFormat='dd.MM.yyyy'}"/>
                                         <Run Text=" - "/>
-                                        <Run Text="{Binding WorkName}"/>
+                                        <Run Text="Сбор урожая"/>
                                     </TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -97,38 +97,6 @@
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
-            
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="0">
-                            <Run Text="{Binding WorkPlaceForHistory.Name }"/>
-                            <Run Text="{Binding Number }"/>
-                            <Run Text="{Binding ContentName}"/>
-                        </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="1">
-                            <Run Text="Работа: "/>
-                            <Run Text="{Binding WorkName}"/>
-                            <Run Text=" Дата выполнения: "/>
-                            <Run Text="{Binding DateOfWork, StringFormat='dd.MM.yyyy'}"/>
-                        </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="2">
-                            <Run Text="Выполнил: "/>
-                            <Run Text="{Binding UserSurname}"/>
-                            <Run Text="{Binding UserName}"/>
-                            <Run Text="{Binding UserPatronymic}"/>
-                        </TextBlock>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
         </ListView>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">

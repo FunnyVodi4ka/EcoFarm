@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8ae9d549e19f4d7bab66ea394adc5ba5" Name="Diagram1">
+      <Diagram DiagramId="3df9ebb59fd14570acd373d5c40dc9b9" Name="Diagram1">
         <EntityTypeShape EntityType="ModelDB.AlbumFish" Width="1.5" PointX="10" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.AlbumPlants" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Aquariums" Width="1.5" PointX="10" PointY="11.625" IsExpanded="true" />
@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="ModelDB.LandingHistory" Width="1.5" PointX="8.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.ListOfWorks" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.ListOfWorksForFishFarming" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.PlaceForHistory" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDB.PlaceForHistory" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.PlantWork" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="12.75" PointY="3" IsExpanded="true" />

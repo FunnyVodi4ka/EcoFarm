@@ -193,6 +193,9 @@
     <Compile Include="Reports\PageCompletedWorks.xaml.cs">
       <DependentUpon>PageCompletedWorks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PageHarvestingHistory.xaml.cs">
+      <DependentUpon>PageHarvestingHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validation\ValidationClass.cs" />
     <Page Include="AdminPanel\PageAddEditUser.xaml">
       <SubType>Designer</SubType>
@@ -298,6 +301,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Reports\PageHarvestingHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -373,6 +380,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AppImages\harvest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

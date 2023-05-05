@@ -103,6 +103,8 @@
     <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="DateOfHarvest" Type="date" Nullable="false" />
+    <Property Name="CropWeight" Type="float" Nullable="false" />
+    <Property Name="FieldSize" Type="float" Nullable="false" />
     <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />

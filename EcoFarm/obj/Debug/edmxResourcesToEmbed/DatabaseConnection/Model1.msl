@@ -109,6 +109,8 @@
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="ContentName" ColumnName="ContentName" />
           <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
+          <ScalarProperty Name="CropWeight" ColumnName="CropWeight" />
+          <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
           <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />

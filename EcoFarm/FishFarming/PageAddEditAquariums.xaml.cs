@@ -28,6 +28,8 @@ namespace EcoFarm.FishFarming
         AccessVerification access = new AccessVerification();
         ValidationClass validation = new ValidationClass();
         private Aquariums currentAquarium = new Aquariums();
+        bool flagShowHideHarvestGroup = false;
+        int growthPeriodInDays = 0;
 
         public PageAddEditAquariums(Aquariums aquarium)
         {
@@ -43,15 +45,32 @@ namespace EcoFarm.FishFarming
 
                 DisableAttributeEditField();
                 FindAquarium();
+                ShowHideHarvestGroup(true);
             }
             else
             {
+                ShowHideHarvestGroup(false);
                 comboBoxFish.SelectedIndex = 0;
                 currentAquarium.BoardingDate = DateTime.Now;
                 dpCollectionDate.Text = "Нет";
             }
 
             DataContext = currentAquarium;
+        }
+
+        private void ShowHideHarvestGroup(bool result)
+        {
+            if (result)
+            {
+                btnShowHideHarvest.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnShowHideHarvest.Visibility = Visibility.Hidden;
+            }
+            btnHarvest.Visibility = Visibility.Hidden;
+            tbHarvest.Visibility = Visibility.Hidden;
+            tblHarvest.Visibility = Visibility.Hidden;
         }
 
         private void DisableAttributeEditField()
@@ -141,6 +160,7 @@ namespace EcoFarm.FishFarming
             if (fish != null)
             {
                 currentAquarium.IdFish = fish.IdFish;
+                growthPeriodInDays = fish.GrowthPeriodInDays;
             }
         }
 
@@ -166,7 +186,7 @@ namespace EcoFarm.FishFarming
                     currentAquarium.Number = tbNumber.Text;
                     SetIdFish();
                     currentAquarium.BoardingDate = DateTime.Parse(dpDate.Text);
-                    currentAquarium.CollectionDate = DateTime.Parse(dpDate.Text).AddDays(currentAquarium.Fish.GrowthPeriodInDays);
+                    currentAquarium.CollectionDate = currentAquarium.BoardingDate.AddDays(growthPeriodInDays);
                     currentAquarium.Size = double.Parse(tbSize.Text.Replace('.', ','));
                     if (tbNote.Text.Length <= 0)
                         currentAquarium.Note = null;
@@ -191,6 +211,73 @@ namespace EcoFarm.FishFarming
                     MessageBox.Show("Ошибка " + Ex.Message.ToString() + "Критическая работа приложения", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+            }
+        }
+
+        private void tbHarvest_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnShowHideHarvest_Click(object sender, RoutedEventArgs e)
+        {
+            if (!flagShowHideHarvestGroup)
+            {
+                flagShowHideHarvestGroup = true;
+                btnShowHideHarvest.Content = "Скрыть сбор урожая";
+                btnHarvest.Visibility = Visibility.Visible;
+                tbHarvest.Visibility = Visibility.Visible;
+                tblHarvest.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                flagShowHideHarvestGroup = false;
+                btnShowHideHarvest.Content = "Показать сбор урожая";
+                btnHarvest.Visibility = Visibility.Hidden;
+                tbHarvest.Visibility = Visibility.Hidden;
+                tblHarvest.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void btnHarvest_Click(object sender, RoutedEventArgs e)
+        {
+            if (validation.CheckIntData(tbHarvest.Text, 1))
+            {
+                if (MessageBox.Show("Вы уверены, что хотите собрать урожай? Предупреждение: при сборе урожая аквариум будет считаться пустым и будет удален из списка!", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        HarvestingHistory record = new HarvestingHistory();
+
+                        var place = AppConnect.ModelDB.PlaceForHistory.FirstOrDefault(x => x.Name == "Аквариум");
+                        record.IdPlace = place.IdPlace;
+                        record.Number = currentAquarium.Number;
+                        record.ContentName = currentAquarium.Fish.Name;
+                        record.DateOfHarvest = DateTime.Today;
+                        record.CropWeight = double.Parse(tbHarvest.Text.Replace('.', ','));
+                        record.FieldSize = currentAquarium.Size;
+                        record.UserSurname = AuthorizedUser.user.Surname;
+                        record.UserName = AuthorizedUser.user.Name;
+                        record.UserPatronymic = AuthorizedUser.user.Patronymic;
+
+                        AppConnect.ModelDB.HarvestingHistory.Add(record);
+                        AppConnect.ModelDB.Aquariums.Remove(currentAquarium);
+                        AppConnect.ModelDB.SaveChanges();
+
+                        AppFrame.frameMain.GoBack();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка, повторите попытку позже!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ошибка: Некорректное количество рыб!");
             }
         }
 

@@ -108,6 +108,8 @@
           <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="DateOfHarvest" Type="date" Nullable="false" />
+          <Property Name="CropWeight" Type="float" Nullable="false" />
+          <Property Name="FieldSize" Type="float" Nullable="false" />
           <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -611,6 +613,8 @@
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ContentName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfHarvest" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CropWeight" Type="Double" Nullable="false" />
+          <Property Name="FieldSize" Type="Double" Nullable="false" />
           <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1118,6 +1122,8 @@
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="ContentName" ColumnName="ContentName" />
                 <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
+                <ScalarProperty Name="CropWeight" ColumnName="CropWeight" />
+                <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
                 <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />

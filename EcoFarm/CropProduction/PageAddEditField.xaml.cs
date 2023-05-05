@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +31,8 @@ namespace EcoFarm.CropProduction
         AccessVerification access = new AccessVerification();
         ValidationClass validation = new ValidationClass();
         private Fields currentField = new Fields();
+        bool flagShowHideHarvestGroup = false;
+        int growthPeriodInDays = 0;
 
         public PageAddEditField(Fields field)
         {
@@ -45,15 +48,32 @@ namespace EcoFarm.CropProduction
 
                 DisableAttributeEditField();
                 FindField();
+                ShowHideHarvestGroup(true);
             }
             else
             {
+                ShowHideHarvestGroup(false);
                 comboBoxPlant.SelectedIndex = 0;
                 currentField.BoardingDate = DateTime.Now;
                 dpCollectionDate.Text = "Нет";
             }
 
             DataContext = currentField;
+        }
+
+        private void ShowHideHarvestGroup(bool result)
+        {
+            if(result)
+            {
+                btnShowHideHarvest.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnShowHideHarvest.Visibility = Visibility.Hidden;
+            }
+            btnHarvest.Visibility = Visibility.Hidden;
+            tbHarvest.Visibility = Visibility.Hidden;
+            tblHarvest.Visibility = Visibility.Hidden;
         }
 
         private void DisableAttributeEditField()
@@ -143,6 +163,7 @@ namespace EcoFarm.CropProduction
             if (plant != null)
             {
                 currentField.IdPlant = plant.IdPlant;
+                growthPeriodInDays = plant.GrowthPeriodInDays;
             }
         }
 
@@ -168,7 +189,7 @@ namespace EcoFarm.CropProduction
                     currentField.Number = tbNumber.Text;
                     SetPlant();
                     currentField.BoardingDate = DateTime.Parse(dpDate.Text);
-                    currentField.CollectionDate = DateTime.Parse(dpDate.Text).AddDays(currentField.Plants.GrowthPeriodInDays);
+                    currentField.CollectionDate = currentField.BoardingDate.AddDays(growthPeriodInDays);
                     currentField.Size = double.Parse(tbSize.Text.Replace('.', ','));
                     if (tbNote.Text.Length <= 0)
                         currentField.Note = null;
@@ -243,6 +264,73 @@ namespace EcoFarm.CropProduction
             {
                 SelectedMenuTab.selectedMenuTab = "PageCropProduction";
                 AppFrame.frameMain.Navigate(new PageListOfWorks());
+            }
+        }
+
+        private void tbHarvest_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9.]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnShowHideHarvest_Click(object sender, RoutedEventArgs e)
+        {
+            if(!flagShowHideHarvestGroup)
+            {
+                flagShowHideHarvestGroup = true;
+                btnShowHideHarvest.Content = "Скрыть сбор урожая";
+                btnHarvest.Visibility = Visibility.Visible;
+                tbHarvest.Visibility = Visibility.Visible;
+                tblHarvest.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                flagShowHideHarvestGroup = false;
+                btnShowHideHarvest.Content = "Показать сбор урожая";
+                btnHarvest.Visibility = Visibility.Hidden;
+                tbHarvest.Visibility = Visibility.Hidden;
+                tblHarvest.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void btnHarvest_Click(object sender, RoutedEventArgs e)
+        {
+            if (validation.CheckDoubleData(tbHarvest.Text))
+            {
+                if (MessageBox.Show("Вы уверены, что хотите собрать урожай? Предупреждение: при сборе урожая поле будет считаться пустым и будет удалено из списка!", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        HarvestingHistory record = new HarvestingHistory();
+
+                        var place = AppConnect.ModelDB.PlaceForHistory.FirstOrDefault(x => x.Name == "Поле");
+                        record.IdPlace = place.IdPlace;
+                        record.Number = currentField.Number;
+                        record.ContentName = currentField.Plants.Name;
+                        record.DateOfHarvest = DateTime.Today;
+                        record.CropWeight = double.Parse(tbHarvest.Text.Replace('.', ','));
+                        record.FieldSize = currentField.Size;
+                        record.UserSurname = AuthorizedUser.user.Surname;
+                        record.UserName = AuthorizedUser.user.Name;
+                        record.UserPatronymic = AuthorizedUser.user.Patronymic;
+
+                        AppConnect.ModelDB.HarvestingHistory.Add(record);
+                        AppConnect.ModelDB.Fields.Remove(currentField);
+                        AppConnect.ModelDB.SaveChanges();
+
+                        AppFrame.frameMain.GoBack();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка, повторите попытку позже!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ошибка: Некорректный вес урожая!");
             }
         }
     }
