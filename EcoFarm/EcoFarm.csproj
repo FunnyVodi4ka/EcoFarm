@@ -370,6 +370,9 @@
     <Resource Include="Resources\AppImages\fish-in-fishbowl.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\AppImages\harvest.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DatabaseConnection\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -380,7 +383,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\AppImages\harvest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

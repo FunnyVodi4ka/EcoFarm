@@ -29,6 +29,8 @@
           <ScalarProperty Name="IdFish" ColumnName="IdFish" />
           <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
           <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Expenses" ColumnName="Expenses" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Note" ColumnName="Note" />
         </MappingFragment>
@@ -75,6 +77,8 @@
           <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
           <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
           <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Expenses" ColumnName="Expenses" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Note" ColumnName="Note" />
         </MappingFragment>
@@ -110,7 +114,9 @@
           <ScalarProperty Name="ContentName" ColumnName="ContentName" />
           <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
           <ScalarProperty Name="CropWeight" ColumnName="CropWeight" />
-          <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Expenses" ColumnName="Expenses" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />

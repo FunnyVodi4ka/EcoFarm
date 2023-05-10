@@ -32,6 +32,8 @@
           <Property Name="IdFish" Type="int" Nullable="false" />
           <Property Name="BoardingDate" Type="date" Nullable="false" />
           <Property Name="CollectionDate" Type="date" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Expenses" Type="float" Nullable="false" />
           <Property Name="Size" Type="float" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="500" />
         </EntityType>
@@ -76,6 +78,8 @@
           <Property Name="IdPlant" Type="int" Nullable="false" />
           <Property Name="BoardingDate" Type="date" Nullable="false" />
           <Property Name="CollectionDate" Type="date" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Expenses" Type="float" Nullable="false" />
           <Property Name="Size" Type="float" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="500" />
         </EntityType>
@@ -109,7 +113,9 @@
           <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="DateOfHarvest" Type="date" Nullable="false" />
           <Property Name="CropWeight" Type="float" Nullable="false" />
-          <Property Name="FieldSize" Type="float" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Expenses" Type="float" Nullable="false" />
+          <Property Name="Size" Type="float" Nullable="false" />
           <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -523,6 +529,8 @@
           <Property Name="IdFish" Type="Int32" Nullable="false" />
           <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CollectionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Expenses" Type="Double" Nullable="false" />
           <Property Name="Size" Type="Double" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Fish" Relationship="Self.FK_Aquariums_Fish" FromRole="Aquariums" ToRole="Fish" />
@@ -574,6 +582,8 @@
           <Property Name="IdPlant" Type="Int32" Nullable="false" />
           <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CollectionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Expenses" Type="Double" Nullable="false" />
           <Property Name="Size" Type="Double" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_Fields" FromRole="Fields" ToRole="CurrentWorks" />
@@ -614,7 +624,9 @@
           <Property Name="ContentName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfHarvest" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CropWeight" Type="Double" Nullable="false" />
-          <Property Name="FieldSize" Type="Double" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Expenses" Type="Double" Nullable="false" />
+          <Property Name="Size" Type="Double" Nullable="false" />
           <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1042,6 +1054,8 @@
                 <ScalarProperty Name="IdFish" ColumnName="IdFish" />
                 <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
                 <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
                 <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
               </MappingFragment>
@@ -1088,6 +1102,8 @@
                 <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
                 <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
                 <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
                 <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
               </MappingFragment>
@@ -1123,7 +1139,9 @@
                 <ScalarProperty Name="ContentName" ColumnName="ContentName" />
                 <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
                 <ScalarProperty Name="CropWeight" ColumnName="CropWeight" />
-                <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />

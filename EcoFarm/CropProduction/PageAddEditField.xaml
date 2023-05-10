@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="600"
-      Title="PageAddEditField" MinHeight="400" MaxHeight="550" MinWidth="600">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="PageAddEditField" MinHeight="500" MaxHeight="650" MinWidth="700">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -39,36 +39,44 @@
 
         <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock Text="Номер поля:" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <TextBlock Text="Номер поля:" Style="{StaticResource TextBlockMain}" Width="270"/>
                 <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock Text="Растение:" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <TextBlock Text="Растение:" Style="{StaticResource TextBlockMain}" Width="270"/>
                 <ComboBox x:Name="comboBoxPlant" Style="{StaticResource ComboBoxMain}" Width="300"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock Text="Дата посадки:" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <TextBlock Text="Дата посадки:" Style="{StaticResource TextBlockMain}" Width="270"/>
                 <DatePicker x:Name="dpDate" Style="{StaticResource DatePickerMain}" SelectedDate="{Binding BoardingDate}" Width="300"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock Text="Рекомендуемая дата сбора:" Style="{StaticResource TextBlockMain}" Width="320"/>
+                <TextBlock Text="Рекомендуемая дата сбора:" Style="{StaticResource TextBlockMain}" Width="370"/>
                 <TextBlock x:Name="dpCollectionDate" Style="{StaticResource TextBlockMain}" Text="{Binding CollectionDate, StringFormat='dd.MM.yyyy'}" Width="200"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock Text="Размер поля (м²):" Style="{StaticResource TextBlockMain}" Width="220"/>
+                <TextBlock Text="Количество семян:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBox x:Name="tbQuantity" Style="{StaticResource TextBoxMain}" Text="{Binding Quantity}" Width="300" PreviewTextInput="tbQuantity_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Затраты на семена (₽):" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBox x:Name="tbExpenses" Style="{StaticResource TextBoxMain}" Text="{Binding Expenses}" Width="300" PreviewTextInput="tbExpenses_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Размер поля (м²):" Style="{StaticResource TextBlockMain}" Width="270"/>
                 <TextBox x:Name="tbSize" Style="{StaticResource TextBoxMain}" Text="{Binding Size}" PreviewTextInput="tbSize_PreviewTextInput" Width="300"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="524" HorizontalAlignment="Stretch" Height="80"/>
+                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="574" HorizontalAlignment="Stretch" Height="80"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Stretch">
                 <Button x:Name="btnShowHideHarvest" Content="Показать сбор урожая" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="260" Click="btnShowHideHarvest_Click"/>
-                <Button x:Name="btnHarvest" Content="Собрать урожай" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="58,2,2,2" Click="btnHarvest_Click"/>
+                <Button x:Name="btnHarvest" Content="Собрать урожай" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="108,2,2,2" Click="btnHarvest_Click"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock x:Name="tblHarvest" Text="Вес урожая с поля (кг):" Style="{StaticResource TextBlockMain}" Width="258"/>
-                <TextBox x:Name="tbHarvest" Style="{StaticResource TextBoxMain}" Width="260" PreviewTextInput="tbHarvest_PreviewTextInput"/>
+                <TextBlock x:Name="tblHarvest" Text="Вес урожая с поля (кг):" Style="{StaticResource TextBlockMain}" Width="268"/>
+                <TextBox x:Name="tbHarvest" Style="{StaticResource TextBoxMain}" Width="300" PreviewTextInput="tbHarvest_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>

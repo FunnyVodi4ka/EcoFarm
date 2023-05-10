@@ -81,6 +81,13 @@
                                 <Run Text="{Binding Number}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Количество выпущенных мальков: " FontWeight="Bold"/>
+                                <Run Text="{Binding Quantity}"/>
+                                <Run Text=" Затраты на мальков: " FontWeight="Bold"/>
+                                <Run Text="{Binding Expenses}"/>
+                                <Run Text="₽"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
                                 <Run Text="Дата запуска в аквариум: " FontWeight="Bold"/>
                                 <Run Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
                                 <Run Text="Дата сбора: " FontWeight="Bold"/>

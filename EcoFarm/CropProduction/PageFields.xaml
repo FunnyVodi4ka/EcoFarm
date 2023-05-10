@@ -123,6 +123,13 @@
                                 <Run Text="{Binding Number}"/>
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" Padding="3">
+                                <Run Text="Количество высаженных семян: " FontWeight="Bold"/>
+                                <Run Text="{Binding Quantity}"/>
+                                <Run Text=" Затраты на семена: " FontWeight="Bold"/>
+                                <Run Text="{Binding Expenses}"/>
+                                <Run Text="₽"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Padding="3">
                                 <Run Text="Дата посадки: " FontWeight="Bold"/>
                                 <Run Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
                                 <Run Text="Дата сбора: " FontWeight="Bold"/>

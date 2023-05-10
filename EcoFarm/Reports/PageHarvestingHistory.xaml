@@ -60,7 +60,7 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="  Место работы  "  Width="auto">
+                        <GridViewColumn Header=" Место работы "  Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0">
@@ -70,14 +70,40 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="  Содержимое  "  Width="auto">
+                        <GridViewColumn Header=" Содержимое "  Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding ContentName}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="  Собранный урожай  " Width="auto">
+                        <GridViewColumn Header=" Затраты " Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
+                                        <Run Text="{Binding Expenses}"/>
+                                        <Run Text="₽"/>
+                                        <Run Text="-"/>
+                                        <Run Text="{Binding Quantity}"/>
+                                        <Run>
+                                            <Run.Style>
+                                                <Style TargetType="{x:Type Run}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Поле">
+                                                            <Setter Property="Text" Value="(Семена)"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Аквариум">
+                                                            <Setter Property="Text" Value="(Мальки)"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Run.Style>
+                                        </Run>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header=" Урожай " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
@@ -102,7 +128,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="  Работник  " Width="auto">
+                        <GridViewColumn Header=" Работник " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="2">

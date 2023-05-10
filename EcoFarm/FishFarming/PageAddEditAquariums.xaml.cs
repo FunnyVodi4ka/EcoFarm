@@ -114,6 +114,18 @@ namespace EcoFarm.FishFarming
                 MessageBox.Show("Ошибка: Номер не может содержать меньше 1 и больше 50 символов!");
                 return false;
             }
+            if (!validation.CheckIntData(tbQuantity.Text))
+            {
+                tbQuantity.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Некорректное кол-во мальков!");
+                return false;
+            }
+            if (!validation.CheckDoubleData(tbExpenses.Text))
+            {
+                tbExpenses.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Некорректная стоимость мальков!");
+                return false;
+            }
             if (!validation.CheckDoubleData(tbSize.Text))
             {
                 tbSize.BorderBrush = Brushes.Red;
@@ -187,6 +199,8 @@ namespace EcoFarm.FishFarming
                     SetIdFish();
                     currentAquarium.BoardingDate = DateTime.Parse(dpDate.Text);
                     currentAquarium.CollectionDate = currentAquarium.BoardingDate.AddDays(growthPeriodInDays);
+                    currentAquarium.Quantity = Int32.Parse(tbQuantity.Text);
+                    currentAquarium.Expenses = double.Parse(tbExpenses.Text.Replace('.', ','));
                     currentAquarium.Size = double.Parse(tbSize.Text.Replace('.', ','));
                     if (tbNote.Text.Length <= 0)
                         currentAquarium.Note = null;
@@ -258,7 +272,9 @@ namespace EcoFarm.FishFarming
                         record.ContentName = currentAquarium.Fish.Name;
                         record.DateOfHarvest = DateTime.Today;
                         record.CropWeight = double.Parse(tbHarvest.Text.Replace('.', ','));
-                        record.FieldSize = currentAquarium.Size;
+                        record.Quantity = currentAquarium.Quantity;
+                        record.Expenses = currentAquarium.Expenses;
+                        record.Size = currentAquarium.Size;
                         record.UserSurname = AuthorizedUser.user.Surname;
                         record.UserName = AuthorizedUser.user.Name;
                         record.UserPatronymic = AuthorizedUser.user.Patronymic;
@@ -328,6 +344,22 @@ namespace EcoFarm.FishFarming
             {
                 SelectedMenuTab.selectedMenuTab = "PageFishFarming";
                 AppFrame.frameMain.Navigate(new PageListOfWorksForFishFarming());
+            }
+        }
+
+        private void tbQuantity_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbExpenses_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9.]"))
+            {
+                e.Handled = true;
             }
         }
     }

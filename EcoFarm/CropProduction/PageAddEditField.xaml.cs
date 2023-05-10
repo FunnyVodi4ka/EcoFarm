@@ -117,6 +117,18 @@ namespace EcoFarm.CropProduction
                 MessageBox.Show("Ошибка: Номер не может содержать меньше 1 и больше 50 символов!");
                 return false;
             }
+            if (!validation.CheckIntData(tbQuantity.Text))
+            {
+                tbQuantity.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Некорректное кол-во семян!");
+                return false;
+            }
+            if (!validation.CheckDoubleData(tbExpenses.Text))
+            {
+                tbExpenses.BorderBrush = Brushes.Red;
+                MessageBox.Show("Ошибка: Некорректная стоимость семян!");
+                return false;
+            }
             if (!validation.CheckDoubleData(tbSize.Text))
             {
                 tbSize.BorderBrush = Brushes.Red;
@@ -190,6 +202,8 @@ namespace EcoFarm.CropProduction
                     SetPlant();
                     currentField.BoardingDate = DateTime.Parse(dpDate.Text);
                     currentField.CollectionDate = currentField.BoardingDate.AddDays(growthPeriodInDays);
+                    currentField.Quantity = Int32.Parse(tbQuantity.Text);
+                    currentField.Expenses = double.Parse(tbExpenses.Text.Replace('.', ','));
                     currentField.Size = double.Parse(tbSize.Text.Replace('.', ','));
                     if (tbNote.Text.Length <= 0)
                         currentField.Note = null;
@@ -311,7 +325,9 @@ namespace EcoFarm.CropProduction
                         record.ContentName = currentField.Plants.Name;
                         record.DateOfHarvest = DateTime.Today;
                         record.CropWeight = double.Parse(tbHarvest.Text.Replace('.', ','));
-                        record.FieldSize = currentField.Size;
+                        record.Quantity = currentField.Quantity;
+                        record.Expenses = currentField.Expenses;
+                        record.Size = currentField.Size;
                         record.UserSurname = AuthorizedUser.user.Surname;
                         record.UserName = AuthorizedUser.user.Name;
                         record.UserPatronymic = AuthorizedUser.user.Patronymic;
@@ -331,6 +347,22 @@ namespace EcoFarm.CropProduction
             else
             {
                 MessageBox.Show("Ошибка: Некорректный вес урожая!");
+            }
+        }
+
+        private void tbQuantity_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbExpenses_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9.]"))
+            {
+                e.Handled = true;
             }
         }
     }

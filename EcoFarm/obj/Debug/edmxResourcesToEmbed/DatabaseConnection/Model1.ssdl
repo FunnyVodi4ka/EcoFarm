@@ -27,6 +27,8 @@
     <Property Name="IdFish" Type="int" Nullable="false" />
     <Property Name="BoardingDate" Type="date" Nullable="false" />
     <Property Name="CollectionDate" Type="date" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Expenses" Type="float" Nullable="false" />
     <Property Name="Size" Type="float" Nullable="false" />
     <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
@@ -71,6 +73,8 @@
     <Property Name="IdPlant" Type="int" Nullable="false" />
     <Property Name="BoardingDate" Type="date" Nullable="false" />
     <Property Name="CollectionDate" Type="date" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Expenses" Type="float" Nullable="false" />
     <Property Name="Size" Type="float" Nullable="false" />
     <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
@@ -104,7 +108,9 @@
     <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="DateOfHarvest" Type="date" Nullable="false" />
     <Property Name="CropWeight" Type="float" Nullable="false" />
-    <Property Name="FieldSize" Type="float" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Expenses" Type="float" Nullable="false" />
+    <Property Name="Size" Type="float" Nullable="false" />
     <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />

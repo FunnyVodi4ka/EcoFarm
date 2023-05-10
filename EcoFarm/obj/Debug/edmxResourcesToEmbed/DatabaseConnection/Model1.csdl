@@ -29,6 +29,8 @@
     <Property Name="IdFish" Type="Int32" Nullable="false" />
     <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="CollectionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Expenses" Type="Double" Nullable="false" />
     <Property Name="Size" Type="Double" Nullable="false" />
     <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Fish" Relationship="Self.FK_Aquariums_Fish" FromRole="Aquariums" ToRole="Fish" />
@@ -80,6 +82,8 @@
     <Property Name="IdPlant" Type="Int32" Nullable="false" />
     <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="CollectionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Expenses" Type="Double" Nullable="false" />
     <Property Name="Size" Type="Double" Nullable="false" />
     <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CurrentWorks" Relationship="Self.FK_CurrentWorks_Fields" FromRole="Fields" ToRole="CurrentWorks" />
@@ -120,7 +124,9 @@
     <Property Name="ContentName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateOfHarvest" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="CropWeight" Type="Double" Nullable="false" />
-    <Property Name="FieldSize" Type="Double" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Expenses" Type="Double" Nullable="false" />
+    <Property Name="Size" Type="Double" Nullable="false" />
     <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
