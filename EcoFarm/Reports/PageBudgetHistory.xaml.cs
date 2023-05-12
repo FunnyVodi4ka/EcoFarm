@@ -1,7 +1,6 @@
 ﻿using EcoFarm.AppConnection;
 using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
-using EcoFarm.CropProduction;
 using EcoFarm.DatabaseConnection;
 using System;
 using System.Collections.Generic;
@@ -21,13 +20,13 @@ using System.Windows.Shapes;
 namespace EcoFarm.Reports
 {
     /// <summary>
-    /// Логика взаимодействия для PageCompletedWorks.xaml
+    /// Логика взаимодействия для PageBudgetHistory.xaml
     /// </summary>
-    public partial class PageCompletedWorks : Page
+    public partial class PageBudgetHistory : Page
     {
         AccessVerification access = new AccessVerification();
 
-        public PageCompletedWorks()
+        public PageBudgetHistory()
         {
             access.CheckAuthorization();
 
@@ -35,34 +34,34 @@ namespace EcoFarm.Reports
 
             SetFilter();
             SetSort();
-            ListTasks.ItemsSource = SortFilterTasks();
+            ListBudget.ItemsSource = SortFilterTasks();
         }
 
-        CompletedWorkHistory[] SortFilterTasks()
+        BudgetHistory[] SortFilterTasks()
         {
-            List<CompletedWorkHistory> rows = AppConnect.ModelDB.CompletedWorkHistory.ToList();
+            List<BudgetHistory> rows = AppConnect.ModelDB.BudgetHistory.ToList();
             var CounterALL = rows;
             if (textBoxSearch.Text != null)
             {
-                rows = rows.Where(x => x.UserSurname.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
+                rows = rows.Where(x => x.Name.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
             }
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:
-                    rows = rows.OrderByDescending(x => x.DateOfWork).ToList();
+                    rows = rows.OrderByDescending(x => x.Date).ToList();
                     break;
                 case 1:
-                    rows = rows.OrderBy(x => x.DateOfWork).ToList();
+                    rows = rows.OrderBy(x => x.Date).ToList();
                     break;
             }
 
             switch (comboBoxFilter.SelectedIndex)
             {
                 case 1:
-                    rows = rows.Where(x => x.PlaceForHistory.Name == "Поле").ToList();
+                    rows = rows.Where(x => x.TypeOfOperation.Name == "Приход").ToList();
                     break;
                 case 2:
-                    rows = rows.Where(x => x.PlaceForHistory.Name == "Аквариум").ToList();
+                    rows = rows.Where(x => x.TypeOfOperation.Name == "Расход").ToList();
                     break;
             }
 
@@ -88,9 +87,9 @@ namespace EcoFarm.Reports
 
         private void SetFilter()
         {
-            comboBoxFilter.Items.Add("Все работы");
-            comboBoxFilter.Items.Add("Растениеводство");
-            comboBoxFilter.Items.Add("Рыбоводство");
+            comboBoxFilter.Items.Add("Все операции");
+            comboBoxFilter.Items.Add("Приход");
+            comboBoxFilter.Items.Add("Расход");
 
             comboBoxFilter.SelectedIndex = 0;
         }
@@ -98,22 +97,22 @@ namespace EcoFarm.Reports
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             AppConnect.ModelDB.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-            ListTasks.ItemsSource = SortFilterTasks();
+            ListBudget.ItemsSource = SortFilterTasks();
         }
 
         private void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ListTasks.ItemsSource = SortFilterTasks();
+            ListBudget.ItemsSource = SortFilterTasks();
         }
 
         private void comboBoxFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListTasks.ItemsSource = SortFilterTasks();
+            ListBudget.ItemsSource = SortFilterTasks();
         }
 
         private void comboBoxSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListTasks.ItemsSource = SortFilterTasks();
+            ListBudget.ItemsSource = SortFilterTasks();
         }
 
         private void TabBarHistoryWork_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

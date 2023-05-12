@@ -37,6 +37,16 @@
           <Property Name="Size" Type="float" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="BudgetHistory">
+          <Key>
+            <PropertyRef Name="IdHistory" />
+          </Key>
+          <Property Name="IdHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdOperation" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="CompletedWorkHistory">
           <Key>
             <PropertyRef Name="IdHistory" />
@@ -111,26 +121,16 @@
           <Property Name="IdPlace" Type="int" Nullable="false" />
           <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ContentName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="BoardingDate" Type="date" Nullable="false" />
           <Property Name="DateOfHarvest" Type="date" Nullable="false" />
           <Property Name="CropWeight" Type="float" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Expenses" Type="float" Nullable="false" />
           <Property Name="Size" Type="float" Nullable="false" />
+          <Property Name="SalePrice" Type="float" />
           <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LandingHistory">
-          <Key>
-            <PropertyRef Name="IdLandingHistory" />
-          </Key>
-          <Property Name="IdLandingHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FieldNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PlantName" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="BoardingDate" Type="date" Nullable="false" />
-          <Property Name="HarvestDate" Type="date" Nullable="false" />
-          <Property Name="FieldSize" Type="int" Nullable="false" />
-          <Property Name="HarvestVolume" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ListOfWorks">
           <Key>
@@ -190,6 +190,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TypeOfOperation">
+          <Key>
+            <PropertyRef Name="IdOperation" />
+          </Key>
+          <Property Name="IdOperation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="IdUser" />
@@ -243,6 +250,20 @@
             </Principal>
             <Dependent Role="Aquariums">
               <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetHistory_TypeOfOperation">
+          <End Role="TypeOfOperation" Type="Self.TypeOfOperation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BudgetHistory" Type="Self.BudgetHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfOperation">
+              <PropertyRef Name="IdOperation" />
+            </Principal>
+            <Dependent Role="BudgetHistory">
+              <PropertyRef Name="IdOperation" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -418,6 +439,7 @@
           <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Aquariums" EntityType="Self.Aquariums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetHistory" EntityType="Self.BudgetHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompletedWorkHistory" EntityType="Self.CompletedWorkHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CurrentWorksForFishFarming" EntityType="Self.CurrentWorksForFishFarming" Schema="dbo" store:Type="Tables" />
@@ -425,7 +447,6 @@
           <EntitySet Name="Fish" EntityType="Self.Fish" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FishWork" EntityType="Self.FishWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HarvestingHistory" EntityType="Self.HarvestingHistory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListOfWorksForFishFarming" EntityType="Self.ListOfWorksForFishFarming" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaceForHistory" EntityType="Self.PlaceForHistory" Schema="dbo" store:Type="Tables" />
@@ -433,6 +454,7 @@
           <EntitySet Name="PlantWork" EntityType="Self.PlantWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfOperation" EntityType="Self.TypeOfOperation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
             <End Role="Fish" EntitySet="Fish" />
@@ -445,6 +467,10 @@
           <AssociationSet Name="FK_Aquariums_Fish" Association="Self.FK_Aquariums_Fish">
             <End Role="Fish" EntitySet="Fish" />
             <End Role="Aquariums" EntitySet="Aquariums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetHistory_TypeOfOperation" Association="Self.FK_BudgetHistory_TypeOfOperation">
+            <End Role="TypeOfOperation" EntitySet="TypeOfOperation" />
+            <End Role="BudgetHistory" EntitySet="BudgetHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_CompletedWorkHistory_WorkPlaceForHistory" Association="Self.FK_CompletedWorkHistory_WorkPlaceForHistory">
             <End Role="PlaceForHistory" EntitySet="PlaceForHistory" />
@@ -536,6 +562,17 @@
           <NavigationProperty Name="Fish" Relationship="Self.FK_Aquariums_Fish" FromRole="Aquariums" ToRole="Fish" />
           <NavigationProperty Name="CurrentWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_Aquariums" FromRole="Aquariums" ToRole="CurrentWorksForFishFarming" />
         </EntityType>
+        <EntityType Name="BudgetHistory">
+          <Key>
+            <PropertyRef Name="IdHistory" />
+          </Key>
+          <Property Name="IdHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdOperation" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TypeOfOperation" Relationship="Self.FK_BudgetHistory_TypeOfOperation" FromRole="BudgetHistory" ToRole="TypeOfOperation" />
+        </EntityType>
         <EntityType Name="CompletedWorkHistory">
           <Key>
             <PropertyRef Name="IdHistory" />
@@ -622,27 +659,17 @@
           <Property Name="IdPlace" Type="Int32" Nullable="false" />
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ContentName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateOfHarvest" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CropWeight" Type="Double" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="Expenses" Type="Double" Nullable="false" />
           <Property Name="Size" Type="Double" Nullable="false" />
+          <Property Name="SalePrice" Type="Double" />
           <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="PlaceForHistory" Relationship="Self.FK_HarvestingHistory_PlaceForHistory" FromRole="HarvestingHistory" ToRole="PlaceForHistory" />
-        </EntityType>
-        <EntityType Name="LandingHistory">
-          <Key>
-            <PropertyRef Name="IdLandingHistory" />
-          </Key>
-          <Property Name="IdLandingHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FieldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PlantName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BoardingDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="HarvestDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FieldSize" Type="Int32" Nullable="false" />
-          <Property Name="HarvestVolume" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ListOfWorks">
           <Key>
@@ -714,6 +741,14 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="TypeOfOperation">
+          <Key>
+            <PropertyRef Name="IdOperation" />
+          </Key>
+          <Property Name="IdOperation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BudgetHistory" Relationship="Self.FK_BudgetHistory_TypeOfOperation" FromRole="TypeOfOperation" ToRole="BudgetHistory" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="IdUser" />
@@ -782,6 +817,20 @@
             </Principal>
             <Dependent Role="CurrentWorksForFishFarming">
               <PropertyRef Name="IdAquarium" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetHistory_TypeOfOperation">
+          <End Role="TypeOfOperation" Type="Self.TypeOfOperation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BudgetHistory" Type="Self.BudgetHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfOperation">
+              <PropertyRef Name="IdOperation" />
+            </Principal>
+            <Dependent Role="BudgetHistory">
+              <PropertyRef Name="IdOperation" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -943,6 +992,7 @@
           <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" />
           <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" />
           <EntitySet Name="Aquariums" EntityType="Self.Aquariums" />
+          <EntitySet Name="BudgetHistory" EntityType="Self.BudgetHistory" />
           <EntitySet Name="CompletedWorkHistory" EntityType="Self.CompletedWorkHistory" />
           <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" />
           <EntitySet Name="CurrentWorksForFishFarming" EntityType="Self.CurrentWorksForFishFarming" />
@@ -950,7 +1000,6 @@
           <EntitySet Name="Fish" EntityType="Self.Fish" />
           <EntitySet Name="FishWork" EntityType="Self.FishWork" />
           <EntitySet Name="HarvestingHistory" EntityType="Self.HarvestingHistory" />
-          <EntitySet Name="LandingHistory" EntityType="Self.LandingHistory" />
           <EntitySet Name="ListOfWorks" EntityType="Self.ListOfWorks" />
           <EntitySet Name="ListOfWorksForFishFarming" EntityType="Self.ListOfWorksForFishFarming" />
           <EntitySet Name="PlaceForHistory" EntityType="Self.PlaceForHistory" />
@@ -958,6 +1007,7 @@
           <EntitySet Name="PlantWork" EntityType="Self.PlantWork" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeOfOperation" EntityType="Self.TypeOfOperation" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
             <End Role="Fish" EntitySet="Fish" />
@@ -974,6 +1024,10 @@
           <AssociationSet Name="FK_CurrentWorksForFishFarming_Aquariums" Association="Self.FK_CurrentWorksForFishFarming_Aquariums">
             <End Role="Aquariums" EntitySet="Aquariums" />
             <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetHistory_TypeOfOperation" Association="Self.FK_BudgetHistory_TypeOfOperation">
+            <End Role="TypeOfOperation" EntitySet="TypeOfOperation" />
+            <End Role="BudgetHistory" EntitySet="BudgetHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_CompletedWorkHistory_WorkPlaceForHistory" Association="Self.FK_CompletedWorkHistory_WorkPlaceForHistory">
             <End Role="PlaceForHistory" EntitySet="PlaceForHistory" />
@@ -1061,6 +1115,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BudgetHistory">
+            <EntityTypeMapping TypeName="ModelDB.BudgetHistory">
+              <MappingFragment StoreEntitySet="BudgetHistory">
+                <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdOperation" ColumnName="IdOperation" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CompletedWorkHistory">
             <EntityTypeMapping TypeName="ModelDB.CompletedWorkHistory">
               <MappingFragment StoreEntitySet="CompletedWorkHistory">
@@ -1137,27 +1202,16 @@
                 <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+                <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
                 <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
                 <ScalarProperty Name="CropWeight" ColumnName="CropWeight" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Expenses" ColumnName="Expenses" />
                 <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
                 <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LandingHistory">
-            <EntityTypeMapping TypeName="ModelDB.LandingHistory">
-              <MappingFragment StoreEntitySet="LandingHistory">
-                <ScalarProperty Name="IdLandingHistory" ColumnName="IdLandingHistory" />
-                <ScalarProperty Name="FieldNumber" ColumnName="FieldNumber" />
-                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
-                <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
-                <ScalarProperty Name="HarvestDate" ColumnName="HarvestDate" />
-                <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
-                <ScalarProperty Name="HarvestVolume" ColumnName="HarvestVolume" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1222,6 +1276,14 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfOperation">
+            <EntityTypeMapping TypeName="ModelDB.TypeOfOperation">
+              <MappingFragment StoreEntitySet="TypeOfOperation">
+                <ScalarProperty Name="IdOperation" ColumnName="IdOperation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

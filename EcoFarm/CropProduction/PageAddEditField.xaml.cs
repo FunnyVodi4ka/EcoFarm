@@ -323,6 +323,7 @@ namespace EcoFarm.CropProduction
                         record.IdPlace = place.IdPlace;
                         record.Number = currentField.Number;
                         record.ContentName = currentField.Plants.Name;
+                        record.BoardingDate = currentField.BoardingDate;
                         record.DateOfHarvest = DateTime.Today;
                         record.CropWeight = double.Parse(tbHarvest.Text.Replace('.', ','));
                         record.Quantity = currentField.Quantity;

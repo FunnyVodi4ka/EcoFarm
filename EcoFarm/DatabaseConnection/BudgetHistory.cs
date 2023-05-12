@@ -12,23 +12,14 @@ namespace EcoFarm.DatabaseConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class HarvestingHistory
+    public partial class BudgetHistory
     {
         public int IdHistory { get; set; }
-        public int IdPlace { get; set; }
-        public string Number { get; set; }
-        public string ContentName { get; set; }
-        public System.DateTime BoardingDate { get; set; }
-        public System.DateTime DateOfHarvest { get; set; }
-        public double CropWeight { get; set; }
-        public int Quantity { get; set; }
-        public double Expenses { get; set; }
-        public double Size { get; set; }
-        public Nullable<double> SalePrice { get; set; }
-        public string UserSurname { get; set; }
-        public string UserName { get; set; }
-        public string UserPatronymic { get; set; }
+        public string Name { get; set; }
+        public int IdOperation { get; set; }
+        public double Amount { get; set; }
+        public System.DateTime Date { get; set; }
     
-        public virtual PlaceForHistory PlaceForHistory { get; set; }
+        public virtual TypeOfOperation TypeOfOperation { get; set; }
     }
 }

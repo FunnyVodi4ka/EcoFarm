@@ -39,42 +39,42 @@ namespace EcoFarm.Reports
 
         HarvestingHistory[] SortFilterTasks()
         {
-            List<HarvestingHistory> tasks = AppConnect.ModelDB.HarvestingHistory.ToList();
-            var CounterALL = tasks;
+            List<HarvestingHistory> rows = AppConnect.ModelDB.HarvestingHistory.ToList();
+            var CounterALL = rows;
             if (textBoxSearch.Text != null)
             {
-                tasks = tasks.Where(x => x.UserSurname.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
+                rows = rows.Where(x => x.UserSurname.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
             }
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:
-                    tasks = tasks.OrderByDescending(x => x.DateOfHarvest).ToList();
+                    rows = rows.OrderByDescending(x => x.DateOfHarvest).ToList();
                     break;
                 case 1:
-                    tasks = tasks.OrderBy(x => x.DateOfHarvest).ToList();
+                    rows = rows.OrderBy(x => x.DateOfHarvest).ToList();
                     break;
             }
 
             switch (comboBoxFilter.SelectedIndex)
             {
                 case 1:
-                    tasks = tasks.Where(x => x.PlaceForHistory.Name == "Поле").ToList();
+                    rows = rows.Where(x => x.PlaceForHistory.Name == "Поле").ToList();
                     break;
                 case 2:
-                    tasks = tasks.Where(x => x.PlaceForHistory.Name == "Аквариум").ToList();
+                    rows = rows.Where(x => x.PlaceForHistory.Name == "Аквариум").ToList();
                     break;
             }
 
-            if (tasks.Count != 0)
+            if (rows.Count != 0)
             {
-                Counter.Text = "Показано: " + tasks.Count + " из " + CounterALL.Count;
+                Counter.Text = "Показано: " + rows.Count + " из " + CounterALL.Count;
             }
             else
             {
-                Counter.Text = "Текущих работ к выполнению не найдено";
+                Counter.Text = "Не найдено";
             }
 
-            return tasks.ToArray();
+            return rows.ToArray();
         }
 
         private void SetSort()
@@ -130,6 +130,15 @@ namespace EcoFarm.Reports
             {
                 SelectedMenuTab.selectedMenuTab = "PageReports";
                 AppFrame.frameMain.Navigate(new PageHarvestingHistory());
+            }
+        }
+
+        private void TabBarBudgetHistory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (access.CheckMenegerAccessBoolResult())
+            {
+                SelectedMenuTab.selectedMenuTab = "PageReports";
+                AppFrame.frameMain.Navigate(new PageBudgetHistory());
             }
         }
     }

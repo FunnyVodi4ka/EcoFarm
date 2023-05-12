@@ -29,6 +29,10 @@
                 <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#649138"/>
                 <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarBudgetHistory" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarBudgetHistory" Source="/Resources/AppImages/budget.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarBudgetHistory_MouseLeftButtonDown"/>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">

@@ -35,6 +35,7 @@ namespace EcoFarm.DatabaseConnection
         public virtual DbSet<AlbumFish> AlbumFish { get; set; }
         public virtual DbSet<AlbumPlants> AlbumPlants { get; set; }
         public virtual DbSet<Aquariums> Aquariums { get; set; }
+        public virtual DbSet<BudgetHistory> BudgetHistory { get; set; }
         public virtual DbSet<CompletedWorkHistory> CompletedWorkHistory { get; set; }
         public virtual DbSet<CurrentWorks> CurrentWorks { get; set; }
         public virtual DbSet<CurrentWorksForFishFarming> CurrentWorksForFishFarming { get; set; }
@@ -42,7 +43,6 @@ namespace EcoFarm.DatabaseConnection
         public virtual DbSet<Fish> Fish { get; set; }
         public virtual DbSet<FishWork> FishWork { get; set; }
         public virtual DbSet<HarvestingHistory> HarvestingHistory { get; set; }
-        public virtual DbSet<LandingHistory> LandingHistory { get; set; }
         public virtual DbSet<ListOfWorks> ListOfWorks { get; set; }
         public virtual DbSet<ListOfWorksForFishFarming> ListOfWorksForFishFarming { get; set; }
         public virtual DbSet<PlaceForHistory> PlaceForHistory { get; set; }
@@ -50,6 +50,7 @@ namespace EcoFarm.DatabaseConnection
         public virtual DbSet<PlantWork> PlantWork { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TypeOfOperation> TypeOfOperation { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

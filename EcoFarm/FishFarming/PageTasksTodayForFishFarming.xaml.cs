@@ -70,7 +70,7 @@ namespace EcoFarm.FishFarming
             }
             else
             {
-                Counter.Text = "Текущих работ к выполнению не найдено";
+                Counter.Text = "Не найдено";
             }
 
             return tasks.ToArray();

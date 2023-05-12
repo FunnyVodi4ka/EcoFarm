@@ -36,6 +36,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BudgetHistory">
+      <EntityTypeMapping TypeName="ModelDB.BudgetHistory">
+        <MappingFragment StoreEntitySet="BudgetHistory">
+          <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdOperation" ColumnName="IdOperation" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CompletedWorkHistory">
       <EntityTypeMapping TypeName="ModelDB.CompletedWorkHistory">
         <MappingFragment StoreEntitySet="CompletedWorkHistory">
@@ -112,27 +123,16 @@
           <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+          <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
           <ScalarProperty Name="DateOfHarvest" ColumnName="DateOfHarvest" />
           <ScalarProperty Name="CropWeight" ColumnName="CropWeight" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Expenses" ColumnName="Expenses" />
           <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
           <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LandingHistory">
-      <EntityTypeMapping TypeName="ModelDB.LandingHistory">
-        <MappingFragment StoreEntitySet="LandingHistory">
-          <ScalarProperty Name="IdLandingHistory" ColumnName="IdLandingHistory" />
-          <ScalarProperty Name="FieldNumber" ColumnName="FieldNumber" />
-          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
-          <ScalarProperty Name="BoardingDate" ColumnName="BoardingDate" />
-          <ScalarProperty Name="HarvestDate" ColumnName="HarvestDate" />
-          <ScalarProperty Name="FieldSize" ColumnName="FieldSize" />
-          <ScalarProperty Name="HarvestVolume" ColumnName="HarvestVolume" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -197,6 +197,14 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfOperation">
+      <EntityTypeMapping TypeName="ModelDB.TypeOfOperation">
+        <MappingFragment StoreEntitySet="TypeOfOperation">
+          <ScalarProperty Name="IdOperation" ColumnName="IdOperation" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

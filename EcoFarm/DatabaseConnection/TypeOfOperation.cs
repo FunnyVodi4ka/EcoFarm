@@ -12,14 +12,18 @@ namespace EcoFarm.DatabaseConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class LandingHistory
+    public partial class TypeOfOperation
     {
-        public int IdLandingHistory { get; set; }
-        public string FieldNumber { get; set; }
-        public string PlantName { get; set; }
-        public System.DateTime BoardingDate { get; set; }
-        public System.DateTime HarvestDate { get; set; }
-        public int FieldSize { get; set; }
-        public int HarvestVolume { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TypeOfOperation()
+        {
+            this.BudgetHistory = new HashSet<BudgetHistory>();
+        }
+    
+        public int IdOperation { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BudgetHistory> BudgetHistory { get; set; }
     }
 }

@@ -270,6 +270,7 @@ namespace EcoFarm.FishFarming
                         record.IdPlace = place.IdPlace;
                         record.Number = currentAquarium.Number;
                         record.ContentName = currentAquarium.Fish.Name;
+                        record.BoardingDate = currentAquarium.BoardingDate;
                         record.DateOfHarvest = DateTime.Today;
                         record.CropWeight = double.Parse(tbHarvest.Text.Replace('.', ','));
                         record.Quantity = currentAquarium.Quantity;
