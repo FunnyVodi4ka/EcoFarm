@@ -49,7 +49,7 @@
                 <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged" Width="300"/>
             </StackPanel>
         </StackPanel>
-
+        
         <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

@@ -41,10 +41,12 @@ namespace EcoFarm.Reports
         {
             List<HarvestingHistory> rows = AppConnect.ModelDB.HarvestingHistory.ToList();
             var CounterALL = rows;
+
             if (textBoxSearch.Text != null)
             {
                 rows = rows.Where(x => x.UserSurname.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
             }
+
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:

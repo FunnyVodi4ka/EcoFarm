@@ -41,6 +41,32 @@ namespace EcoFarm.Reports
         {
             List<BudgetHistory> rows = AppConnect.ModelDB.BudgetHistory.ToList();
             var CounterALL = rows;
+
+            double profit = 0, expenses = 0, total = 0;
+            foreach (var row in rows)
+            {
+                if (row.TypeOfOperation.Name == "Приход")
+                {
+                    profit += row.Amount;
+                }
+                else if(row.TypeOfOperation.Name == "Расход")
+                {
+                    expenses += row.Amount;
+                }
+            }
+            total = profit - expenses;
+            tblProfit.Text = profit.ToString();
+            tblExpenses.Text = expenses.ToString();
+            tblTotal.Text = total.ToString();
+            if(total >= 0)
+            {
+                tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#44944A");
+            }
+            else
+            {
+                tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#B00000");
+            }
+
             if (textBoxSearch.Text != null)
             {
                 rows = rows.Where(x => x.Name.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();

@@ -14,7 +14,8 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
@@ -50,7 +51,22 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="ListBudget" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Center" Width="250">
+                <TextBlock Text="Приход:" Style="{StaticResource TextBlockMain}" Width="auto"/>
+                <TextBlock x:Name="tblProfit" Text="" Style="{StaticResource TextBlockMain}" Width="auto" Foreground="#44944A" Margin="10,0,0,0"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
+                <TextBlock Text="Расход:" Style="{StaticResource TextBlockMain}" Width="auto"/>
+                <TextBlock x:Name="tblExpenses" Text="" Style="{StaticResource TextBlockMain}" Width="auto" Foreground="#B00000" Margin="10,0,0,0"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
+                <TextBlock Text="Итого:" Style="{StaticResource TextBlockMain}" Width="auto"/>
+                <TextBlock x:Name="tblTotal" Text="" Style="{StaticResource TextBlockMain}" Width="auto" Margin="10,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <ListView x:Name="ListBudget" Grid.Row="2" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -100,7 +116,7 @@
             </ListView.View>
         </ListView>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
             <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>
