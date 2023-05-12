@@ -1,0 +1,55 @@
+﻿<Page x:Class="EcoFarm.Reports.PageAddEditBudgetHistory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.Reports"
+      mc:Ignorable="d" 
+      d:DesignHeight="200" d:DesignWidth="700"
+      Title="PageAddEditBudgetHistory" MinHeight="200" MaxHeight="650" MinWidth="700">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="62"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
+        <StackPanel Grid.RowSpan="3" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarHistoryWork" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarHistoryWork" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHistoryWork_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarBudgetHistory" Width="4" Height="56" Background="#649138"/>
+                <Image x:Name="TabBarBudgetHistory" Source="/Resources/AppImages/budget.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarBudgetHistory_MouseLeftButtonDown"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Наименование:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Тип операции:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <ComboBox x:Name="comboBoxOperation" Style="{StaticResource ComboBoxMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Сумма операции (₽):" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBox x:Name="tbAmount" Style="{StaticResource TextBoxMain}" Text="{Binding Amount}" Width="300" PreviewTextInput="tbExpenses_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>
+                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnBack_Click" IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

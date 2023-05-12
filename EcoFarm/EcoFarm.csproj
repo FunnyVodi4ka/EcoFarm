@@ -193,6 +193,9 @@
       <DependentUpon>PageTasksTodayForFishFarming.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageLoader\CorrectImage.cs" />
+    <Compile Include="Reports\PageAddEditBudgetHistory.xaml.cs">
+      <DependentUpon>PageAddEditBudgetHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\PageBudgetHistory.xaml.cs">
       <DependentUpon>PageBudgetHistory.xaml</DependentUpon>
     </Compile>
@@ -303,6 +306,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Reports\PageAddEditBudgetHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reports\PageBudgetHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

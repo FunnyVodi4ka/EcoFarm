@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="950"
-      Title="PageBudgetHistory" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="950">
+      d:DesignHeight="450" d:DesignWidth="1050"
+      Title="PageBudgetHistory" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="1050">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,7 +14,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="30"/>
@@ -49,6 +49,10 @@
                 <TextBlock Text="Сортировка" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
                 <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged" Width="300"/>
             </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                <Button x:Name="btnAdd" Content="Создать" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
+                <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
@@ -66,7 +70,7 @@
             </StackPanel>
         </StackPanel>
         
-        <ListView x:Name="ListBudget" Grid.Row="2" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
+        <ListView x:Name="ListBudget" Grid.Row="2" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}" MouseDoubleClick="ListBudget_MouseDoubleClick">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>

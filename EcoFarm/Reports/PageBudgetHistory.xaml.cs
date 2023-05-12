@@ -1,6 +1,7 @@
 ﻿using EcoFarm.AppConnection;
 using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
+using EcoFarm.CropProduction;
 using EcoFarm.DatabaseConnection;
 using System;
 using System.Collections.Generic;
@@ -166,6 +167,35 @@ namespace EcoFarm.Reports
                 SelectedMenuTab.selectedMenuTab = "PageReports";
                 AppFrame.frameMain.Navigate(new PageBudgetHistory());
             }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var currentRow = ListBudget.SelectedItems.Cast<BudgetHistory>().ToList().ElementAt(0);
+            try
+            {
+                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    AppConnect.ModelDB.BudgetHistory.Remove(currentRow);
+                    AppConnect.ModelDB.SaveChanges();
+                    ListBudget.ItemsSource = SortFilterTasks();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAddEditBudgetHistory((sender as Button).DataContext as BudgetHistory));
+        }
+
+        private void ListBudget_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
+            AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
         }
     }
 }
