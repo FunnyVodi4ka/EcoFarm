@@ -210,6 +210,7 @@ namespace EcoFarm.FishFarming
                     if (currentAquarium.IdAquarium == 0)
                     {
                         EcoFarmDBEntities.GetContext().Aquariums.Add(currentAquarium);
+                        SaveInBudgetHistory(currentAquarium);
                         SaveCurrentWork();
                     }
 
@@ -226,6 +227,19 @@ namespace EcoFarm.FishFarming
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+        }
+
+        private void SaveInBudgetHistory(Aquariums aquarium)
+        {
+            BudgetHistory budgetHistory = new BudgetHistory();
+            budgetHistory.Name = "Затраты на мальков";
+            var type = AppConnect.ModelDB.TypeOfOperation.FirstOrDefault(x => x.Name == "Расход");
+            budgetHistory.IdOperation = type.IdOperation;
+            budgetHistory.Amount = aquarium.Expenses;
+            budgetHistory.Date = DateTime.Today;
+
+            AppConnect.ModelDB.BudgetHistory.Add(budgetHistory);
+            AppConnect.ModelDB.SaveChanges();
         }
 
         private void tbHarvest_PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -91,7 +91,7 @@
                         <GridViewColumn Header=" Дата " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1" Text="{Binding Date}"/>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1" Text="{Binding Date, StringFormat='dd.MM.yyyy'}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

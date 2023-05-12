@@ -212,11 +212,10 @@ namespace EcoFarm.CropProduction
 
                     if (currentField.IdField == 0)
                     {
-                        EcoFarmDBEntities.GetContext().Fields.Add(currentField);
+                        AppConnect.ModelDB.Fields.Add(currentField);
+                        SaveInBudgetHistory(currentField);
                         SaveCurrentWork();
                     }
-
-                    EcoFarmDBEntities.GetContext().SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
                     MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -229,6 +228,19 @@ namespace EcoFarm.CropProduction
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+        }
+
+        private void SaveInBudgetHistory(Fields field)
+        {
+            BudgetHistory budgetHistory = new BudgetHistory();
+            budgetHistory.Name = "Затраты на семена";
+            var type = AppConnect.ModelDB.TypeOfOperation.FirstOrDefault(x => x.Name == "Расход");
+            budgetHistory.IdOperation = type.IdOperation;
+            budgetHistory.Amount = field.Expenses;
+            budgetHistory.Date = DateTime.Today;
+
+            AppConnect.ModelDB.BudgetHistory.Add(budgetHistory);
+            AppConnect.ModelDB.SaveChanges();
         }
 
         private void SaveCurrentWork()
