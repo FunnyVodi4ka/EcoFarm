@@ -2,6 +2,7 @@
 using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
+using EcoFarm.FishFarming;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -141,6 +142,54 @@ namespace EcoFarm.Reports
             {
                 SelectedMenuTab.selectedMenuTab = "PageReports";
                 AppFrame.frameMain.Navigate(new PageBudgetHistory());
+            }
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var currentRow = ListTasks.SelectedItems.Cast<CompletedWorkHistory>().ToList().ElementAt(0);
+            try
+            {
+                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    AppConnect.ModelDB.CompletedWorkHistory.Remove(currentRow);
+                    AppConnect.ModelDB.SaveChanges();
+                    ListTasks.ItemsSource = SortFilterTasks();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ListTasks_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
+            AppFrame.frameMain.Navigate(new PageAddEditHarvestingHistory(row));
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
+            AppFrame.frameMain.Navigate(new PageAddEditHarvestingHistory(row));
+        }
+
+        private void menuClickReset_Click(object sender, RoutedEventArgs e)
+        {
+            HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
+
+            try
+            {
+                row.SalePrice = null;
+                AppConnect.ModelDB.SaveChanges();
+                MessageBox.Show("Продажа урожая сброшена!", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Ошибка " + Ex.Message.ToString() + "Критическая работа приложения", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

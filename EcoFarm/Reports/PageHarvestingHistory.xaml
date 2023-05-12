@@ -49,8 +49,29 @@
                 <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged" Width="300"/>
             </StackPanel>
         </StackPanel>
-        
-        <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
+
+        <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="ListTasks_MouseDoubleClick">
+
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="menuClickEdit" Header="Продать партию урожая" Click="menuClickEdit_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/AppImages/ContextMenuIcons/add_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="menuClickReset" Header="Сбросить продажу" Click="menuClickReset_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/AppImages/ContextMenuIcons/edit_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="menuClickDelete" Header="Удалить" Click="menuClickDelete_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/AppImages/ContextMenuIcons/delete_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>

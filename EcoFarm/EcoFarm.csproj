@@ -196,6 +196,9 @@
     <Compile Include="Reports\PageAddEditBudgetHistory.xaml.cs">
       <DependentUpon>PageAddEditBudgetHistory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PageAddEditHarvestingHistory.xaml.cs">
+      <DependentUpon>PageAddEditHarvestingHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\PageBudgetHistory.xaml.cs">
       <DependentUpon>PageBudgetHistory.xaml</DependentUpon>
     </Compile>
@@ -307,6 +310,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Reports\PageAddEditBudgetHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\PageAddEditHarvestingHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

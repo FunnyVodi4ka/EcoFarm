@@ -69,8 +69,8 @@
                 <TextBlock x:Name="tblTotal" Text="" Style="{StaticResource TextBlockMain}" Width="auto" Margin="10,0,0,0"/>
             </StackPanel>
         </StackPanel>
-        
-        <ListView x:Name="ListBudget" Grid.Row="2" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}" MouseDoubleClick="ListBudget_MouseDoubleClick">
+
+        <ListView x:Name="ListBudget" Grid.Row="2" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}" MouseDoubleClick="ListBudget_MouseDoubleClick" ScrollViewer.CanContentScroll="False">
 
             <ListView.ContextMenu>
                 <ContextMenu>

@@ -142,5 +142,23 @@ namespace EcoFarm.Reports
                 AppFrame.frameMain.Navigate(new PageBudgetHistory());
             }
         }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var currentRow = ListTasks.SelectedItems.Cast<CompletedWorkHistory>().ToList().ElementAt(0);
+            try
+            {
+                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    AppConnect.ModelDB.CompletedWorkHistory.Remove(currentRow);
+                    AppConnect.ModelDB.SaveChanges();
+                    ListTasks.ItemsSource = SortFilterTasks();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

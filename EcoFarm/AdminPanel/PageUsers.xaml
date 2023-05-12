@@ -36,7 +36,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="ListUsers" Grid.Row="1" Height="auto" MouseDoubleClick="ListUsers_MouseDoubleClick" Style="{StaticResource ListViewMain}">
+        <ListView x:Name="ListUsers" Grid.Row="1" Height="auto" MouseDoubleClick="ListUsers_MouseDoubleClick" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False">
 
             <ListView.ContextMenu>
                 <ContextMenu>

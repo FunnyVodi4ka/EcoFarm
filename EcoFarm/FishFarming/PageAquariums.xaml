@@ -58,7 +58,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="ListAquariums" Grid.Row="1" Grid.Column="1" Height="auto" MouseDoubleClick="ListAquariums_MouseDoubleClick" Style="{StaticResource ListViewMain}">
+        <ListView x:Name="ListAquariums" Grid.Row="1" Grid.Column="1" Height="auto" MouseDoubleClick="ListAquariums_MouseDoubleClick" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False">
 
             <ListView.ContextMenu>
                 <ContextMenu>

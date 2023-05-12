@@ -58,7 +58,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="ListFields" Grid.Row="1" Grid.Column="1" Height="auto" MouseDoubleClick="ListFields_MouseDoubleClick" Style="{StaticResource ListViewMain}">
+        <ListView x:Name="ListFields" Grid.Row="1" Grid.Column="1" Height="auto" MouseDoubleClick="ListFields_MouseDoubleClick" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="menuClickAdd" Header="Создать" Click="menuClickAdd_Click">

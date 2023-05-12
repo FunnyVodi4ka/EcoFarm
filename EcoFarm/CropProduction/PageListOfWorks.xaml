@@ -54,7 +54,7 @@
                 <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
             </StackPanel>
         </StackPanel>
-        <ListView Grid.Row="1" Grid.Column="1" Name="ListViewListOfWorks" Style="{StaticResource ListViewMain}" MouseDoubleClick="LbListOfWorks_MouseDoubleClick">
+        <ListView Grid.Row="1" Grid.Column="1" Name="ListViewListOfWorks" Style="{StaticResource ListViewMain}" MouseDoubleClick="LbListOfWorks_MouseDoubleClick" ScrollViewer.CanContentScroll="False">
 
             <ListView.ContextMenu>
                 <ContextMenu>

@@ -1,0 +1,90 @@
+﻿<Page x:Class="EcoFarm.Reports.PageAddEditHarvestingHistory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EcoFarm.Reports"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAddEditHarvestingHistory">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="62"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
+        <StackPanel Grid.RowSpan="3" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarHistoryWork" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarHistoryWork" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHistoryWork_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#649138"/>
+                <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stTabBarBudgetHistory" Width="4" Height="56" Background="#5D5D5D"/>
+                <Image x:Name="TabBarBudgetHistory" Source="/Resources/AppImages/budget.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarBudgetHistory_MouseLeftButtonDown"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Наименование места:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Style="{StaticResource TextBlockMain}" Width="300">
+                    <Run Text="{Binding PlaceForHistory.Name }"/>
+                    <Run Text="{Binding Number}"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Содержимое:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Text="{Binding ContentName}" Style="{StaticResource TextBlockMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Даты:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Style="{StaticResource TextBlockMain}" Width="300">
+                    <Run Text="{Binding BoardingDate, StringFormat='dd.MM.yyyy'}"/>
+                    <Run Text="-"/>
+                    <Run Text="{Binding DateOfHarvest, StringFormat='dd.MM.yyyy'}"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Масса урожая:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Text="{Binding CropWeight}" Style="{StaticResource TextBlockMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Количество (засейки):" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Text="{Binding Quantity}" Style="{StaticResource TextBlockMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Затраты (засейки):" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Text="{Binding Expenses}" Style="{StaticResource TextBlockMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Собрал работник:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Style="{StaticResource TextBlockMain}" Width="300">
+                    <Run Text="{Binding UserSurname }"/>
+                    <Run Text="{Binding UserName }"/>
+                    <Run Text="{Binding UserPatronymic}"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Размер/Объём:" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBlock Text="{Binding Size}" Style="{StaticResource TextBlockMain}" Width="300"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <TextBlock Text="Сумма сделки (₽):" Style="{StaticResource TextBlockMain}" Width="270"/>
+                <TextBox x:Name="tbSalePrice" Style="{StaticResource TextBoxMain}" Text="{Binding SalePrice}" Width="300" PreviewTextInput="tbSalePrice_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                <Button x:Name="btnSave" Content="Оформить продажу" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>
+                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnBack_Click" IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
