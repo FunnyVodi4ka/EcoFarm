@@ -153,5 +153,21 @@ namespace EcoFarm.FishFarming
                 AppFrame.frameMain.Navigate(new PageListOfWorksForFishFarming());
             }
         }
+
+        private void menuClickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAddEditFish(null));
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Fish fish = ListFish.SelectedItem as Fish;
+            AppFrame.frameMain.Navigate(new PageAddEditFish(fish));
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            btnDelete_Click(sender, e);
+        }
     }
 }

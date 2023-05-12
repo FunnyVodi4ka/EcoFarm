@@ -148,5 +148,21 @@ namespace EcoFarm.AdminPanel
                 MessageBox.Show("Вы не можете удалить себя!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void menuClickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAddEditUser(null));
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Users user = ListUsers.SelectedItem as Users;
+            AppFrame.frameMain.Navigate(new PageAddEditUser(user));
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            btnDelete_Click(sender, e);
+        }
     }
 }

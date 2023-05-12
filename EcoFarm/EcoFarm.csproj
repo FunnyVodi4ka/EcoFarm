@@ -400,6 +400,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AppImages\ContextMenuIcons\done_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\edit_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\delete_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\add_icon.png" />
     <Resource Include="Resources\AppImages\budget.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,11 +22,6 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <Grid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem x:Name="btnDone" Header="Отметить выполненой" Click="btnDone_Click"/>
-                </ContextMenu>
-            </Grid.ContextMenu>
 
             <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
             <StackPanel Grid.RowSpan="3" Grid.Column="0">
@@ -64,6 +59,16 @@
             </StackPanel>
 
             <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="btnDone" Header="Отметить выполненой" Click="btnDone_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/AppImages/ContextMenuIcons/done_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalAlignment" Value="Stretch"/>

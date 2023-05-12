@@ -3,6 +3,7 @@ using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.CropProduction;
 using EcoFarm.DatabaseConnection;
+using EcoFarm.FishFarming;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -196,6 +197,22 @@ namespace EcoFarm.Reports
         {
             BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
             AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
+        }
+
+        private void menuClickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAddEditBudgetHistory(null));
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
+            AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            btnDelete_Click(sender, e);
         }
     }
 }

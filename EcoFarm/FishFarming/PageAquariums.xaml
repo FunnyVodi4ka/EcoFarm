@@ -59,6 +59,27 @@
         </StackPanel>
 
         <ListView x:Name="ListAquariums" Grid.Row="1" Grid.Column="1" Height="auto" MouseDoubleClick="ListAquariums_MouseDoubleClick" Style="{StaticResource ListViewMain}">
+
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="menuClickAdd" Header="Создать" Click="menuClickAdd_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/AppImages/ContextMenuIcons/add_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="menuClickEdit" Header="Редактировать" Click="menuClickEdit_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/AppImages/ContextMenuIcons/edit_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="menuClickDelete" Header="Удалить" Click="menuClickDelete_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/AppImages/ContextMenuIcons/delete_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>

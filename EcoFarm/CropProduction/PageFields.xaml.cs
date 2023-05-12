@@ -174,5 +174,21 @@ namespace EcoFarm.CropProduction
                 AppFrame.frameMain.Navigate(new PageListOfWorks());
             }
         }
+
+        private void menuClickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAddEditField(null));
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Fields row = ListFields.SelectedItem as Fields;
+            AppFrame.frameMain.Navigate(new PageAddEditField(row));
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            btnDelete_Click(sender, e);
+        }
     }
 }

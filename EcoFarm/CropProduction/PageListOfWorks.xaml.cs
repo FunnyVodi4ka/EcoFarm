@@ -85,7 +85,7 @@ namespace EcoFarm.CropProduction
             var uniqueName = AppConnect.ModelDB.ListOfWorks.FirstOrDefault(x => x.Name == tbAdd.Text);
             if (tbAdd.Text.Length >= 2 && tbAdd.Text.Length <= 100)
             {
-                if (uniqueName == null)
+                if (uniqueName == null || currentWork.IdWork == uniqueName.IdWork)
                 {
                     try
                     {
@@ -136,6 +136,9 @@ namespace EcoFarm.CropProduction
             tbAdd.Text = "";
             btnAdd.Content = "Добавить";
             btnReset.Visibility = Visibility.Hidden;
+
+            menuClickAdd.Header = "Создать";
+            menuClickEdit.Header = "Редактировать";
         }
 
         private void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -183,6 +186,37 @@ namespace EcoFarm.CropProduction
                 SelectedMenuTab.selectedMenuTab = "PageCropProduction";
                 AppFrame.frameMain.Navigate(new PageListOfWorks());
             }
+        }
+
+        private void menuClickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            btnAdd_Click(sender, e);
+
+            menuClickAdd.Header = "Создать";
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (menuClickEdit.Header.ToString() == "Редактировать")
+            {
+                currentWork = ListViewListOfWorks.SelectedItem as ListOfWorks;
+                tblAdd.Text = "Изменение работы";
+                tbAdd.Text = currentWork.Name;
+                btnAdd.Content = "Изменить";
+                btnReset.Visibility = Visibility.Visible;
+
+                menuClickAdd.Header = "Сохранить";
+                menuClickEdit.Header = "Отменить";
+            }
+            else
+            {
+                ResetEditRow();
+            }
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            btnDelete_Click(sender, e);
         }
     }
 }

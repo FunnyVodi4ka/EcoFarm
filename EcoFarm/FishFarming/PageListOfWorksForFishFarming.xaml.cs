@@ -84,7 +84,7 @@ namespace EcoFarm.FishFarming
             var uniqueName = AppConnect.ModelDB.ListOfWorksForFishFarming.FirstOrDefault(x => x.Name == tbAdd.Text);
             if (tbAdd.Text.Length >= 2 && tbAdd.Text.Length <= 100)
             {
-                if (uniqueName == null)
+                if (uniqueName == null || currentWork.IdWork == uniqueName.IdWork)
                 {
                     try
                     {
@@ -135,6 +135,9 @@ namespace EcoFarm.FishFarming
             tbAdd.Text = "";
             btnAdd.Content = "Добавить";
             btnReset.Visibility = Visibility.Hidden;
+
+            menuClickAdd.Header = "Создать";
+            menuClickEdit.Header = "Редактировать";
         }
 
         private void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -182,6 +185,37 @@ namespace EcoFarm.FishFarming
                 SelectedMenuTab.selectedMenuTab = "PageFishFarming";
                 AppFrame.frameMain.Navigate(new PageListOfWorksForFishFarming());
             }
+        }
+
+        private void menuClickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            btnAdd_Click(sender, e);
+
+            menuClickAdd.Header = "Создать";
+        }
+
+        private void menuClickEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (menuClickEdit.Header.ToString() == "Редактировать")
+            {
+                currentWork = ListViewListOfWorks.SelectedItem as ListOfWorksForFishFarming;
+                tblAdd.Text = "Изменение работы";
+                tbAdd.Text = currentWork.Name;
+                btnAdd.Content = "Изменить";
+                btnReset.Visibility = Visibility.Visible;
+
+                menuClickAdd.Header = "Сохранить";
+                menuClickEdit.Header = "Отменить";
+            }
+            else
+            {
+                ResetEditRow();
+            }
+        }
+
+        private void menuClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            btnDelete_Click(sender, e);
         }
     }
 }
