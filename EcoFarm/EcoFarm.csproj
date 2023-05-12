@@ -407,6 +407,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AppImages\ContextMenuIcons\reset_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\dollar_icon.png" />
     <Resource Include="Resources\AppImages\ContextMenuIcons\done_icon.png" />
     <Resource Include="Resources\AppImages\ContextMenuIcons\edit_icon.png" />
     <Resource Include="Resources\AppImages\ContextMenuIcons\delete_icon.png" />
