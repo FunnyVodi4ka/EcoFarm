@@ -64,82 +64,34 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header=" Место работы "  Width="auto">
+                        <GridViewColumn Header="Наименование "  Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0">
-                                        <Run Text="{Binding PlaceForHistory.Name }"/>
-                                        <Run Text="{Binding Number }"/>
-                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header=" Содержимое "  Width="auto">
+                        <GridViewColumn Header=" Тип операции "  Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding ContentName}"/>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="0" Text="{Binding TypeOfOperation.Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header=" Затраты " Width="auto">
+                        <GridViewColumn Header=" Сумма " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
-                                        <Run Text="{Binding Expenses}"/>
+                                        <Run Text="{Binding Amount}"/>
                                         <Run Text="₽"/>
-                                        <Run Text="-"/>
-                                        <Run Text="{Binding Quantity}"/>
-                                        <Run>
-                                            <Run.Style>
-                                                <Style TargetType="{x:Type Run}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Поле">
-                                                            <Setter Property="Text" Value="(Семена)"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Аквариум">
-                                                            <Setter Property="Text" Value="(Мальки)"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Run.Style>
-                                        </Run>
                                     </TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header=" Урожай " Width="auto">
+                        <GridViewColumn Header=" Дата " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
-                                        <Run Text="{Binding DateOfHarvest, StringFormat='dd.MM.yyyy'}"/>
-                                        <Run Text=" - "/>
-                                        <Run Text="{Binding CropWeight}"/>
-                                        <Run>
-                                            <Run.Style>
-                                                <Style TargetType="{x:Type Run}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Поле">
-                                                            <Setter Property="Text" Value="кг"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding PlaceForHistory.Name}" Value="Аквариум">
-                                                            <Setter Property="Text" Value="шт"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Run.Style>
-                                        </Run>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header=" Работник " Width="auto">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="2">
-                                        <Run Text="{Binding UserSurname }"/>
-                                        <Run Text="{Binding UserName }"/>
-                                        <Run Text="{Binding UserPatronymic}"/>
-                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1" Text="{Binding Date}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
