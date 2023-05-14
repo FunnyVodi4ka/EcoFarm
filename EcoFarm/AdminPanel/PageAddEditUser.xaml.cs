@@ -40,6 +40,11 @@ namespace EcoFarm.AdminPanel
                 currentUser = user;
 
                 FindRole();
+
+                if(AuthorizedUser.user.IdRole == currentUser.IdRole)
+                {
+                    comboBoxRole.IsEnabled = false;
+                }
             }
             else
             {
