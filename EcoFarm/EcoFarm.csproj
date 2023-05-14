@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo-mini.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -159,9 +162,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection\Roles.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseConnection\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection\TypeOfOperation.cs">
@@ -366,13 +366,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DatabaseConnection\DESKTOP-8I0USR8\" />
+    <Folder Include="DatabaseConnection\LAPTOP-7AH4NVMB\" />
     <Folder Include="Resources\FilesToDelete\" />
     <Folder Include="Resources\FishImages\AlbumFish\" />
     <Folder Include="Resources\PlantsImages\AlbumPlants\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\AppImages\Logo-mini.png" />
-    <Resource Include="Resources\AppImages\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -397,6 +394,15 @@
     <Resource Include="Resources\AppImages\harvest.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\AppImages\ContextMenuIcons\reset_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\dollar_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\done_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\edit_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\delete_icon.png" />
+    <Resource Include="Resources\AppImages\ContextMenuIcons\add_icon.png" />
+    <Resource Include="Resources\AppImages\budget.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DatabaseConnection\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -407,13 +413,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\AppImages\ContextMenuIcons\reset_icon.png" />
-    <Resource Include="Resources\AppImages\ContextMenuIcons\dollar_icon.png" />
-    <Resource Include="Resources\AppImages\ContextMenuIcons\done_icon.png" />
-    <Resource Include="Resources\AppImages\ContextMenuIcons\edit_icon.png" />
-    <Resource Include="Resources\AppImages\ContextMenuIcons\delete_icon.png" />
-    <Resource Include="Resources\AppImages\ContextMenuIcons\add_icon.png" />
-    <Resource Include="Resources\AppImages\budget.png" />
+    <Resource Include="Logo-mini.ico" />
+    <Resource Include="Resources\AppImages\SystemImages\Logo-mini.png" />
+    <Resource Include="Resources\AppImages\SystemImages\Logo.png" />
+    <Resource Include="Resources\AppImages\SystemImages\Logo-mini.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

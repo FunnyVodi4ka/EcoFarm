@@ -1,4 +1,4 @@
-﻿C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Release\GeneratedInternalTypeHelper.g.cs
+﻿
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\App.xaml;;
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\AdminPanel\PageAddEditUser.xaml;;
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\AdminPanel\PageUsers.xaml;;
@@ -20,5 +20,9 @@ FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageFish.x
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageListOfWorksForFishFarming.xaml;;
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageTasksTodayForFishFarming.xaml;;
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\MainWindow.xaml;;
+FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageAddEditBudgetHistory.xaml;;
+FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageAddEditHarvestingHistory.xaml;;
+FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageBudgetHistory.xaml;;
 FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageCompletedWorks.xaml;;
+FC:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageHarvestingHistory.xaml;;
 

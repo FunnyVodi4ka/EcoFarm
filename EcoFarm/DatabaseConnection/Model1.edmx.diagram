@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a001fdd198644e2d92fe6fdf6a9559ce" Name="Diagram1">
+      <Diagram DiagramId="418775c725174f65b1dca622af20a9f1" Name="Diagram1">
         <EntityTypeShape EntityType="ModelDB.AlbumFish" Width="1.5" PointX="10" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.AlbumPlants" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Aquariums" Width="1.5" PointX="10" PointY="11.5" IsExpanded="true" />
@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="ModelDB.Plants" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.PlantWork" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Roles" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelDB.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.TypeOfOperation" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelDB.Users" Width="1.5" PointX="15" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="ModelDB.FK_AlbumFish_Fish" ManuallyRouted="false" />
