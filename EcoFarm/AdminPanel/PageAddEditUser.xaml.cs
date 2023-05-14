@@ -141,7 +141,7 @@ namespace EcoFarm.AdminPanel
                 if (!validation.CheckPassword(pbPassword.Password))
                 {
                     pbPassword.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Пароль должен содержать от 6 до 50 символов (Латинские прописные и строчные буквы, специальные символы)!");
+                    MessageBox.Show("Ошибка: Пароль должен содержать от 12 до 50 символов (Латинские прописные и строчные буквы, специальные символы)!");
                     return false;
                 }
             }

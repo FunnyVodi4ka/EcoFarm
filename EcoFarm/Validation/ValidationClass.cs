@@ -53,7 +53,7 @@ namespace EcoFarm.Validation
 
         public bool CheckPassword(string password)
         {
-            string pattern = @"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[0-9a-zA-Z!@#$%^&*]{6,50}";
+            string pattern = @"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[0-9a-zA-Z!@#$%^&*]{12,50}";
             Match isMatch = Regex.Match(password, pattern);
             return isMatch.Success;
         }
