@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.Authorization"
       mc:Ignorable="d" 
-      d:DesignHeight="150" d:DesignWidth="500"
-      Title="PageLogin">
+      d:DesignHeight="200" d:DesignWidth="600"
+      Title="PageLogin" MinHeight="200" MinWidth="600">
 
     <Grid>
-        <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+        <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Margin="30">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Label Content="Введите логин:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="textBoxLogin" Style="{StaticResource TextBoxMain}"/>
