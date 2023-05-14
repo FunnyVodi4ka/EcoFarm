@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm"
         mc:Ignorable="d"
-        Title="ECOFARM" Height="auto" Width="auto" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/Logo-mini.png">
+        Title="ECOFARM" Height="auto" Width="auto" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left" Grid.Row="0" Grid.ColumnSpan="2">
-            <Image Source="/Resources/AppImages/Logo.png"/>
+            <Image Source="/Resources/AppImages/SystemImages/Logo.png"/>
         </StackPanel>
 
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" Grid.ColumnSpan="2"/>
