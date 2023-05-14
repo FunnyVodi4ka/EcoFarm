@@ -124,8 +124,8 @@ namespace EcoFarm.FishFarming
                     else
                         newRow.Note = tbNote.Text;
 
-                    EcoFarmDBEntities.GetContext().AlbumFish.Add(newRow);
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.AlbumFish.Add(newRow);
+                    AppConnect.ModelDB.SaveChanges();
 
                     ListAlbum.ItemsSource = SortFilterAlbum();
 

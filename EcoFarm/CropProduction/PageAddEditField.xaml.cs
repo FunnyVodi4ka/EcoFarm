@@ -256,7 +256,7 @@ namespace EcoFarm.CropProduction
                 newCurrentWork.IdWork = work.IdWork;
                 newCurrentWork.DateOfNextWork = currentField.BoardingDate;
 
-                EcoFarmDBEntities.GetContext().CurrentWorks.Add(newCurrentWork);
+                AppConnect.ModelDB.CurrentWorks.Add(newCurrentWork);
             }
         }
 

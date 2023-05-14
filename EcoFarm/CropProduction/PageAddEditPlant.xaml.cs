@@ -67,7 +67,7 @@ namespace EcoFarm.CropProduction
 
         PlantWork[] listPlantWork()
         {
-            List<PlantWork> rows = EcoFarmDBEntities.GetContext().PlantWork.ToList();
+            List<PlantWork> rows = AppConnect.ModelDB.PlantWork.ToList();
             rows = rows.Where(x => x.IdPlant == currentPlant.IdPlant).ToList();
 
             return rows.ToArray();
@@ -162,9 +162,9 @@ namespace EcoFarm.CropProduction
 
                     if (currentPlant.IdPlant == 0)
                     {
-                        EcoFarmDBEntities.GetContext().Plants.Add(currentPlant);
+                        AppConnect.ModelDB.Plants.Add(currentPlant);
                     }
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
                     MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -195,7 +195,7 @@ namespace EcoFarm.CropProduction
 
         private void FindWorkItem()
         {
-            var work = EcoFarmDBEntities.GetContext().ListOfWorks.FirstOrDefault(x => x.Name == comboBoxWorks.SelectedItem.ToString());
+            var work = AppConnect.ModelDB.ListOfWorks.FirstOrDefault(x => x.Name == comboBoxWorks.SelectedItem.ToString());
             if (work == null)
             {
                 MessageBox.Show("Такого элемента нет!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -217,7 +217,7 @@ namespace EcoFarm.CropProduction
                     FindWorkItem();
                     plantWork.PeriodInDays = Int32.Parse(tbPeriod.Text);
 
-                    List<PlantWork> rows = EcoFarmDBEntities.GetContext().PlantWork.ToList();
+                    List<PlantWork> rows = AppConnect.ModelDB.PlantWork.ToList();
                     rows = rows.Where(x => x.IdPlant == currentPlant.IdPlant && x.IdWork == plantWork.IdWork).ToList();
                     if (rows.Count > 0)
                     {
@@ -225,8 +225,8 @@ namespace EcoFarm.CropProduction
                     }
                     else
                     {
-                        EcoFarmDBEntities.GetContext().PlantWork.Add(plantWork);
-                        EcoFarmDBEntities.GetContext().SaveChanges();
+                        AppConnect.ModelDB.PlantWork.Add(plantWork);
+                        AppConnect.ModelDB.SaveChanges();
 
                         ListViewPlantWork.ItemsSource = listPlantWork();
                     }
@@ -247,8 +247,8 @@ namespace EcoFarm.CropProduction
                 var currentRow = ListViewPlantWork.SelectedItems.Cast<PlantWork>().ToList().ElementAt(0);
                 if (MessageBox.Show("Вы уверены, что хотите удалить работу?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    EcoFarmDBEntities.GetContext().PlantWork.Remove(currentRow);
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.PlantWork.Remove(currentRow);
+                    AppConnect.ModelDB.SaveChanges();
                     //ListViewPlantWork.Items.Remove(currentRow);
                     ListViewPlantWork.ItemsSource = listPlantWork();
                 }

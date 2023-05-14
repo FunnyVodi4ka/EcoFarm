@@ -164,7 +164,7 @@ namespace EcoFarm.Authorization
 
                     AppConnect.ModelDB.Users.Add(newUser);
 
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
 
                     MessageBox.Show("Регистрация прошла успешно!", "Регистрация успешна", MessageBoxButton.OK, MessageBoxImage.Information);

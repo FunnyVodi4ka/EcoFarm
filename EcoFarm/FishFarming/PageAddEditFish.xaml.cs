@@ -64,7 +64,7 @@ namespace EcoFarm.FishFarming
 
         FishWork[] listPlantWork()
         {
-            List<FishWork> rows = EcoFarmDBEntities.GetContext().FishWork.ToList();
+            List<FishWork> rows = AppConnect.ModelDB.FishWork.ToList();
             rows = rows.Where(x => x.IdFish == currentFish.IdFish).ToList();
 
             return rows.ToArray();
@@ -159,9 +159,9 @@ namespace EcoFarm.FishFarming
 
                     if (currentFish.IdFish == 0)
                     {
-                        EcoFarmDBEntities.GetContext().Fish.Add(currentFish);
+                        AppConnect.ModelDB.Fish.Add(currentFish);
                     }
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
                     MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -192,7 +192,7 @@ namespace EcoFarm.FishFarming
 
         private void FindWorkItem()
         {
-            var work = EcoFarmDBEntities.GetContext().ListOfWorksForFishFarming.FirstOrDefault(x => x.Name == comboBoxWorks.SelectedItem.ToString());
+            var work = AppConnect.ModelDB.ListOfWorksForFishFarming.FirstOrDefault(x => x.Name == comboBoxWorks.SelectedItem.ToString());
             if (work == null)
             {
                 MessageBox.Show("Такого элемента нет!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -220,7 +220,7 @@ namespace EcoFarm.FishFarming
                     FindWorkItem();
                     fishWork.PeriodInDays = Int32.Parse(tbPeriod.Text);
 
-                    List<FishWork> rows = EcoFarmDBEntities.GetContext().FishWork.ToList();
+                    List<FishWork> rows = AppConnect.ModelDB.FishWork.ToList();
                     rows = rows.Where(x => x.IdFish == currentFish.IdFish && x.IdWork == fishWork.IdWork).ToList();
                     if (rows.Count > 0)
                     {
@@ -228,8 +228,8 @@ namespace EcoFarm.FishFarming
                     }
                     else
                     {
-                        EcoFarmDBEntities.GetContext().FishWork.Add(fishWork);
-                        EcoFarmDBEntities.GetContext().SaveChanges();
+                        AppConnect.ModelDB.FishWork.Add(fishWork);
+                        AppConnect.ModelDB.SaveChanges();
 
                         ListViewFishWork.ItemsSource = listPlantWork();
                     }
@@ -250,8 +250,8 @@ namespace EcoFarm.FishFarming
                 var currentRow = ListViewFishWork.SelectedItems.Cast<FishWork>().ToList().ElementAt(0);
                 if (MessageBox.Show("Вы уверены, что хотите удалить работу?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    EcoFarmDBEntities.GetContext().FishWork.Remove(currentRow);
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.FishWork.Remove(currentRow);
+                    AppConnect.ModelDB.SaveChanges();
                     //ListViewFishWork.Items.Remove(currentRow);
                     ListViewFishWork.ItemsSource = listPlantWork();
                 }

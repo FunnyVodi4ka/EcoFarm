@@ -209,12 +209,12 @@ namespace EcoFarm.FishFarming
 
                     if (currentAquarium.IdAquarium == 0)
                     {
-                        EcoFarmDBEntities.GetContext().Aquariums.Add(currentAquarium);
+                        AppConnect.ModelDB.Aquariums.Add(currentAquarium);
                         SaveInBudgetHistory(currentAquarium);
                         SaveCurrentWork();
                     }
 
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
                     MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -325,7 +325,7 @@ namespace EcoFarm.FishFarming
                 newCurrentWork.IdWork = work.IdWork;
                 newCurrentWork.DateOfNextWork = currentAquarium.BoardingDate;
 
-                EcoFarmDBEntities.GetContext().CurrentWorksForFishFarming.Add(newCurrentWork);
+                AppConnect.ModelDB.CurrentWorksForFishFarming.Add(newCurrentWork);
             }
         }
 

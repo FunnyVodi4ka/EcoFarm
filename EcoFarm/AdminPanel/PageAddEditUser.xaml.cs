@@ -214,9 +214,9 @@ namespace EcoFarm.AdminPanel
 
                     if (currentUser.IdUser == 0)
                     {
-                        EcoFarmDBEntities.GetContext().Users.Add(currentUser);
+                        AppConnect.ModelDB.Users.Add(currentUser);
                     }
-                    EcoFarmDBEntities.GetContext().SaveChanges();
+                    AppConnect.ModelDB.SaveChanges();
                     AppConnect.ModelDB.SaveChanges();
                     MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);

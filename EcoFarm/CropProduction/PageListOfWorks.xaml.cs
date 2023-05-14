@@ -92,9 +92,9 @@ namespace EcoFarm.CropProduction
                         currentWork.Name = tbAdd.Text;
                         if (currentWork.IdWork == 0)
                         {
-                            EcoFarmDBEntities.GetContext().ListOfWorks.Add(currentWork);
+                            AppConnect.ModelDB.ListOfWorks.Add(currentWork);
                         }
-                        EcoFarmDBEntities.GetContext().SaveChanges();
+                        AppConnect.ModelDB.SaveChanges();
                         AppConnect.ModelDB.SaveChanges();
                         MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                     MessageBoxButton.OK, MessageBoxImage.Information);

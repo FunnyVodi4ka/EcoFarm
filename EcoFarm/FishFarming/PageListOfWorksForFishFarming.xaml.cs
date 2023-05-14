@@ -91,9 +91,9 @@ namespace EcoFarm.FishFarming
                         currentWork.Name = tbAdd.Text;
                         if (currentWork.IdWork == 0)
                         {
-                            EcoFarmDBEntities.GetContext().ListOfWorksForFishFarming.Add(currentWork);
+                            AppConnect.ModelDB.ListOfWorksForFishFarming.Add(currentWork);
                         }
-                        EcoFarmDBEntities.GetContext().SaveChanges();
+                        AppConnect.ModelDB.SaveChanges();
                         AppConnect.ModelDB.SaveChanges();
                         MessageBox.Show("Данные успешно сохранены!", "Уведомление",
                                     MessageBoxButton.OK, MessageBoxImage.Information);
