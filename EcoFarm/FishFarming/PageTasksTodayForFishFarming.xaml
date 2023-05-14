@@ -97,6 +97,13 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
+                            <GridViewColumn Header="   Работа   " Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1" Text="{Binding ListOfWorksForFishFarming.Name}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="   Дата работы   " Width="auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
