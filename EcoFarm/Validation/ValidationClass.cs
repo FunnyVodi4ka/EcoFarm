@@ -91,7 +91,7 @@ namespace EcoFarm.Validation
 
         public bool CheckPhone(string phone)
         {
-            string pattern = "^8\\d{3}\\d{3}\\d{2}\\d{2}";
+            string pattern = "^8\\d{10}";
             Match isMatch = Regex.Match(phone, pattern, RegexOptions.IgnoreCase);
             return isMatch.Success;
         }

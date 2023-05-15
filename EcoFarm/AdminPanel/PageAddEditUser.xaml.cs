@@ -116,7 +116,7 @@ namespace EcoFarm.AdminPanel
                 MessageBox.Show("Ошибка: Пользователь с таким телефоном уже зарегистрирован!");
                 return false;
             }
-            if (!validation.CheckEmail(tbPhone.Text))
+            if (!validation.CheckPhone(tbPhone.Text))
             {
                 tbPhone.BorderBrush = Brushes.Red;
                 MessageBox.Show("Ошибка: Ошибка: Некорректный телефон (Пример: 89998887766)!");
