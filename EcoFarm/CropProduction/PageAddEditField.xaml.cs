@@ -341,6 +341,7 @@ namespace EcoFarm.CropProduction
                         record.Quantity = currentField.Quantity;
                         record.Expenses = currentField.Expenses;
                         record.Size = currentField.Size;
+                        record.SalePrice = null;
                         record.UserSurname = AuthorizedUser.user.Surname;
                         record.UserName = AuthorizedUser.user.Name;
                         record.UserPatronymic = AuthorizedUser.user.Patronymic;

@@ -290,6 +290,7 @@ namespace EcoFarm.FishFarming
                         record.Quantity = currentAquarium.Quantity;
                         record.Expenses = currentAquarium.Expenses;
                         record.Size = currentAquarium.Size;
+                        record.SalePrice = null;
                         record.UserSurname = AuthorizedUser.user.Surname;
                         record.UserName = AuthorizedUser.user.Name;
                         record.UserPatronymic = AuthorizedUser.user.Patronymic;

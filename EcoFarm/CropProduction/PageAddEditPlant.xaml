@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
-      d:DesignHeight="540" d:DesignWidth="600"
-      Title="PageAddEditPlant" MinHeight="540" MaxHeight="550" MinWidth="600">
+      d:DesignHeight="440" d:DesignWidth="1000"
+      Title="PageAddEditPlant" MinHeight="440" MaxHeight="550" MinWidth="1000">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -36,81 +36,82 @@
                 <Image x:Name="TabBarListOfWorks" Source="/Resources/AppImages/work-in-progress.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarListOfWorks_MouseLeftButtonDown"/>
             </StackPanel>
         </StackPanel>
-        
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
-                <TextBlock Text="Название:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="490" Height="50"/>
-            </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Описание:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="490" HorizontalAlignment="Stretch" Height="80"/>
-            </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="490" HorizontalAlignment="Stretch" Height="40"/>
-            </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <TextBlock Text="Период созревания:" Style="{StaticResource TextBlockMain}" Width="290"/>
-                <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="200"/>
-            </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Center">
-                <TextBlock Text="Фото:" Style="{StaticResource TextBlockMain}" Width="190"/>
-                <Image x:Name="imagePlant" Source="{Binding CorrectImage}" Width="70" Height="70" Margin="15,0,15,0"></Image>
-                <!--<TextBlock x:Name="tblCurrentImage" Style="{StaticResource TextBlockMain}" Text="{Binding ImageOfThePlant}" Width="290"/>-->
-            <!--</StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">-->
-                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Width="200">
-                    <Button x:Name="btnSaveImage" Content="Загрузить изображение" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnSaveImage_Click"/>
-                    <Button x:Name="btnOpenAlbum" Content="Альбом фотографий" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnOpenAlbum_Click"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel x:Name="spListOfWork" Style="{StaticResource StackPanelMainStyle}">
-                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
-                    <TextBlock x:Name="tblTypeWork" Text="Вид работы:" Style="{StaticResource TextBlockMain}"/>
-                    <ComboBox x:Name="comboBoxWorks" Style="{StaticResource ComboBoxMain}"/>
-                </StackPanel>
-                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
-                    <TextBlock x:Name="tblPeriod" Text="Раз в (дни):" Style="{StaticResource TextBlockMain}" Width="auto"/>
-                    <TextBox x:Name="tbPeriod" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" Width="216"/>
-                </StackPanel>
-                <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
-                    <Button x:Name="btnAdd" Content="+" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click" Width="24" Height="24" FontSize="24" Padding="0,-3,0,0" FontWeight="Bold"/>
-                    <Button x:Name="btnDel" Content="-" Style="{StaticResource ButtonGreen}" Click="btnDel_Click" Width="24" Height="24" FontSize="24" Padding="0,-4,0,0" FontWeight="Bold"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <ListView x:Name="ListViewPlantWork" Style="{StaticResource ListViewMain}" Width="490" Height="80">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                            <Setter Property="Height" Value="auto"/>
-                            <Setter Property="BorderBrush" Value="#649138" />
-                            <Setter Property="BorderThickness" Value="1" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">
+                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+                    <TextBlock Text="Название:" Style="{StaticResource TextBlockMain}"/>
+                    <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="390" Height="80"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Text="Описание:" Style="{StaticResource TextBlockMain}"/>
+                    <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="80"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
+                    <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="390" HorizontalAlignment="Stretch" Height="40"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                    <TextBlock Text="Период созревания:" Style="{StaticResource TextBlockMain}" Width="190"/>
+                    <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">
+                <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Center">
+                    <TextBlock Text="Фото:" Style="{StaticResource TextBlockMain}" Width="190"/>
+                    <Image x:Name="imagePlant" Source="{Binding CorrectImage}" Width="70" Height="70" Margin="15,0,15,0"></Image>
+                    <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Width="200">
+                        <Button x:Name="btnSaveImage" Content="Загрузить изображение" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnSaveImage_Click"/>
+                        <Button x:Name="btnOpenAlbum" Content="Альбом фотографий" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnOpenAlbum_Click"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="spListOfWork" Style="{StaticResource StackPanelMainStyle}">
+                    <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+                        <TextBlock x:Name="tblTypeWork" Text="Вид работы:" Style="{StaticResource TextBlockMain}"/>
+                        <ComboBox x:Name="comboBoxWorks" Style="{StaticResource ComboBoxMain}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
+                        <TextBlock x:Name="tblPeriod" Text="Раз в (дни):" Style="{StaticResource TextBlockMain}" Width="auto"/>
+                        <TextBox x:Name="tbPeriod" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" Width="216"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
+                        <Button x:Name="btnAdd" Content="+" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click" Width="24" Height="24" FontSize="24" Padding="0,-3,0,0" FontWeight="Bold"/>
+                        <Button x:Name="btnDel" Content="-" Style="{StaticResource ButtonGreen}" Click="btnDel_Click" Width="24" Height="24" FontSize="24" Padding="0,-4,0,0" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                    <ListView x:Name="ListViewPlantWork" Style="{StaticResource ListViewMain}" Width="490" Height="170">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="Height" Value="auto"/>
+                                <Setter Property="BorderBrush" Value="#649138" />
+                                <Setter Property="BorderThickness" Value="1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
 
-                                <TextBlock Grid.Column="0" TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource TextBlockMain}" Width="auto">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource TextBlockMain}" Width="auto">
                                     <Run Text="{Binding ListOfWorks.Name}"/>
                                     <Run Text=" раз в "/>
                                     <Run Text="{Binding PeriodInDays}"/>
                                     <Run Text=" д"/>
-                                </TextBlock>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>
-                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnBack_Click" IsCancel="True"/>
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelMainStyle}">
+                    <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>
+                    <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ButtonGreen}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnBack_Click" IsCancel="True"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>
