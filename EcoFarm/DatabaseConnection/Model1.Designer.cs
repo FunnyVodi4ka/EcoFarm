@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\AlexZ\Source\Repos\FunnyVodi4ka\EcoFarm\EcoFarm\DatabaseConnection\Model1.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\DatabaseConnection\Model1.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
