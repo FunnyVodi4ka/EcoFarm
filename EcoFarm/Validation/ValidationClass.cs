@@ -24,7 +24,7 @@ namespace EcoFarm.Validation
         public bool CheckUniqueLogin(string str, int idRow)
         {
             var uniqueLogin = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Login == str);
-            if (uniqueLogin == null || uniqueLogin.IdUser != idRow)
+            if (uniqueLogin == null || uniqueLogin.IdUser == idRow)
             {
                 return true;
             }
