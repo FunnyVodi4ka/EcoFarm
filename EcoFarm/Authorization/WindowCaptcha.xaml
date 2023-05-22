@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm.Authorization"
         mc:Ignorable="d"
-        Title="CAPTCHA" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png">
+        Title="CAPTCHA" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" ShowInTaskbar="False">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center">
             <Label x:Name="LabelCAPTCHA" Content="" FontFamily="Curlz MT" FontStyle="Italic" FontSize="24" HorizontalAlignment="Center" IsEnabled="False" RenderTransformOrigin="0.5,0.5" Margin="10">
