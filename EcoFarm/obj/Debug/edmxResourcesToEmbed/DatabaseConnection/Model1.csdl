@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ModelDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="EcoFarmDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="AlbumFish">
     <Key>
       <PropertyRef Name="IdAlbumPhoto" />
@@ -34,7 +34,6 @@
     <Property Name="Size" Type="Double" Nullable="false" />
     <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Fish" Relationship="Self.FK_Aquariums_Fish" FromRole="Aquariums" ToRole="Fish" />
-    <NavigationProperty Name="CurrentWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_Aquariums" FromRole="Aquariums" ToRole="CurrentWorksForFishFarming" />
   </EntityType>
   <EntityType Name="BudgetHistory">
     <Key>
@@ -59,7 +58,7 @@
     <Property Name="DateOfWork" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PlaceForHistory" Relationship="Self.FK_CompletedWorkHistory_WorkPlaceForHistory" FromRole="CompletedWorkHistory" ToRole="PlaceForHistory" />
   </EntityType>
   <EntityType Name="CurrentWorks">
@@ -72,17 +71,6 @@
     <Property Name="DateOfNextWork" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Fields" Relationship="Self.FK_CurrentWorks_Fields" FromRole="CurrentWorks" ToRole="Fields" />
     <NavigationProperty Name="ListOfWorks" Relationship="Self.FK_CurrentWorks_ListOfWorks" FromRole="CurrentWorks" ToRole="ListOfWorks" />
-  </EntityType>
-  <EntityType Name="CurrentWorksForFishFarming">
-    <Key>
-      <PropertyRef Name="IdAquarium" />
-      <PropertyRef Name="IdWork" />
-    </Key>
-    <Property Name="IdAquarium" Type="Int32" Nullable="false" />
-    <Property Name="IdWork" Type="Int32" Nullable="false" />
-    <Property Name="DateOfNextWork" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Aquariums" Relationship="Self.FK_CurrentWorksForFishFarming_Aquariums" FromRole="CurrentWorksForFishFarming" ToRole="Aquariums" />
-    <NavigationProperty Name="ListOfWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" FromRole="CurrentWorksForFishFarming" ToRole="ListOfWorksForFishFarming" />
   </EntityType>
   <EntityType Name="Fields">
     <Key>
@@ -142,7 +130,7 @@
     <Property Name="SalePrice" Type="Double" />
     <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PlaceForHistory" Relationship="Self.FK_HarvestingHistory_PlaceForHistory" FromRole="HarvestingHistory" ToRole="PlaceForHistory" />
   </EntityType>
   <EntityType Name="ListOfWorks">
@@ -160,7 +148,6 @@
     </Key>
     <Property Name="IdWork" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="CurrentWorksForFishFarming" Relationship="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" FromRole="ListOfWorksForFishFarming" ToRole="CurrentWorksForFishFarming" />
     <NavigationProperty Name="FishWork" Relationship="Self.FK_FishWork_ListOfWorksForFishFarming" FromRole="ListOfWorksForFishFarming" ToRole="FishWork" />
   </EntityType>
   <EntityType Name="PlaceForHistory">
@@ -197,24 +184,6 @@
     <NavigationProperty Name="ListOfWorks" Relationship="Self.FK_PlantWork_ListOfWorks" FromRole="PlantWork" ToRole="ListOfWorks" />
     <NavigationProperty Name="Plants" Relationship="Self.FK_PlantWork_Plants" FromRole="PlantWork" ToRole="Plants" />
   </EntityType>
-  <EntityType Name="Roles">
-    <Key>
-      <PropertyRef Name="IdRole" />
-    </Key>
-    <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="TypeOfOperation">
     <Key>
       <PropertyRef Name="IdOperation" />
@@ -232,11 +201,10 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IdRole" Type="Int32" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
   </EntityType>
   <Association Name="FK_AlbumFish_Fish">
     <End Role="Fish" Type="Self.Fish" Multiplicity="1">
@@ -277,20 +245,6 @@
       </Principal>
       <Dependent Role="Aquariums">
         <PropertyRef Name="IdFish" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CurrentWorksForFishFarming_Aquariums">
-    <End Role="Aquariums" Type="Self.Aquariums" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CurrentWorksForFishFarming" Type="Self.CurrentWorksForFishFarming" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Aquariums">
-        <PropertyRef Name="IdAquarium" />
-      </Principal>
-      <Dependent Role="CurrentWorksForFishFarming">
-        <PropertyRef Name="IdAquarium" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -346,20 +300,6 @@
         <PropertyRef Name="IdWork" />
       </Principal>
       <Dependent Role="CurrentWorks">
-        <PropertyRef Name="IdWork" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming">
-    <End Role="ListOfWorksForFishFarming" Type="Self.ListOfWorksForFishFarming" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="CurrentWorksForFishFarming" Type="Self.CurrentWorksForFishFarming" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ListOfWorksForFishFarming">
-        <PropertyRef Name="IdWork" />
-      </Principal>
-      <Dependent Role="CurrentWorksForFishFarming">
         <PropertyRef Name="IdWork" />
       </Dependent>
     </ReferentialConstraint>
@@ -448,20 +388,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Users_Roles">
-    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Users" Type="Self.Users" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Roles">
-        <PropertyRef Name="IdRole" />
-      </Principal>
-      <Dependent Role="Users">
-        <PropertyRef Name="IdRole" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="EcoFarmDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" />
     <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" />
@@ -469,7 +395,6 @@
     <EntitySet Name="BudgetHistory" EntityType="Self.BudgetHistory" />
     <EntitySet Name="CompletedWorkHistory" EntityType="Self.CompletedWorkHistory" />
     <EntitySet Name="CurrentWorks" EntityType="Self.CurrentWorks" />
-    <EntitySet Name="CurrentWorksForFishFarming" EntityType="Self.CurrentWorksForFishFarming" />
     <EntitySet Name="Fields" EntityType="Self.Fields" />
     <EntitySet Name="Fish" EntityType="Self.Fish" />
     <EntitySet Name="FishWork" EntityType="Self.FishWork" />
@@ -479,8 +404,6 @@
     <EntitySet Name="PlaceForHistory" EntityType="Self.PlaceForHistory" />
     <EntitySet Name="Plants" EntityType="Self.Plants" />
     <EntitySet Name="PlantWork" EntityType="Self.PlantWork" />
-    <EntitySet Name="Roles" EntityType="Self.Roles" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TypeOfOperation" EntityType="Self.TypeOfOperation" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_AlbumFish_Fish" Association="Self.FK_AlbumFish_Fish">
@@ -494,10 +417,6 @@
     <AssociationSet Name="FK_Aquariums_Fish" Association="Self.FK_Aquariums_Fish">
       <End Role="Fish" EntitySet="Fish" />
       <End Role="Aquariums" EntitySet="Aquariums" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CurrentWorksForFishFarming_Aquariums" Association="Self.FK_CurrentWorksForFishFarming_Aquariums">
-      <End Role="Aquariums" EntitySet="Aquariums" />
-      <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
     </AssociationSet>
     <AssociationSet Name="FK_BudgetHistory_TypeOfOperation" Association="Self.FK_BudgetHistory_TypeOfOperation">
       <End Role="TypeOfOperation" EntitySet="TypeOfOperation" />
@@ -514,10 +433,6 @@
     <AssociationSet Name="FK_CurrentWorks_ListOfWorks" Association="Self.FK_CurrentWorks_ListOfWorks">
       <End Role="ListOfWorks" EntitySet="ListOfWorks" />
       <End Role="CurrentWorks" EntitySet="CurrentWorks" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming" Association="Self.FK_CurrentWorksForFishFarming_ListOfWorksForFishFarming">
-      <End Role="ListOfWorksForFishFarming" EntitySet="ListOfWorksForFishFarming" />
-      <End Role="CurrentWorksForFishFarming" EntitySet="CurrentWorksForFishFarming" />
     </AssociationSet>
     <AssociationSet Name="FK_Fields_Plants" Association="Self.FK_Fields_Plants">
       <End Role="Plants" EntitySet="Plants" />
@@ -542,10 +457,6 @@
     <AssociationSet Name="FK_PlantWork_Plants" Association="Self.FK_PlantWork_Plants">
       <End Role="Plants" EntitySet="Plants" />
       <End Role="PlantWork" EntitySet="PlantWork" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
-      <End Role="Roles" EntitySet="Roles" />
-      <End Role="Users" EntitySet="Users" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
