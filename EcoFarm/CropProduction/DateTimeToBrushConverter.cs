@@ -15,7 +15,7 @@ namespace EcoFarm.CropProduction
         {
             var dateTime = (DateTime)value;
             if (dateTime.Date < DateTime.Now.Date)
-                return "#F66257";
+                return "#fc7474";
             if (dateTime.Date == DateTime.Now.Date)
                 return "#FBEEC1";
             if (dateTime.Date > DateTime.Now.Date)

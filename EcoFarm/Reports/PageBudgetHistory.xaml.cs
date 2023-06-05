@@ -57,9 +57,15 @@ namespace EcoFarm.Reports
                 }
             }
             total = profit - expenses;
+
+            profit = Math.Round(profit, 2);
+            expenses = Math.Round(expenses, 2);
+            total = Math.Round(total, 2);
+
             tblProfit.Text = profit.ToString();
             tblExpenses.Text = expenses.ToString();
             tblTotal.Text = total.ToString();
+
             if(total >= 0)
             {
                 tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#44944A");

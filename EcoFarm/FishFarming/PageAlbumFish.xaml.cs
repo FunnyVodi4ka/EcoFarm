@@ -67,6 +67,11 @@ namespace EcoFarm.FishFarming
             ListAlbum.ItemsSource = SortFilterAlbum();
         }
 
+        private void imagePhoto_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            btnLoadPhoto_Click(sender, e);
+        }
+
         private void btnLoadPhoto_Click(object sender, RoutedEventArgs e)
         {
             try

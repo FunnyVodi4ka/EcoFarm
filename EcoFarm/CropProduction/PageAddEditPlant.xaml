@@ -41,19 +41,19 @@
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
                     <TextBlock Text="Название:" Style="{StaticResource TextBlockMain}"/>
-                    <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="390" Height="80"/>
+                    <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="390" Height="90"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock Text="Описание:" Style="{StaticResource TextBlockMain}"/>
-                    <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="80"/>
+                    <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="90"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
                     <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="390" HorizontalAlignment="Stretch" Height="40"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}">
-                    <TextBlock Text="Период созревания:" Style="{StaticResource TextBlockMain}" Width="190"/>
-                    <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="200"/>
+                    <TextBlock Text="Период созревания:" Style="{StaticResource TextBlockMain}" Width="230"/>
+                    <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="160"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">

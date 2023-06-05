@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.AdminPanel"
       mc:Ignorable="d" 
-      d:DesignHeight="270" d:DesignWidth="500"
-      Title="PageAddEditUser" MinHeight="270" MaxHeight="550" MinWidth="500">
+      d:DesignHeight="300" d:DesignWidth="500"
+      Title="PageAddEditUser" MinHeight="300" MaxHeight="550" MinWidth="500">
 
     <Grid>
         <Grid.ColumnDefinitions>

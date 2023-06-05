@@ -49,6 +49,7 @@ namespace EcoFarm.DatabaseConnection
         public virtual DbSet<Plants> Plants { get; set; }
         public virtual DbSet<PlantWork> PlantWork { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeOfOperation> TypeOfOperation { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }

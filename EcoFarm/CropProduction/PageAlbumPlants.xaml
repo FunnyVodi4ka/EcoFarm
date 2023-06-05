@@ -43,7 +43,7 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                    <Setter Property="Height" Value="150"/>
+                    <Setter Property="Height" Value="auto"/>
                     <Setter Property="BorderBrush" Value="#649138" />
                     <Setter Property="BorderThickness" Value="1" />
                 </Style>
@@ -74,7 +74,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource StackPanelMainStyle}" VerticalAlignment="Top" Orientation="Vertical">
             <TextBlock Text="ДОБАВИТЬ ФОТО" Style="{StaticResource TextBlockMain}" Width="auto" HorizontalAlignment="Center"/>
-            <Image x:Name="imagePhoto" Source="/Resources/AppImages/DefaultPicture.png" Width="200" Height="150"/>
+            <Image x:Name="imagePhoto" Source="/Resources/AppImages/DefaultPicture.png" Width="150" Height="150" PreviewMouseLeftButtonDown="imagePhoto_PreviewMouseLeftButtonDown"/>
             <Button x:Name="btnLoadPhoto" Content="Выбрать фото" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Width="auto" Click="btnLoadPhoto_Click"/>
             <TextBlock Text="Заметки к фото:" Style="{StaticResource TextBlockMain}" Width="auto"/>
             <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" HorizontalAlignment="Stretch" Height="120" Width="auto"/>
