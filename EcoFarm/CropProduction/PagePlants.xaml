@@ -48,7 +48,7 @@
                 <TextBlock Text="Сортировка" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left"/>
                 <ComboBox x:Name="comboBoxSort" Style="{StaticResource ComboBoxMain}" HorizontalAlignment="Left" SelectionChanged="comboBoxSort_SelectionChanged"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
                 <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
                 <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
             </StackPanel>

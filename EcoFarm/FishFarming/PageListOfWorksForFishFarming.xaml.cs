@@ -134,7 +134,7 @@ namespace EcoFarm.FishFarming
             tblAdd.Text = "Новый вид работ";
             tbAdd.Text = "";
             btnAdd.Content = "Добавить";
-            btnReset.Visibility = Visibility.Hidden;
+            btnReset.Visibility = Visibility.Collapsed;
 
             menuClickAdd.Header = "Создать";
             menuClickEdit.Header = "Редактировать";
