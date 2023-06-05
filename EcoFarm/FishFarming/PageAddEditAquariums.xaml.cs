@@ -293,7 +293,10 @@ namespace EcoFarm.FishFarming
                         record.SalePrice = null;
                         record.UserSurname = AuthorizedUser.user.Surname;
                         record.UserName = AuthorizedUser.user.Name;
-                        record.UserPatronymic = AuthorizedUser.user.Patronymic;
+                        if (AuthorizedUser.user.Patronymic.Length > 0)
+                        {
+                            record.UserPatronymic = AuthorizedUser.user.Patronymic;
+                        }
 
                         AppConnect.ModelDB.HarvestingHistory.Add(record);
                         AppConnect.ModelDB.Aquariums.Remove(currentAquarium);

@@ -141,7 +141,10 @@ namespace EcoFarm.FishFarming
             record.DateOfWork = DateTime.Today;
             record.UserSurname = AuthorizedUser.user.Surname;
             record.UserName = AuthorizedUser.user.Name;
-            record.UserPatronymic = AuthorizedUser.user.Patronymic;
+            if (AuthorizedUser.user.Patronymic.Length > 0)
+            {
+                record.UserPatronymic = AuthorizedUser.user.Patronymic;
+            }
 
             AppConnect.ModelDB.CompletedWorkHistory.Add(record);
         }

@@ -92,11 +92,14 @@ namespace EcoFarm.AdminPanel
                 MessageBox.Show("Ошибка: Имя не может содержать меньше 2 и больше 50 символов!");
                 return false;
             }
-            if (!validation.CheckStringData(tbPatronymic.Text, 2, 50))
+            if (tbPatronymic.Text.Length > 0)
             {
-                tbPatronymic.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Отчество не может содержать меньше 2 и больше 50 символов!");
-                return false;
+                if (!validation.CheckStringData(tbPatronymic.Text, 2, 50))
+                {
+                    tbPatronymic.BorderBrush = Brushes.Red;
+                    MessageBox.Show("Ошибка: Отчество не может содержать меньше 2 и больше 50 символов!");
+                    return false;
+                }
             }
             if (!validation.CheckUniqueEmail(tbEmail.Text, currentUser.IdUser))
             {
@@ -212,7 +215,10 @@ namespace EcoFarm.AdminPanel
                         currentUser.Password = pbPassword.Password;
                     currentUser.Surname = tbSurname.Text;
                     currentUser.Name = tbName.Text;
-                    currentUser.Patronymic = tbPatronymic.Text;
+                    if (tbPatronymic.Text.Length > 0)
+                    {
+                        currentUser.Patronymic = tbPatronymic.Text;
+                    }
                     currentUser.Email = tbEmail.Text;
                     currentUser.Phone = tbPhone.Text;
                     SetRole();

@@ -54,11 +54,14 @@ namespace EcoFarm.Authorization
                 MessageBox.Show("Ошибка: Имя не может содержать меньше 2 и больше 50 символов!");
                 return false;
             }
-            if (!validation.CheckStringData(tbPatronymic.Text, 2, 50))
+            if(tbPatronymic.Text.Length > 0)
             {
-                tbPatronymic.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Отчество не может содержать меньше 2 и больше 50 символов!");
-                return false;
+                if (!validation.CheckStringData(tbPatronymic.Text, 2, 50))
+                {
+                    tbPatronymic.BorderBrush = Brushes.Red;
+                    MessageBox.Show("Ошибка: Отчество не может содержать меньше 2 и больше 50 символов!");
+                    return false;
+                }
             }
             if (!validation.CheckUniqueEmail(tbEmail.Text, newUser.IdUser))
             {
@@ -156,7 +159,10 @@ namespace EcoFarm.Authorization
                     newUser.Password = pbPassword.Password;
                     newUser.Surname = tbSurname.Text;
                     newUser.Name = tbName.Text;
-                    newUser.Patronymic = tbPatronymic.Text;
+                    if (tbPatronymic.Text.Length > 0)
+                    {
+                        newUser.Patronymic = tbPatronymic.Text;
+                    }
                     var role = AppConnect.ModelDB.Roles.FirstOrDefault(x => x.Name == "Сотрудник");
                     newUser.IdRole = role.IdRole;
                     newUser.Email = tbEmail.Text;

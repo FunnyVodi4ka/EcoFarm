@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ModelDB" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище EcoFarmDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumFish">
           <Key>
             <PropertyRef Name="IdAlbumPhoto" />
@@ -59,7 +59,7 @@
           <Property Name="DateOfWork" Type="date" Nullable="false" />
           <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CurrentWorks">
           <Key>
@@ -130,7 +130,7 @@
           <Property Name="SalePrice" Type="float" />
           <Property Name="UserSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ListOfWorks">
           <Key>
@@ -206,7 +206,7 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
@@ -435,7 +435,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище ModelDBContainer">
+        <EntityContainer Name="Хранилище EcoFarmDBModelContainer">
           <EntitySet Name="AlbumFish" EntityType="Self.AlbumFish" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AlbumPlants" EntityType="Self.AlbumPlants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Aquariums" EntityType="Self.Aquariums" Schema="dbo" store:Type="Tables" />
@@ -525,7 +525,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ModelDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EcoFarmDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AlbumFish">
           <Key>
             <PropertyRef Name="IdAlbumPhoto" />
@@ -585,7 +585,7 @@
           <Property Name="DateOfWork" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PlaceForHistory" Relationship="Self.FK_CompletedWorkHistory_WorkPlaceForHistory" FromRole="CompletedWorkHistory" ToRole="PlaceForHistory" />
         </EntityType>
         <EntityType Name="CurrentWorks">
@@ -668,7 +668,7 @@
           <Property Name="SalePrice" Type="Double" />
           <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PlaceForHistory" Relationship="Self.FK_HarvestingHistory_PlaceForHistory" FromRole="HarvestingHistory" ToRole="PlaceForHistory" />
         </EntityType>
         <EntityType Name="ListOfWorks">
@@ -758,7 +758,7 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1079,9 +1079,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelDBContainer" CdmEntityContainer="EcoFarmDBEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EcoFarmDBModelContainer" CdmEntityContainer="EcoFarmDBEntities">
           <EntitySetMapping Name="AlbumFish">
-            <EntityTypeMapping TypeName="ModelDB.AlbumFish">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.AlbumFish">
               <MappingFragment StoreEntitySet="AlbumFish">
                 <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
                 <ScalarProperty Name="IdFish" ColumnName="IdFish" />
@@ -1091,7 +1091,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AlbumPlants">
-            <EntityTypeMapping TypeName="ModelDB.AlbumPlants">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.AlbumPlants">
               <MappingFragment StoreEntitySet="AlbumPlants">
                 <ScalarProperty Name="IdAlbumPhoto" ColumnName="IdAlbumPhoto" />
                 <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
@@ -1101,7 +1101,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Aquariums">
-            <EntityTypeMapping TypeName="ModelDB.Aquariums">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.Aquariums">
               <MappingFragment StoreEntitySet="Aquariums">
                 <ScalarProperty Name="IdAquarium" ColumnName="IdAquarium" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -1116,7 +1116,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BudgetHistory">
-            <EntityTypeMapping TypeName="ModelDB.BudgetHistory">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.BudgetHistory">
               <MappingFragment StoreEntitySet="BudgetHistory">
                 <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1127,7 +1127,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompletedWorkHistory">
-            <EntityTypeMapping TypeName="ModelDB.CompletedWorkHistory">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.CompletedWorkHistory">
               <MappingFragment StoreEntitySet="CompletedWorkHistory">
                 <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
                 <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
@@ -1142,7 +1142,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CurrentWorks">
-            <EntityTypeMapping TypeName="ModelDB.CurrentWorks">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.CurrentWorks">
               <MappingFragment StoreEntitySet="CurrentWorks">
                 <ScalarProperty Name="IdField" ColumnName="IdField" />
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
@@ -1151,7 +1151,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CurrentWorksForFishFarming">
-            <EntityTypeMapping TypeName="ModelDB.CurrentWorksForFishFarming">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.CurrentWorksForFishFarming">
               <MappingFragment StoreEntitySet="CurrentWorksForFishFarming">
                 <ScalarProperty Name="IdAquarium" ColumnName="IdAquarium" />
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
@@ -1160,7 +1160,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fields">
-            <EntityTypeMapping TypeName="ModelDB.Fields">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.Fields">
               <MappingFragment StoreEntitySet="Fields">
                 <ScalarProperty Name="IdField" ColumnName="IdField" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -1175,7 +1175,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fish">
-            <EntityTypeMapping TypeName="ModelDB.Fish">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.Fish">
               <MappingFragment StoreEntitySet="Fish">
                 <ScalarProperty Name="IdFish" ColumnName="IdFish" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1187,7 +1187,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FishWork">
-            <EntityTypeMapping TypeName="ModelDB.FishWork">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.FishWork">
               <MappingFragment StoreEntitySet="FishWork">
                 <ScalarProperty Name="IdFish" ColumnName="IdFish" />
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
@@ -1196,7 +1196,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HarvestingHistory">
-            <EntityTypeMapping TypeName="ModelDB.HarvestingHistory">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.HarvestingHistory">
               <MappingFragment StoreEntitySet="HarvestingHistory">
                 <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
                 <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
@@ -1216,7 +1216,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListOfWorks">
-            <EntityTypeMapping TypeName="ModelDB.ListOfWorks">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.ListOfWorks">
               <MappingFragment StoreEntitySet="ListOfWorks">
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1224,7 +1224,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListOfWorksForFishFarming">
-            <EntityTypeMapping TypeName="ModelDB.ListOfWorksForFishFarming">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.ListOfWorksForFishFarming">
               <MappingFragment StoreEntitySet="ListOfWorksForFishFarming">
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1232,7 +1232,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlaceForHistory">
-            <EntityTypeMapping TypeName="ModelDB.PlaceForHistory">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.PlaceForHistory">
               <MappingFragment StoreEntitySet="PlaceForHistory">
                 <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1240,7 +1240,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Plants">
-            <EntityTypeMapping TypeName="ModelDB.Plants">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.Plants">
               <MappingFragment StoreEntitySet="Plants">
                 <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1252,7 +1252,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlantWork">
-            <EntityTypeMapping TypeName="ModelDB.PlantWork">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.PlantWork">
               <MappingFragment StoreEntitySet="PlantWork">
                 <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
                 <ScalarProperty Name="IdWork" ColumnName="IdWork" />
@@ -1261,7 +1261,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="ModelDB.Roles">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1269,7 +1269,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ModelDB.sysdiagrams">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1280,7 +1280,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeOfOperation">
-            <EntityTypeMapping TypeName="ModelDB.TypeOfOperation">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.TypeOfOperation">
               <MappingFragment StoreEntitySet="TypeOfOperation">
                 <ScalarProperty Name="IdOperation" ColumnName="IdOperation" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1288,7 +1288,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="ModelDB.Users">
+            <EntityTypeMapping TypeName="EcoFarmDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
