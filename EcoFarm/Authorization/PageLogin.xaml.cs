@@ -61,5 +61,35 @@ namespace EcoFarm.Authorization
         {
             AppFrame.frameMain.Navigate(new PageRegistration());
         }
+
+        private void imageEye_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            textBoxPassword.Text = PasswordBoxEnter.Password;
+            PasswordBoxEnter.Visibility = Visibility.Collapsed;
+            textBoxPassword.Visibility = Visibility.Visible;
+
+            BitmapImage bi3 = new BitmapImage();
+            bi3.BeginInit();
+            bi3.UriSource = new Uri("/Resources/AppImages/eye-open.png", UriKind.Relative);
+            bi3.EndInit();
+            imageEye.Source = bi3;
+        }
+
+        private void imageEye_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            PasswordBoxEnter.Visibility = Visibility.Visible;
+            textBoxPassword.Visibility = Visibility.Collapsed;
+
+            BitmapImage bi3 = new BitmapImage();
+            bi3.BeginInit();
+            bi3.UriSource = new Uri("/Resources/AppImages/eye-close.png", UriKind.Relative);
+            bi3.EndInit();
+            imageEye.Source = bi3;
+        }
+
+        private void imageEye_MouseLeave(object sender, MouseEventArgs e)
+        {
+            imageEye_PreviewMouseLeftButtonUp(sender, null);
+        }
     }
 }

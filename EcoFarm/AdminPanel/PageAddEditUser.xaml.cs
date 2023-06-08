@@ -176,6 +176,36 @@ namespace EcoFarm.AdminPanel
             }
         }
 
+        private void imageEye_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            textBoxPassword.Text = pbPassword.Password;
+            pbPassword.Visibility = Visibility.Collapsed;
+            textBoxPassword.Visibility = Visibility.Visible;
+
+            BitmapImage bi3 = new BitmapImage();
+            bi3.BeginInit();
+            bi3.UriSource = new Uri("/Resources/AppImages/eye-open.png", UriKind.Relative);
+            bi3.EndInit();
+            imageEye.Source = bi3;
+        }
+
+        private void imageEye_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            pbPassword.Visibility = Visibility.Visible;
+            textBoxPassword.Visibility = Visibility.Collapsed;
+
+            BitmapImage bi3 = new BitmapImage();
+            bi3.BeginInit();
+            bi3.UriSource = new Uri("/Resources/AppImages/eye-close.png", UriKind.Relative);
+            bi3.EndInit();
+            imageEye.Source = bi3;
+        }
+
+        private void imageEye_MouseLeave(object sender, MouseEventArgs e)
+        {
+            imageEye_PreviewMouseLeftButtonUp(sender, null);
+        }
+
         private void tbSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]"))

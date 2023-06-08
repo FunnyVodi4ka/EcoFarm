@@ -10,33 +10,35 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Фамилия:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbSurname" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbSurname_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Имя:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbName_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Отчество:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbPatronymic" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbPatronymic_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Email:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Телефон:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbPhone" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbPhone_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Логин:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Label Content="Пароль:" Style="{StaticResource LabelMain}"/>
                 <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}" />
+                <TextBox x:Name="textBoxPassword" Style="{StaticResource TextBoxMain}" Visibility="Collapsed"/>
+                <Image x:Name="imageEye" Source="/Resources/AppImages/eye-close.png" Width="20" Height="20" Margin="5" PreviewMouseLeftButtonDown="imageEye_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="imageEye_PreviewMouseLeftButtonUp" MouseLeave="imageEye_MouseLeave"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button Style="{StaticResource ButtonGreen}" x:Name="btnRegister" Content="Зарегистрироваться" Click="buttonRegCreate_Click"/>

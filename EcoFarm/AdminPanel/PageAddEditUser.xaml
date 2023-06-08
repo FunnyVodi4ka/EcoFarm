@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.AdminPanel"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="500"
-      Title="PageAddEditUser" MinHeight="300" MaxHeight="550" MinWidth="500">
+      d:DesignHeight="350" d:DesignWidth="500"
+      Title="PageAddEditUser" MinHeight="350" MaxHeight="550" MinWidth="500">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,35 +17,37 @@
         </Grid.RowDefinitions>
 
         <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Фамилия:" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbSurname" Style="{StaticResource TextBoxMain}" Text="{Binding Surname}" PreviewTextInput="tbSurname_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Имя:" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" PreviewTextInput="tbName_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Отчество:" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbPatronymic" Style="{StaticResource TextBoxMain}" Text="{Binding Patronymic}" PreviewTextInput="tbPatronymic_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Логин:" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}" Text="{Binding Login}"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Пароль:" Style="{StaticResource TextBlockMain}"/>
                 <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}"/>
+                <TextBox x:Name="textBoxPassword" Style="{StaticResource TextBoxMain}" Visibility="Collapsed"/>
+                <Image x:Name="imageEye" Source="/Resources/AppImages/eye-close.png" Width="20" Height="20" Margin="5" PreviewMouseLeftButtonDown="imageEye_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="imageEye_PreviewMouseLeftButtonUp" MouseLeave="imageEye_MouseLeave"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Email:" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}" Text="{Binding Email}"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Телефон:" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbPhone" Style="{StaticResource TextBoxMain}" Text="{Binding Phone}" PreviewTextInput="tbPhone_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource StackPanelMainStyle}">
+            <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Роль:" Style="{StaticResource TextBlockMain}"/>
                 <ComboBox x:Name="comboBoxRole" Style="{StaticResource ComboBoxMain}"/>
             </StackPanel>
