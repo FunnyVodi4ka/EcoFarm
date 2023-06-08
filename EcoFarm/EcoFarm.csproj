@@ -74,6 +74,7 @@
     <Compile Include="AdminPanel\PageUsers.xaml.cs">
       <DependentUpon>PageUsers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppSupportClass\HashMD5.cs" />
     <Compile Include="AppSupportClass\SelectedMenuTab.cs" />
     <Compile Include="Authentication\AccessVerification.cs" />
     <Compile Include="CropProduction\DateTimeToBrushConverter.cs" />

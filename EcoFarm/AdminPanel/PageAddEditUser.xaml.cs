@@ -1,4 +1,5 @@
 ﻿using EcoFarm.AppConnection;
+using EcoFarm.AppSupportClass;
 using EcoFarm.Authentication;
 using EcoFarm.DatabaseConnection;
 using EcoFarm.Validation;
@@ -212,7 +213,10 @@ namespace EcoFarm.AdminPanel
                 {
                     currentUser.Login = tbLogin.Text;
                     if (pbPassword.Password != null)
-                        currentUser.Password = pbPassword.Password;
+                    {
+                        string hashUserPassword = HashMD5.hashPassword(pbPassword.Password);
+                        currentUser.Password = hashUserPassword;
+                    }
                     currentUser.Surname = tbSurname.Text;
                     currentUser.Name = tbName.Text;
                     if (tbPatronymic.Text.Length > 0)

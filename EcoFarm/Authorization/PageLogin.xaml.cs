@@ -5,6 +5,7 @@ using EcoFarm.CropProduction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,7 +34,8 @@ namespace EcoFarm.Authorization
 
         private void buttonEnter_Click(object sender, RoutedEventArgs e)
         {
-            var userObj = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Login == textBoxLogin.Text && x.Password == PasswordBoxEnter.Password);
+            string hashUserPassword = HashMD5.hashPassword(PasswordBoxEnter.Password);
+            var userObj = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Login == textBoxLogin.Text && x.Password == hashUserPassword);
             if(userObj != null)
             {
                 attemptCounter = 0;

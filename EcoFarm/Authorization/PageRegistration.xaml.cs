@@ -1,4 +1,5 @@
 ﻿using EcoFarm.AppConnection;
+using EcoFarm.AppSupportClass;
 using EcoFarm.DatabaseConnection;
 using EcoFarm.Validation;
 using System;
@@ -156,7 +157,8 @@ namespace EcoFarm.Authorization
                 try
                 {
                     newUser.Login = tbLogin.Text;
-                    newUser.Password = pbPassword.Password;
+                    string hashUserPassword = HashMD5.hashPassword(pbPassword.Password);
+                    newUser.Password = hashUserPassword;
                     newUser.Surname = tbSurname.Text;
                     newUser.Name = tbName.Text;
                     if (tbPatronymic.Text.Length > 0)
