@@ -418,6 +418,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AppImages\task-longwait.png" />
+    <Resource Include="Resources\AppImages\task-wait.png" />
+    <Resource Include="Resources\AppImages\task-skipped.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

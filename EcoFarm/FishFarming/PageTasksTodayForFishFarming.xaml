@@ -75,7 +75,6 @@
                         <Setter Property="Height" Value="auto"/>
                         <Setter Property="BorderBrush" Value="#649138" />
                         <Setter Property="BorderThickness" Value="1" />
-                        <Setter Property="Background" Value="{Binding DateOfNextWork, Converter={StaticResource dateTimeToBrushConverter}}" />
                     </Style>
 
                 </ListView.ItemContainerStyle>
@@ -83,6 +82,13 @@
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
+                            <GridViewColumn Header=""  Width="44">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding DateOfNextWork, Converter={StaticResource dateTimeToBrushConverter}}" Width="32" Height="32"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="   Номер аквариума   "  Width="auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>

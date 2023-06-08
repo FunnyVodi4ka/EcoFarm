@@ -15,11 +15,11 @@ namespace EcoFarm.FishFarming
         {
             var dateTime = (DateTime)value;
             if (dateTime.Date < DateTime.Now.Date)
-                return "#fc7474";
+                return "/Resources/AppImages/task-skipped.png";
             if (dateTime.Date == DateTime.Now.Date)
-                return "#FBEEC1";
+                return "/Resources/AppImages/task-wait.png";
             if (dateTime.Date > DateTime.Now.Date)
-                return "#00ffffff";
+                return "/Resources/AppImages/task-longwait.png";
 
             return Brushes.Black;
         }
