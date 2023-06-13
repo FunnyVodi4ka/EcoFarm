@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.FishFarming"
       mc:Ignorable="d" 
       d:DesignHeight="440" d:DesignWidth="1000"
-      Title="PageAddEditFish" MinHeight="440" MaxHeight="550" MinWidth="1000">
+      Title="PageAddEditFish" MinHeight="440" MinWidth="1000">
 
     <Grid>
         <Grid.ColumnDefinitions>

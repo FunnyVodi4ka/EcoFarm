@@ -120,15 +120,18 @@ namespace EcoFarm.CropProduction
 
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
-            currentWorks = ListTasks.SelectedItems.Cast<CurrentWorks>().ToList().ElementAt(0);
+            if (ListTasks.SelectedItem != null)
+            {
+                currentWorks = ListTasks.SelectedItems.Cast<CurrentWorks>().ToList().ElementAt(0);
 
-            var nextDate = AppConnect.ModelDB.PlantWork.FirstOrDefault(x => x.IdPlant == currentWorks.Fields.IdPlant && x.IdWork == currentWorks.IdWork);
+                var nextDate = AppConnect.ModelDB.PlantWork.FirstOrDefault(x => x.IdPlant == currentWorks.Fields.IdPlant && x.IdWork == currentWorks.IdWork);
 
-            currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
-            WriteToHistory(currentWorks);
-            AppConnect.ModelDB.SaveChanges();
+                currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
+                WriteToHistory(currentWorks);
+                AppConnect.ModelDB.SaveChanges();
 
-            ListTasks.ItemsSource = SortFilterTasks();
+                ListTasks.ItemsSource = SortFilterTasks();
+            }
         }
 
         private void WriteToHistory(CurrentWorks work)

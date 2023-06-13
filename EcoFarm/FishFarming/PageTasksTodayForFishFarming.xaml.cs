@@ -118,15 +118,18 @@ namespace EcoFarm.FishFarming
 
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
-            currentWorks = ListTasks.SelectedItems.Cast<CurrentWorksForFishFarming>().ToList().ElementAt(0);
+            if (ListTasks.SelectedItem != null)
+            {
+                currentWorks = ListTasks.SelectedItems.Cast<CurrentWorksForFishFarming>().ToList().ElementAt(0);
 
-            var nextDate = AppConnect.ModelDB.FishWork.FirstOrDefault(x => x.IdFish == currentWorks.Aquariums.IdFish && x.IdWork == currentWorks.IdWork);
+                var nextDate = AppConnect.ModelDB.FishWork.FirstOrDefault(x => x.IdFish == currentWorks.Aquariums.IdFish && x.IdWork == currentWorks.IdWork);
 
-            currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
-            WriteToHistory(currentWorks);
-            AppConnect.ModelDB.SaveChanges();
+                currentWorks.DateOfNextWork = currentWorks.DateOfNextWork.AddDays(nextDate.PeriodInDays);
+                WriteToHistory(currentWorks);
+                AppConnect.ModelDB.SaveChanges();
 
-            ListTasks.ItemsSource = SortFilterTasks();
+                ListTasks.ItemsSource = SortFilterTasks();
+            }
         }
 
         private void WriteToHistory(CurrentWorksForFishFarming work)

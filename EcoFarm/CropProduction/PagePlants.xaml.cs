@@ -94,46 +94,40 @@ namespace EcoFarm.CropProduction
 
         private void ListPlants_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Plants plant = ListPlants.SelectedItem as Plants;
-            AppFrame.frameMain.Navigate(new PageAddEditPlant(plant));
+            if (ListPlants.SelectedItem != null)
+            {
+                Plants plant = ListPlants.SelectedItem as Plants;
+                AppFrame.frameMain.Navigate(new PageAddEditPlant(plant));
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageAddEditPlant((sender as Button).DataContext as Plants));
+            NavigationService.Navigate(new PageAddEditPlant(null));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListPlants.SelectedItems.Cast<Plants>().ToList().ElementAt(0);
-            try
+            if (ListPlants.SelectedItem != null)
             {
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var currentRow = ListPlants.SelectedItems.Cast<Plants>().ToList().ElementAt(0);
+                try
                 {
-                    string fileNameForDelete = currentRow.ImageOfThePlant;
-                    AppConnect.ModelDB.Plants.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListPlants.ItemsSource = SortFilterPlants();
-                    //DeletePhotoFromDirectory(fileNameForDelete);
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        string fileNameForDelete = currentRow.ImageOfThePlant;
+                        AppConnect.ModelDB.Plants.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListPlants.ItemsSource = SortFilterPlants();
+                        //DeletePhotoFromDirectory(fileNameForDelete);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch
-            {
-                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
-
-        //private void DeletePhotoFromDirectory(string row)
-        //{
-        //    try
-        //    {
-        //        File.Move(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\" + row, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\PlantsImages\\" + "ForDelete" + row);
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("Ошибка удаления изображения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -175,8 +169,11 @@ namespace EcoFarm.CropProduction
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            Plants plant = ListPlants.SelectedItem as Plants;
-            AppFrame.frameMain.Navigate(new PageAddEditPlant(plant));
+            if (ListPlants.SelectedItem != null)
+            {
+                Plants plant = ListPlants.SelectedItem as Plants;
+                AppFrame.frameMain.Navigate(new PageAddEditPlant(plant));
+            }
         }
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)

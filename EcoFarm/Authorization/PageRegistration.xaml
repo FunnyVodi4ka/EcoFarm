@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.Authorization"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
-      Title="PageRegistration">
+      Title="PageRegistration" MinHeight="350" MinWidth="500">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">

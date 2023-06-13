@@ -94,30 +94,36 @@ namespace EcoFarm.FishFarming
 
         private void ListFish_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Fish fish = ListFish.SelectedItem as Fish;
-            AppFrame.frameMain.Navigate(new PageAddEditFish(fish));
+            if (ListFish.SelectedItem != null)
+            {
+                Fish fish = ListFish.SelectedItem as Fish;
+                AppFrame.frameMain.Navigate(new PageAddEditFish(fish));
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageAddEditFish((sender as Button).DataContext as Fish));
+            NavigationService.Navigate(new PageAddEditFish(null));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListFish.SelectedItems.Cast<Fish>().ToList().ElementAt(0);
-            try
+            if (ListFish.SelectedItem != null)
             {
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var currentRow = ListFish.SelectedItems.Cast<Fish>().ToList().ElementAt(0);
+                try
                 {
-                    AppConnect.ModelDB.Fish.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListFish.ItemsSource = SortFilterFish();
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        AppConnect.ModelDB.Fish.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListFish.ItemsSource = SortFilterFish();
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -161,8 +167,11 @@ namespace EcoFarm.FishFarming
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            Fish fish = ListFish.SelectedItem as Fish;
-            AppFrame.frameMain.Navigate(new PageAddEditFish(fish));
+            if (ListFish.SelectedItem != null)
+            {
+                Fish fish = ListFish.SelectedItem as Fish;
+                AppFrame.frameMain.Navigate(new PageAddEditFish(fish));
+            }
         }
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)

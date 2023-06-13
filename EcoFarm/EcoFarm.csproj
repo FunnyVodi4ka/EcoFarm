@@ -209,6 +209,7 @@
     <Compile Include="Reports\PageHarvestingHistory.xaml.cs">
       <DependentUpon>PageHarvestingHistory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SoldCropToBrushConverter.cs" />
     <Compile Include="Validation\ValidationClass.cs" />
     <Page Include="AdminPanel\PageAddEditUser.xaml">
       <SubType>Designer</SubType>
@@ -418,6 +419,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\AppImages\icon-sell-no.png" />
+    <Resource Include="Resources\AppImages\icon-sell-yes.png" />
     <Resource Include="Resources\AppImages\eye-close.png" />
     <Resource Include="Resources\AppImages\eye-open.png" />
     <Resource Include="Resources\AppImages\task-longwait.png" />

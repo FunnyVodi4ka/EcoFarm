@@ -21,7 +21,7 @@ namespace EcoFarm.FishFarming
             if (dateTime.Date > DateTime.Now.Date)
                 return "/Resources/AppImages/task-longwait.png";
 
-            return Brushes.Black;
+            return "/Resources/AppImages/task-longwait.png";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

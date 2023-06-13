@@ -145,19 +145,22 @@ namespace EcoFarm.Reports
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListTasks.SelectedItems.Cast<CompletedWorkHistory>().ToList().ElementAt(0);
-            try
+            if (ListTasks.SelectedItem != null)
             {
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var currentRow = ListTasks.SelectedItems.Cast<CompletedWorkHistory>().ToList().ElementAt(0);
+                try
                 {
-                    AppConnect.ModelDB.CompletedWorkHistory.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListTasks.ItemsSource = SortFilterTasks();
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        AppConnect.ModelDB.CompletedWorkHistory.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListTasks.ItemsSource = SortFilterTasks();
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }

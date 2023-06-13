@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageAddEditHarvestingHistory">
+      Title="PageAddEditHarvestingHistory" MinHeight="450" MinWidth="800">
 
     <Grid>
         <Grid.ColumnDefinitions>

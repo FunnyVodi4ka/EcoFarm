@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="700"
-      Title="PageAddEditField" MinHeight="500" MaxHeight="650" MinWidth="700">
+      Title="PageAddEditField" MinHeight="500" MinWidth="700"> 
 
     <Grid>
         <Grid.ColumnDefinitions>

@@ -115,30 +115,36 @@ namespace EcoFarm.CropProduction
 
         private void ListFields_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Fields row = ListFields.SelectedItem as Fields;
-            AppFrame.frameMain.Navigate(new PageAddEditField(row));
+            if (ListFields.SelectedItem != null)
+            {
+                Fields row = ListFields.SelectedItem as Fields;
+                AppFrame.frameMain.Navigate(new PageAddEditField(row));
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageAddEditField((sender as Button).DataContext as Fields));
+            NavigationService.Navigate(new PageAddEditField(null));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListFields.SelectedItems.Cast<Fields>().ToList().ElementAt(0);
-            try
+            if (ListFields.SelectedItem != null)
             {
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var currentRow = ListFields.SelectedItems.Cast<Fields>().ToList().ElementAt(0);
+                try
                 {
-                    AppConnect.ModelDB.Fields.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListFields.ItemsSource = SortFilterFields();
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        AppConnect.ModelDB.Fields.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListFields.ItemsSource = SortFilterFields();
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -182,8 +188,11 @@ namespace EcoFarm.CropProduction
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            Fields row = ListFields.SelectedItem as Fields;
-            AppFrame.frameMain.Navigate(new PageAddEditField(row));
+            if (ListFields.SelectedItem != null)
+            {
+                Fields row = ListFields.SelectedItem as Fields;
+                AppFrame.frameMain.Navigate(new PageAddEditField(row));
+            }
         }
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)

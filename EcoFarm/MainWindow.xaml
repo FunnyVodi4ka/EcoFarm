@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm"
         mc:Ignorable="d"
-        Title="ECOFARM" Height="auto" Width="auto" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png">
+        Title="ECOFARM" Height="auto" Width="auto" MaxHeight="1080" MaxWidth="1940" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left" Grid.Row="0" Grid.ColumnSpan="2">
@@ -39,6 +39,6 @@
 
         <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Style="{DynamicResource ButtonMenu}" Content="Выйти" Width="100" Click="btnExit_Click"/>
 
-        <Frame x:Name="frmMain" Padding="0" Content="" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Navigated="frmMain_Navigated"/>
+        <Frame x:Name="frmMain" Padding="0" MaxHeight="930" MaxWidth="1940" Content="" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Navigated="frmMain_Navigated"/>
     </Grid>
 </Window>

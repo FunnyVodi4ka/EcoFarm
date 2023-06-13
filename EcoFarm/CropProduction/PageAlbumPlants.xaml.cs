@@ -175,24 +175,27 @@ namespace EcoFarm.CropProduction
 
         private void btnDelPhoto_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (ListAlbum.SelectedItem != null)
             {
-                var currentRow = ListAlbum.SelectedItems.Cast<AlbumPlants>().ToList().ElementAt(0);
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                try
                 {
-                    string fileNameForDelete = currentRow.Photo;
+                    var currentRow = ListAlbum.SelectedItems.Cast<AlbumPlants>().ToList().ElementAt(0);
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        string fileNameForDelete = currentRow.Photo;
 
-                    AppConnect.ModelDB.AlbumPlants.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
+                        AppConnect.ModelDB.AlbumPlants.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
 
-                    ListAlbum.ItemsSource = SortFilterAlbum();
+                        ListAlbum.ItemsSource = SortFilterAlbum();
 
-                    DeletePhotoFromDirectory(fileNameForDelete);
+                        DeletePhotoFromDirectory(fileNameForDelete);
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Для удаления работы её необходимо выбрать!");
+                catch
+                {
+                    MessageBox.Show("Для удаления работы её необходимо выбрать!");
+                }
             }
         }
 

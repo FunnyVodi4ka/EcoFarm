@@ -6,7 +6,10 @@
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="950"
-      Title="PageHarvestingHistory" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="950">
+      Title="PageHarvestingHistory" Loaded="Page_Loaded" MinHeight="450" MinWidth="950">
+    <Page.Resources>
+        <local:SoldCropToBrushConverter x:Key="soldCropToBrushConverter"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -85,6 +88,13 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
+                        <GridViewColumn Header=""  Width="44">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding SalePrice, Converter={StaticResource soldCropToBrushConverter}}" Width="32" Height="32"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header=" Место работы "  Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

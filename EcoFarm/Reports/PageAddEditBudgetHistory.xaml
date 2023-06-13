@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
       d:DesignHeight="200" d:DesignWidth="700"
-      Title="PageAddEditBudgetHistory" MinHeight="200" MaxHeight="650" MinWidth="700">
+      Title="PageAddEditBudgetHistory" MinHeight="200" MinWidth="700">
 
     <Grid>
         <Grid.ColumnDefinitions>

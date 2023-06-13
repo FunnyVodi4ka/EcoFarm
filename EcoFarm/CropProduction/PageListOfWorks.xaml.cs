@@ -62,21 +62,24 @@ namespace EcoFarm.CropProduction
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (ListViewListOfWorks.SelectedItem != null)
             {
-                var currentRow = ListViewListOfWorks.SelectedItems.Cast<ListOfWorks>().ToList().ElementAt(0);
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                try
                 {
-                    AppConnect.ModelDB.ListOfWorks.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListViewListOfWorks.ItemsSource = SortFilterListOfWorks();
+                    var currentRow = ListViewListOfWorks.SelectedItems.Cast<ListOfWorks>().ToList().ElementAt(0);
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        AppConnect.ModelDB.ListOfWorks.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListViewListOfWorks.ItemsSource = SortFilterListOfWorks();
 
-                    ResetEditRow();
+                        ResetEditRow();
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Для удаления записи её необходимо выбрать!");
+                catch
+                {
+                    MessageBox.Show("Для удаления записи её необходимо выбрать!");
+                }
             }
         }
 
@@ -148,11 +151,14 @@ namespace EcoFarm.CropProduction
 
         private void LbListOfWorks_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            currentWork = ListViewListOfWorks.SelectedItem as ListOfWorks;
-            tblAdd.Text = "Изменение работы";
-            tbAdd.Text = currentWork.Name;
-            btnAdd.Content = "Изменить";
-            btnReset.Visibility = Visibility.Visible;
+            if (ListViewListOfWorks.SelectedItem != null)
+            {
+                currentWork = ListViewListOfWorks.SelectedItem as ListOfWorks;
+                tblAdd.Text = "Изменение работы";
+                tbAdd.Text = currentWork.Name;
+                btnAdd.Content = "Изменить";
+                btnReset.Visibility = Visibility.Visible;
+            }
         }
 
         private void TabBarTasksToday_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -197,20 +203,23 @@ namespace EcoFarm.CropProduction
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (menuClickEdit.Header.ToString() == "Редактировать")
+            if (ListViewListOfWorks.SelectedItem != null)
             {
-                currentWork = ListViewListOfWorks.SelectedItem as ListOfWorks;
-                tblAdd.Text = "Изменение работы";
-                tbAdd.Text = currentWork.Name;
-                btnAdd.Content = "Изменить";
-                btnReset.Visibility = Visibility.Visible;
+                if (menuClickEdit.Header.ToString() == "Редактировать")
+                {
+                    currentWork = ListViewListOfWorks.SelectedItem as ListOfWorks;
+                    tblAdd.Text = "Изменение работы";
+                    tbAdd.Text = currentWork.Name;
+                    btnAdd.Content = "Изменить";
+                    btnReset.Visibility = Visibility.Visible;
 
-                menuClickAdd.Header = "Сохранить";
-                menuClickEdit.Header = "Отменить";
-            }
-            else
-            {
-                ResetEditRow();
+                    menuClickAdd.Header = "Сохранить";
+                    menuClickEdit.Header = "Отменить";
+                }
+                else
+                {
+                    ResetEditRow();
+                }
             }
         }
 

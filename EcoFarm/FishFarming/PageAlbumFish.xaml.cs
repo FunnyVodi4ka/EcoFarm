@@ -173,23 +173,26 @@ namespace EcoFarm.FishFarming
 
         private void btnDelPhoto_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (ListAlbum.SelectedItem != null)
             {
-                var currentRow = ListAlbum.SelectedItems.Cast<AlbumFish>().ToList().ElementAt(0);
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                try
                 {
-                    string fileNameForDelete = currentRow.Photo;
-                    AppConnect.ModelDB.AlbumFish.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
+                    var currentRow = ListAlbum.SelectedItems.Cast<AlbumFish>().ToList().ElementAt(0);
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        string fileNameForDelete = currentRow.Photo;
+                        AppConnect.ModelDB.AlbumFish.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
 
-                    ListAlbum.ItemsSource = SortFilterAlbum();
+                        ListAlbum.ItemsSource = SortFilterAlbum();
 
-                    DeletePhotoFromDirectory(fileNameForDelete);
+                        DeletePhotoFromDirectory(fileNameForDelete);
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Для удаления работы её необходимо выбрать!");
+                catch
+                {
+                    MessageBox.Show("Для удаления работы её необходимо выбрать!");
+                }
             }
         }
 
@@ -200,9 +203,7 @@ namespace EcoFarm.FishFarming
                 File.Move(System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\AlbumFish\\" + row, System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Resources\\FishImages\\AlbumFish\\" + "ForDelete" + row);
             }
             catch
-            {
-                //MessageBox.Show("Ошибка удаления изображения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            {}
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

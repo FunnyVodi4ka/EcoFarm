@@ -115,37 +115,43 @@ namespace EcoFarm.AdminPanel
 
         private void ListUsers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Users user = ListUsers.SelectedItem as Users;
-            AppFrame.frameMain.Navigate(new PageAddEditUser(user));
+            if (ListUsers.SelectedItem != null)
+            {
+                Users user = ListUsers.SelectedItem as Users;
+                AppFrame.frameMain.Navigate(new PageAddEditUser(user));
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageAddEditUser((sender as Button).DataContext as Users));
+            NavigationService.Navigate(new PageAddEditUser(null));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListUsers.SelectedItems.Cast<Users>().ToList().ElementAt(0);
-            if (currentRow.IdUser != AuthorizedUser.user.IdUser)
+            if (ListUsers.SelectedItem != null)
             {
-                try
+                var currentRow = ListUsers.SelectedItems.Cast<Users>().ToList().ElementAt(0);
+                if (currentRow.IdUser != AuthorizedUser.user.IdUser)
                 {
-                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    try
                     {
-                        AppConnect.ModelDB.Users.Remove(currentRow);
-                        AppConnect.ModelDB.SaveChanges();
-                        ListUsers.ItemsSource = SortFilterUsers();
+                        if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        {
+                            AppConnect.ModelDB.Users.Remove(currentRow);
+                            AppConnect.ModelDB.SaveChanges();
+                            ListUsers.ItemsSource = SortFilterUsers();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Вы не можете удалить себя!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Вы не можете удалить себя!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -156,8 +162,11 @@ namespace EcoFarm.AdminPanel
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            Users user = ListUsers.SelectedItem as Users;
-            AppFrame.frameMain.Navigate(new PageAddEditUser(user));
+            if (ListUsers.SelectedItem != null)
+            {
+                Users user = ListUsers.SelectedItem as Users;
+                AppFrame.frameMain.Navigate(new PageAddEditUser(user));
+            }
         }
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)

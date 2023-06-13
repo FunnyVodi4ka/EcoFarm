@@ -147,49 +147,61 @@ namespace EcoFarm.Reports
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListTasks.SelectedItems.Cast<CompletedWorkHistory>().ToList().ElementAt(0);
-            try
+            if (ListTasks.SelectedItem != null)
             {
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var currentRow = ListTasks.SelectedItems.Cast<CompletedWorkHistory>().ToList().ElementAt(0);
+                try
                 {
-                    AppConnect.ModelDB.CompletedWorkHistory.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListTasks.ItemsSource = SortFilterTasks();
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        AppConnect.ModelDB.CompletedWorkHistory.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListTasks.ItemsSource = SortFilterTasks();
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void ListTasks_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
-            AppFrame.frameMain.Navigate(new PageAddEditHarvestingHistory(row));
+            if(ListTasks.SelectedItem != null)
+            {
+                HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
+                AppFrame.frameMain.Navigate(new PageAddEditHarvestingHistory(row));
+            }
         }
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
-            AppFrame.frameMain.Navigate(new PageAddEditHarvestingHistory(row));
+            if (ListTasks.SelectedItem != null)
+            {
+                HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
+                AppFrame.frameMain.Navigate(new PageAddEditHarvestingHistory(row));
+            }
         }
 
         private void menuClickReset_Click(object sender, RoutedEventArgs e)
         {
-            HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
+            if (ListTasks.SelectedItem != null)
+            {
+                HarvestingHistory row = ListTasks.SelectedItem as HarvestingHistory;
 
-            try
-            {
-                row.SalePrice = null;
-                AppConnect.ModelDB.SaveChanges();
-                MessageBox.Show("Продажа урожая сброшена!", "Уведомление",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show("Ошибка " + Ex.Message.ToString() + "Критическая работа приложения", "Уведомление",
-                            MessageBoxButton.OK, MessageBoxImage.Warning);
+                try
+                {
+                    row.SalePrice = null;
+                    AppConnect.ModelDB.SaveChanges();
+                    MessageBox.Show("Продажа урожая сброшена!", "Уведомление",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Ошибка " + Ex.Message.ToString() + "Критическая работа приложения", "Уведомление",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
         }
     }

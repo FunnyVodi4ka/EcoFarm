@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.AdminPanel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="880"
-      Title="PageUsers" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="880">
+      Title="PageUsers" Loaded="Page_Loaded" MinHeight="450" MinWidth="880">
 
     <Grid>
         <Grid.ColumnDefinitions>

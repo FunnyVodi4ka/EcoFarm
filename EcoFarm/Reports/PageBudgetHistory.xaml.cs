@@ -178,31 +178,37 @@ namespace EcoFarm.Reports
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var currentRow = ListBudget.SelectedItems.Cast<BudgetHistory>().ToList().ElementAt(0);
-            try
+            if (ListBudget.SelectedItem != null)
             {
-                if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var currentRow = ListBudget.SelectedItems.Cast<BudgetHistory>().ToList().ElementAt(0);
+                try
                 {
-                    AppConnect.ModelDB.BudgetHistory.Remove(currentRow);
-                    AppConnect.ModelDB.SaveChanges();
-                    ListBudget.ItemsSource = SortFilterTasks();
+                    if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        AppConnect.ModelDB.BudgetHistory.Remove(currentRow);
+                        AppConnect.ModelDB.SaveChanges();
+                        ListBudget.ItemsSource = SortFilterTasks();
+                    }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageAddEditBudgetHistory((sender as Button).DataContext as BudgetHistory));
+            NavigationService.Navigate(new PageAddEditBudgetHistory(null));
         }
 
         private void ListBudget_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
-            AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
+            if (ListBudget.SelectedItem != null)
+            {
+                BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
+                AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
+            }
         }
 
         private void menuClickAdd_Click(object sender, RoutedEventArgs e)
@@ -212,8 +218,11 @@ namespace EcoFarm.Reports
 
         private void menuClickEdit_Click(object sender, RoutedEventArgs e)
         {
-            BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
-            AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
+            if (ListBudget.SelectedItem != null)
+            {
+                BudgetHistory row = ListBudget.SelectedItem as BudgetHistory;
+                AppFrame.frameMain.Navigate(new PageAddEditBudgetHistory(row));
+            }
         }
 
         private void menuClickDelete_Click(object sender, RoutedEventArgs e)

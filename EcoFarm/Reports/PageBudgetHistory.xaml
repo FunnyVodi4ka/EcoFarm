@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="1050"
-      Title="PageBudgetHistory" Loaded="Page_Loaded" MinHeight="450" MaxHeight="550" MinWidth="1050">
+      Title="PageBudgetHistory" Loaded="Page_Loaded" MinHeight="450" MinWidth="1050">
 
     <Grid>
         <Grid.ColumnDefinitions>

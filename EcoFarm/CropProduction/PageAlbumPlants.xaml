@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
-      Title="PageAlbumPlants" Loaded="Page_Loaded" MinHeight="500" MaxHeight="600" MinWidth="800">
+      Title="PageAlbumPlants" Loaded="Page_Loaded" MinHeight="500" MinWidth="800">
 
     <Grid>
         <Grid.ColumnDefinitions>
