@@ -105,37 +105,37 @@ namespace EcoFarm.FishFarming
             if (!validation.CheckUniqueFieldNumber(tbNumber.Text, currentAquarium.IdAquarium))
             {
                 tbNumber.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Аквариум с таким номером уже используется!");
+                MessageBox.Show("Ошибка: Аквариум с таким номером уже используется!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbNumber.Text, 1, 50))
             {
                 tbNumber.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Номер не может содержать меньше 1 и больше 50 символов!");
+                MessageBox.Show("Ошибка: Номер не может содержать меньше 1 и больше 50 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckIntData(tbQuantity.Text))
             {
                 tbQuantity.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректное кол-во мальков!");
+                MessageBox.Show("Ошибка: Некорректное кол-во мальков!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDoubleData(tbExpenses.Text))
             {
                 tbExpenses.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная стоимость мальков!");
+                MessageBox.Show("Ошибка: Некорректная стоимость мальков!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDoubleData(tbSize.Text))
             {
                 tbSize.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректный объём аквариума!");
+                MessageBox.Show("Ошибка: Некорректный объём аквариума!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDate(dpDate.Text))
             {
                 dpDate.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная дата выпуска рыбы!");
+                MessageBox.Show("Ошибка: Некорректная дата выпуска рыбы!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (tbNote.Text.Length > 0)
@@ -143,7 +143,7 @@ namespace EcoFarm.FishFarming
                 if (!validation.CheckStringData(tbNote.Text, 2, 500))
                 {
                     tbNote.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!");
+                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
@@ -312,7 +312,7 @@ namespace EcoFarm.FishFarming
             }
             else
             {
-                MessageBox.Show("Ошибка: Некорректное количество рыб!");
+                MessageBox.Show("Ошибка: Некорректное количество рыб!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

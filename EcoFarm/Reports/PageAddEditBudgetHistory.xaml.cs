@@ -112,13 +112,13 @@ namespace EcoFarm.Reports
             if (!validation.CheckStringData(tbName.Text, 2, 250))
             {
                 tbName.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Наименование не может содержать меньше 2 и больше 250 символов!");
+                MessageBox.Show("Ошибка: Наименование не может содержать меньше 2 и больше 250 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDoubleData(tbAmount.Text))
             {
                 tbAmount.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная сумма операции!");
+                MessageBox.Show("Ошибка: Некорректная сумма операции!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!CheckType())

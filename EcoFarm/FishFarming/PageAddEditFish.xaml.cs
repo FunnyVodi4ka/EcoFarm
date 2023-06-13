@@ -103,19 +103,19 @@ namespace EcoFarm.FishFarming
             if (!validation.CheckUniquePlantName(tbName.Text, currentFish.IdFish))
             {
                 tbName.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Растение с таким названием уже есть!");
+                MessageBox.Show("Ошибка: Растение с таким названием уже есть!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbName.Text, 2, 150))
             {
                 tbName.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Название не может содержать меньше 2 и больше 150 символов!");
+                MessageBox.Show("Ошибка: Название не может содержать меньше 2 и больше 150 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbDescription.Text, 2, 500))
             {
                 tbDescription.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Описание не может содержать меньше 2 и больше 500 символов!");
+                MessageBox.Show("Ошибка: Описание не может содержать меньше 2 и больше 500 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (tbNote.Text.Length > 0)
@@ -123,7 +123,7 @@ namespace EcoFarm.FishFarming
                 if (!validation.CheckStringData(tbNote.Text, 2, 500))
                 {
                     tbNote.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!");
+                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
@@ -258,7 +258,7 @@ namespace EcoFarm.FishFarming
             }
             catch
             {
-                MessageBox.Show("Для удаления работы её необходимо выбрать!");
+                MessageBox.Show("Для удаления работы её необходимо выбрать!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

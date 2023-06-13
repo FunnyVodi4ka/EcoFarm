@@ -108,37 +108,37 @@ namespace EcoFarm.CropProduction
             if (!validation.CheckUniqueFieldNumber(tbNumber.Text, currentField.IdField))
             {
                 tbNumber.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Поле с таким номером уже используется!");
+                MessageBox.Show("Ошибка: Поле с таким номером уже используется!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbNumber.Text, 1, 50))
             {
                 tbNumber.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Номер не может содержать меньше 1 и больше 50 символов!");
+                MessageBox.Show("Ошибка: Номер не может содержать меньше 1 и больше 50 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckIntData(tbQuantity.Text))
             {
                 tbQuantity.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректное кол-во семян!");
+                MessageBox.Show("Ошибка: Некорректное кол-во семян!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDoubleData(tbExpenses.Text))
             {
                 tbExpenses.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная стоимость семян!");
+                MessageBox.Show("Ошибка: Некорректная стоимость семян!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDoubleData(tbSize.Text))
             {
                 tbSize.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректный размер поля!");
+                MessageBox.Show("Ошибка: Некорректный размер поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckDate(dpDate.Text))
             {
                 dpDate.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная дата посадки!");
+                MessageBox.Show("Ошибка: Некорректная дата посадки!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (tbNote.Text.Length > 0)
@@ -146,7 +146,7 @@ namespace EcoFarm.CropProduction
                 if (!validation.CheckStringData(tbNote.Text, 2, 500))
                 {
                     tbNote.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!");
+                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }

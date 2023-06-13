@@ -91,7 +91,7 @@ namespace EcoFarm.Reports
             if (!validation.CheckDoubleData(tbSalePrice.Text))
             {
                 tbSalePrice.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная сумма операции!");
+                MessageBox.Show("Ошибка: Некорректная сумма операции!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 

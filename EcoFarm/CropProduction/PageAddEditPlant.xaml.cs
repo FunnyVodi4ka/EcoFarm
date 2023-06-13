@@ -106,19 +106,19 @@ namespace EcoFarm.CropProduction
             if (!validation.CheckUniquePlantName(tbName.Text, currentPlant.IdPlant))
             {
                 tbName.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Растение с таким названием уже есть!");
+                MessageBox.Show("Ошибка: Растение с таким названием уже есть!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbName.Text, 2, 150))
             {
                 tbName.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Название не может содержать меньше 2 и больше 150 символов!");
+                MessageBox.Show("Ошибка: Название не может содержать меньше 2 и больше 150 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbDescription.Text, 2, 500))
             {
                 tbDescription.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Описание не может содержать меньше 2 и больше 500 символов!");
+                MessageBox.Show("Ошибка: Описание не может содержать меньше 2 и больше 500 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (tbNote.Text.Length > 0)
@@ -126,14 +126,14 @@ namespace EcoFarm.CropProduction
                 if (!validation.CheckStringData(tbNote.Text, 2, 500))
                 {
                     tbNote.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!");
+                    MessageBox.Show("Ошибка: Заметки не могут содержать меньше 2 и больше 500 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
             if (!validation.CheckIntData(tbGrowthPeriodInDays.Text))
             {
                 tbGrowthPeriodInDays.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректное число!");
+                MessageBox.Show("Ошибка: Некорректное число!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             
@@ -186,7 +186,7 @@ namespace EcoFarm.CropProduction
             if (!validation.CheckIntData(tbPeriod.Text))
             {
                 tbPeriod.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректное число!");
+                MessageBox.Show("Ошибка: Некорректное число!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
@@ -237,7 +237,6 @@ namespace EcoFarm.CropProduction
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-            //ListViewPlantWork.Items.Add(plantWork);
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
@@ -249,7 +248,6 @@ namespace EcoFarm.CropProduction
                 {
                     AppConnect.ModelDB.PlantWork.Remove(currentRow);
                     AppConnect.ModelDB.SaveChanges();
-                    //ListViewPlantWork.Items.Remove(currentRow);
                     ListViewPlantWork.ItemsSource = listPlantWork();
                 }
             }
@@ -276,7 +274,6 @@ namespace EcoFarm.CropProduction
                 bitmap.UriSource = new Uri(SaveFilename);
                 bitmap.EndInit();
                 imagePlant.Source = bitmap;
-                //tblCurrentImage.Text = newImageName;
             }
             catch { }
         }

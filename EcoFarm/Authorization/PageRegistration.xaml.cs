@@ -46,13 +46,13 @@ namespace EcoFarm.Authorization
             if (!validation.CheckStringData(tbSurname.Text, 2, 50))
             {
                 tbSurname.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Фамилия не может содержать меньше 2 и больше 50 символов!");
+                MessageBox.Show("Ошибка: Фамилия не может содержать меньше 2 и больше 50 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbName.Text, 2, 50))
             {
                 tbName.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Имя не может содержать меньше 2 и больше 50 символов!");
+                MessageBox.Show("Ошибка: Имя не может содержать меньше 2 и больше 50 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if(tbPatronymic.Text.Length > 0)
@@ -60,62 +60,62 @@ namespace EcoFarm.Authorization
                 if (!validation.CheckStringData(tbPatronymic.Text, 2, 50))
                 {
                     tbPatronymic.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Отчество не может содержать меньше 2 и больше 50 символов!");
+                    MessageBox.Show("Ошибка: Отчество не может содержать меньше 2 и больше 50 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
             if (!validation.CheckUniqueEmail(tbEmail.Text, newUser.IdUser))
             {
                 tbEmail.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Пользователь с такой почтой уже зарегистрирован!");
+                MessageBox.Show("Ошибка: Пользователь с такой почтой уже зарегистрирован!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckEmail(tbEmail.Text))
             {
                 tbEmail.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная почта!");
+                MessageBox.Show("Ошибка: Некорректная почта!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckUniqueEmail(tbEmail.Text, newUser.IdUser))
             {
                 tbEmail.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Пользователь с такой почтой уже зарегистрирован!");
+                MessageBox.Show("Ошибка: Пользователь с такой почтой уже зарегистрирован!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckEmail(tbEmail.Text))
             {
                 tbEmail.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректная почта!");
+                MessageBox.Show("Ошибка: Некорректная почта!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckUniquePhone(tbPhone.Text, newUser.IdUser))
             {
                 tbPhone.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Пользователь с таким телефоном уже зарегистрирован!");
+                MessageBox.Show("Ошибка: Пользователь с таким телефоном уже зарегистрирован!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckPhone(tbPhone.Text))
             {
                 tbPhone.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Некорректный телефон (Пример: 89998887766)!");
+                MessageBox.Show("Ошибка: Некорректный телефон (Пример: 89998887766)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckUniqueLogin(tbLogin.Text, newUser.IdUser))
             {
                 tbLogin.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Такой логин уже занят!");
+                MessageBox.Show("Ошибка: Такой логин уже занят!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckStringData(tbLogin.Text, 2, 150))
             {
                 tbLogin.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Логин должен содержать от 2 до 150 символов!");
+                MessageBox.Show("Ошибка: Логин должен содержать от 2 до 150 символов!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             if (!validation.CheckPassword(pbPassword.Password))
             {
                 pbPassword.BorderBrush = Brushes.Red;
-                MessageBox.Show("Ошибка: Пароль должен содержать от 8 до 50 символов (Латинские прописные и строчные буквы, специальные символы)!");
+                MessageBox.Show("Ошибка: Пароль должен содержать от 8 до 50 символов (Латинские прописные и строчные буквы, специальные символы)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
