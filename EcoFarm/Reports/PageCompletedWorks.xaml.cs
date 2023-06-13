@@ -163,5 +163,25 @@ namespace EcoFarm.Reports
                 }
             }
         }
+
+        private void TabBarHarvestingHistory_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarHarvestingHistory.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarHarvestingHistory_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarHarvestingHistory.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void TabBarBudgetHistory_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarBudgetHistory.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarBudgetHistory_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarBudgetHistory.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
     }
 }

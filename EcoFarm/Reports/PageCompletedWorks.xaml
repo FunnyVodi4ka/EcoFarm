@@ -27,11 +27,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown" MouseEnter="TabBarHarvestingHistory_MouseEnter" MouseLeave="TabBarHarvestingHistory_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarBudgetHistory" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarBudgetHistory" Source="/Resources/AppImages/budget.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarBudgetHistory_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarBudgetHistory" Source="/Resources/AppImages/budget.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarBudgetHistory_MouseLeftButtonDown" MouseEnter="TabBarBudgetHistory_MouseEnter" MouseLeave="TabBarBudgetHistory_MouseLeave"/>
             </StackPanel>
         </StackPanel>
 
@@ -151,7 +151,7 @@
             </ListView.ItemTemplate>-->
         </ListView>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
             <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>

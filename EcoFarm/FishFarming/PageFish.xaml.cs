@@ -178,5 +178,35 @@ namespace EcoFarm.FishFarming
         {
             btnDelete_Click(sender, e);
         }
+
+        private void TabBarTasksToday_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarTasksToday.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarTasksToday_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarTasksToday.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void TabBarAquariums_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarAquariums.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarAquariums_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarAquariums.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void TabBarListOfWorks_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarListOfWorks_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
     }
 }

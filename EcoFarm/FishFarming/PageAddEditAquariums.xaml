@@ -37,7 +37,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1">
+        <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top" Grid.Column="1">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Номер аквариума:" Style="{StaticResource TextBlockMain}" Width="270"/>
                 <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300"/>

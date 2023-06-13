@@ -24,6 +24,7 @@ namespace EcoFarm.FishFarming
     /// </summary>
     public partial class PageTasksTodayForFishFarming : Page
     {
+        bool flagEnterLeaveTabBar;
         AccessVerification access = new AccessVerification();
         CurrentWorksForFishFarming currentWorks = new CurrentWorksForFishFarming();
 
@@ -191,15 +192,65 @@ namespace EcoFarm.FishFarming
             if (!access.CheckMenegerAccessBoolResult())
             {
                 color = "#C41E3A";
+                flagEnterLeaveTabBar = false;
             }
             else
             {
                 color = "#5D5D5D";
+                flagEnterLeaveTabBar = true;
             }
 
             stTabBarAquariums.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
             stTabBarFish.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
             stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(color);
+        }
+
+        private void TabBarAquariums_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (flagEnterLeaveTabBar)
+            {
+                stTabBarAquariums.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+            }
+        }
+
+        private void TabBarAquariums_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (flagEnterLeaveTabBar)
+            {
+                stTabBarAquariums.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+            }
+        }
+
+        private void TabBarFish_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (flagEnterLeaveTabBar)
+            {
+                stTabBarFish.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+            }
+        }
+
+        private void TabBarFish_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (flagEnterLeaveTabBar)
+            {
+                stTabBarFish.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+            }
+        }
+
+        private void TabBarListOfWorks_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (flagEnterLeaveTabBar)
+            {
+                stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+            }
+        }
+
+        private void TabBarListOfWorks_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (flagEnterLeaveTabBar)
+            {
+                stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+            }
         }
     }
 }

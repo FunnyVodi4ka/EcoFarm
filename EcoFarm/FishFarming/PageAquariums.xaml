@@ -23,7 +23,7 @@
         <StackPanel Grid.RowSpan="3" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown" MouseEnter="TabBarTasksToday_MouseEnter" MouseLeave="TabBarTasksToday_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarAquariums" Width="4" Height="56" Background="#649138"/>
@@ -31,11 +31,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarFish" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarFish" Source="/Resources/AppImages/gold-fish.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFish_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarFish" Source="/Resources/AppImages/gold-fish.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFish_MouseLeftButtonDown" MouseEnter="TabBarFish_MouseEnter" MouseLeave="TabBarFish_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarListOfWorks" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarListOfWorks" Source="/Resources/AppImages/work-in-progress.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarListOfWorks_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarListOfWorks" Source="/Resources/AppImages/work-in-progress.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarListOfWorks_MouseLeftButtonDown" MouseEnter="TabBarListOfWorks_MouseEnter" MouseLeave="TabBarListOfWorks_MouseLeave"/>
             </StackPanel>
         </StackPanel>
 
@@ -132,7 +132,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
             <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>

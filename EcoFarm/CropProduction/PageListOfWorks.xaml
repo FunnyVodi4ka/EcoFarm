@@ -23,15 +23,15 @@
         <StackPanel Grid.RowSpan="3" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown" MouseEnter="TabBarTasksToday_MouseEnter" MouseLeave="TabBarTasksToday_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarFields" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarFields" Source="/Resources/AppImages/field.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFields_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarFields" Source="/Resources/AppImages/field.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarFields_MouseLeftButtonDown" MouseEnter="TabBarFields_MouseEnter" MouseLeave="TabBarFields_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarPlants" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarPlants" Source="/Resources/AppImages/plant.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarPlants_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarPlants" Source="/Resources/AppImages/plant.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarPlants_MouseLeftButtonDown" MouseEnter="TabBarPlants_MouseEnter" MouseLeave="TabBarPlants_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarListOfWorks" Width="4" Height="56" Background="#649138"/>
@@ -100,23 +100,9 @@
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
-            
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Column="0" TextWrapping="Wrap" HorizontalAlignment="Left" Style="{StaticResource TextBlockMain}" Width="auto">
-                            <Run Text="{Binding Name}"/>
-                        </TextBlock>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
         </ListView>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
             <TextBlock x:Name="tbCounter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>

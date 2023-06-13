@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm"
         mc:Ignorable="d"
-        Title="ECOFARM" Height="auto" Width="auto" MaxHeight="1080" MaxWidth="1940" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png">
+        Title="ECOFARM" Height="auto" Width="auto" MinHeight="150" MinWidth="940" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -24,7 +24,7 @@
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" HorizontalAlignment="Left">
             <StackPanel x:Name="stackPanelB1" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениеводство" Width="210" Click="btnPageCropProduction_Click"/>
+                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениеводство" Width="230" Click="btnPageCropProduction_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB2" Style="{StaticResource StackPanelEmpty}">
                 <Button x:Name="btnPageFishFarming" Style="{DynamicResource ButtonMenu}" Content="Рыбоводство" Width="170" Click="btnPageFishFarming_Click"/>
@@ -39,6 +39,6 @@
 
         <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Style="{DynamicResource ButtonMenu}" Content="Выйти" Width="100" Click="btnExit_Click"/>
 
-        <Frame x:Name="frmMain" Padding="0" MaxHeight="930" MaxWidth="1940" Content="" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Navigated="frmMain_Navigated"/>
+        <Frame x:Name="frmMain" Padding="0" Content="" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Navigated="frmMain_Navigated"/>
     </Grid>
 </Window>

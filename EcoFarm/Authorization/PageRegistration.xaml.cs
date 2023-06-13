@@ -195,7 +195,7 @@ namespace EcoFarm.Authorization
                     {
                         newUser.Patronymic = tbPatronymic.Text;
                     }
-                    var role = AppConnect.ModelDB.Roles.FirstOrDefault(x => x.Name == "Сотрудник");
+                    var role = AppConnect.ModelDB.Roles.FirstOrDefault(x => x.Name == "Рабочий");
                     newUser.IdRole = role.IdRole;
                     newUser.Email = tbEmail.Text;
                     newUser.Phone = tbPhone.Text;

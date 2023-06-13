@@ -35,6 +35,12 @@ namespace EcoFarm
 
             HiddenButtons();
 
+            this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth + 20;
+            this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+
+            frmMain.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth + 20;
+            frmMain.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight - 150;
+
             AppConnect.ModelDB = new EcoFarmDBEntities();
             AppFrame.frameMain = frmMain;
 
@@ -83,7 +89,7 @@ namespace EcoFarm
                 {
                     ShowButtonsForMenegers();
                 }
-                else if (AuthorizedUser.user.Roles.Name == "Сотрудник")
+                else if (AuthorizedUser.user.Roles.Name == "Рабочий")
                 {
                     ShowButtonsForEmployees();
                 }
@@ -148,6 +154,15 @@ namespace EcoFarm
         {
             SelectedMenuTab.selectedMenuTab = "PageReports";
             frmMain.Navigate(new PageCompletedWorks());
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //this.MaxWidth = ActualWidth + 20;
+            //this.MaxHeight = ActualHeight;
+
+            //frmMain.MaxWidth = ActualWidth + 20;
+            //frmMain.MaxHeight = ActualHeight - 150;
         }
     }
 }

@@ -38,7 +38,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Grid.Column="1" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top" Grid.Column="1" Orientation="Horizontal">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
                     <TextBlock Text="Название:" Style="{StaticResource TextBlockMain}"/>

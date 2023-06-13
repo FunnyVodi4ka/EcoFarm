@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.AdminPanel"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="880"
-      Title="PageUsers" Loaded="Page_Loaded" MinHeight="450" MinWidth="880">
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="PageUsers" Loaded="Page_Loaded" MinHeight="450" MinWidth="900">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,7 +17,7 @@
             <RowDefinition/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,10,0">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Поиск по логину" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
                 <TextBox x:Name="textBoxSearch" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" TextChanged="textBoxSearch_TextChanged"/>
@@ -149,7 +149,7 @@
             </ListView.ItemTemplate>-->
         </ListView>
 
-        <StackPanel Grid.Row="2" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="2" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
             <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>

@@ -24,11 +24,11 @@
         <StackPanel Grid.RowSpan="3" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarHistoryWork" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarHistoryWork" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHistoryWork_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarHistoryWork" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHistoryWork_MouseLeftButtonDown" MouseEnter="TabBarHistoryWork_MouseEnter" MouseLeave="TabBarHistoryWork_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarHarvestingHistory" Width="4" Height="56" Background="#5D5D5D"/>
-                <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown"/>
+                <Image x:Name="TabBarHarvestingHistory" Source="/Resources/AppImages/harvest.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHarvestingHistory_MouseLeftButtonDown" MouseEnter="TabBarHarvestingHistory_MouseEnter" MouseLeave="TabBarHarvestingHistory_MouseLeave"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarBudgetHistory" Width="4" Height="56" Background="#649138"/>
@@ -141,7 +141,7 @@
             </ListView.View>
         </ListView>
 
-        <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
             <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
         </StackPanel>
     </Grid>

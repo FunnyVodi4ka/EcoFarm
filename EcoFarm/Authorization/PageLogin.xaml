@@ -9,7 +9,7 @@
       Title="PageLogin" MinHeight="200" MinWidth="600">
 
     <Grid>
-        <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Margin="30">
+        <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Margin="30" VerticalAlignment="Top">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Введите логин:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="textBoxLogin" Style="{StaticResource TextBoxMain}"/>

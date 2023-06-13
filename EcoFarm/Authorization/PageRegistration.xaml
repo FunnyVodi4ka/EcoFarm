@@ -9,7 +9,7 @@
       Title="PageRegistration" MinHeight="350" MinWidth="500">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Фамилия:" Style="{StaticResource LabelMain}"/>
                 <TextBox x:Name="tbSurname" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbSurname_PreviewTextInput"/>

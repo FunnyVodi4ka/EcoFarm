@@ -199,5 +199,35 @@ namespace EcoFarm.CropProduction
         {
             btnDelete_Click(sender, e);
         }
+
+        private void TabBarTasksToday_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarTasksToday.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarTasksToday_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarTasksToday.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void TabBarPlants_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarPlants.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarPlants_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarPlants.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void TabBarListOfWorks_MouseEnter(object sender, MouseEventArgs e)
+        {
+            stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+        }
+
+        private void TabBarListOfWorks_MouseLeave(object sender, MouseEventArgs e)
+        {
+            stTabBarListOfWorks.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
     }
 }
