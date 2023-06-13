@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm"
         mc:Ignorable="d"
-        Title="ECOFARM" Height="auto" Width="auto" MinHeight="150" MinWidth="940" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" SizeChanged="Window_SizeChanged">
+        Title="ECOFARM" Height="auto" Width="auto" MinHeight="150" MinWidth="1050" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -34,6 +34,9 @@
             </StackPanel>
             <StackPanel x:Name="stackPanelB4" Style="{StaticResource StackPanelEmpty}">
                 <Button x:Name="btnPageUsers" Style="{DynamicResource ButtonMenu}" Content="Панель администратора" Width="320" Click="btnPageUsers_Click"/>
+            </StackPanel>
+            <StackPanel x:Name="stackPanelB5" Style="{StaticResource StackPanelEmpty}">
+                <Button x:Name="btnPageProfile" Style="{DynamicResource ButtonMenu}" Content="Профиль" Width="110" Click="btnPageProfile_Click"/>
             </StackPanel>
         </StackPanel>
 

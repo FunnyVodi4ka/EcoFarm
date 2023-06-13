@@ -77,6 +77,9 @@
     <Compile Include="AppSupportClass\HashMD5.cs" />
     <Compile Include="AppSupportClass\SelectedMenuTab.cs" />
     <Compile Include="Authentication\AccessVerification.cs" />
+    <Compile Include="Authorization\PageProfile.xaml.cs">
+      <DependentUpon>PageProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CropProduction\DateTimeToBrushConverter.cs" />
     <Compile Include="CropProduction\PageAddEditField.xaml.cs">
       <DependentUpon>PageAddEditField.xaml</DependentUpon>
@@ -220,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Authorization\PageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Authorization\PageProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

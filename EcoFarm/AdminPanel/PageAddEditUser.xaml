@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.AdminPanel"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="500"
-      Title="PageAddEditUser" MinHeight="350" MinWidth="500">
+      d:DesignHeight="400" d:DesignWidth="500"
+      Title="PageAddEditUser" MinHeight="400" MinWidth="500">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Фамилия:*" Style="{StaticResource TextBlockMain}"/>
                 <TextBox x:Name="tbSurname" Style="{StaticResource TextBoxMain}" Text="{Binding Surname}" PreviewTextInput="tbSurname_PreviewTextInput"/>

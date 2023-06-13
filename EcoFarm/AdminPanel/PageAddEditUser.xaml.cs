@@ -31,7 +31,7 @@ namespace EcoFarm.AdminPanel
 
         public PageAddEditUser(Users user)
         {
-            access.CheckAdminAccess();
+            access.CheckAuthorization();
 
             InitializeComponent();
 

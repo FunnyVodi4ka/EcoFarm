@@ -53,8 +53,9 @@ namespace EcoFarm
             stackPanelB2.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
             stackPanelB3.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
             stackPanelB4.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
+            stackPanelB5.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#00ffffff");
 
-            switch(SelectedMenuTab.selectedMenuTab)
+            switch (SelectedMenuTab.selectedMenuTab)
             {
                 case "PageCropProduction":
                     stackPanelB1.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
@@ -67,6 +68,9 @@ namespace EcoFarm
                     break;
                 case "PageUsers":
                     stackPanelB4.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
+                    break;
+                case "PageProfile":
+                    stackPanelB5.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#649138");
                     break;
             }
         }
@@ -112,16 +116,18 @@ namespace EcoFarm
         {
             btnPageCropProduction.Visibility = Visibility.Visible;
             btnPageFishFarming.Visibility = Visibility.Visible;
+            btnPageProfile.Visibility = Visibility.Visible;
             btnExit.Visibility = Visibility.Visible;
         }
 
         private void HiddenButtons()
         {
-            btnPageCropProduction.Visibility = Visibility.Hidden;
-            btnPageFishFarming.Visibility = Visibility.Hidden;
-            btnPageReports.Visibility = Visibility.Hidden;
-            btnPageUsers.Visibility = Visibility.Hidden;
-            btnExit.Visibility = Visibility.Hidden;
+            btnPageCropProduction.Visibility = Visibility.Collapsed;
+            btnPageFishFarming.Visibility = Visibility.Collapsed;
+            btnPageReports.Visibility = Visibility.Collapsed;
+            btnPageUsers.Visibility = Visibility.Collapsed;
+            btnPageProfile.Visibility = Visibility.Collapsed;
+            btnExit.Visibility = Visibility.Collapsed;
         }
 
         private void btnPageUsers_Click(object sender, RoutedEventArgs e)
@@ -163,6 +169,12 @@ namespace EcoFarm
 
             //frmMain.MaxWidth = ActualWidth + 20;
             //frmMain.MaxHeight = ActualHeight - 150;
+        }
+
+        private void btnPageProfile_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedMenuTab.selectedMenuTab = "PageProfile";
+            frmMain.Navigate(new PageProfile());
         }
     }
 }

@@ -1,20 +1,18 @@
 ﻿
-FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\App.xaml;;
+
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\AdminPanel\PageAddEditUser.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\AdminPanel\PageUsers.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Authorization\PageLogin.xaml;;
+FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Authorization\PageProfile.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Authorization\PageRegistration.xaml;;
-FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Authorization\WindowCaptcha.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PageAddEditField.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PageAddEditPlant.xaml;;
-FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PageAlbumPlants.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PageFields.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PageListOfWorks.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PagePlants.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\CropProduction\PageTasksToday.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageAddEditAquariums.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageAddEditFish.xaml;;
-FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageAlbumFish.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageAquariums.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageFish.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\FishFarming\PageListOfWorksForFishFarming.xaml;;
@@ -25,5 +23,4 @@ FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageAddEditHar
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageBudgetHistory.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageCompletedWorks.xaml;;
 FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Reports\PageHarvestingHistory.xaml;;
-FC:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\Authorization\PageProfile.xaml;;
 

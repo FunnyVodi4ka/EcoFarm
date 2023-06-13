@@ -130,3 +130,5 @@ C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageA
 C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageAddEditBudgetHistory.baml
 C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageAddEditHarvestingHistory.g.cs
 C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Reports\PageAddEditHarvestingHistory.baml
+C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Authorization\PageProfile.g.cs
+C:\Users\AlexZ\source\repos\FunnyVodi4ka\EcoFarm\EcoFarm\obj\Debug\Authorization\PageProfile.baml
