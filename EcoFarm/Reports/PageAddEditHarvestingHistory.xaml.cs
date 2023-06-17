@@ -132,5 +132,13 @@ namespace EcoFarm.Reports
             AppConnect.ModelDB.BudgetHistory.Add(budgetHistory);
             AppConnect.ModelDB.SaveChanges();
         }
+
+        private void tbSalePrice_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

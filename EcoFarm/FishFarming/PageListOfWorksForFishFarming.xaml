@@ -46,7 +46,7 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock x:Name="tblAdd" Text="Новый вид работ" Style="{StaticResource TextBlockMain}" HorizontalAlignment="Left" Width="auto"/>
-                <TextBox x:Name="tbAdd" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbAdd" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" PreviewTextInput="tbAdd_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="btnReset" Content="Отменить" Style="{StaticResource ButtonGreen}" Click="btnReset_Click" Visibility="Collapsed"/>

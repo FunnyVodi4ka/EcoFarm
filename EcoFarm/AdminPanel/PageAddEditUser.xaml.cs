@@ -210,7 +210,7 @@ namespace EcoFarm.AdminPanel
 
         private void tbSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]") && tbSurname.Text.Length >= 50)
             {
                 e.Handled = true;
             }
@@ -218,7 +218,7 @@ namespace EcoFarm.AdminPanel
 
         private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]") && tbName.Text.Length >= 50)
             {
                 e.Handled = true;
             }
@@ -226,7 +226,7 @@ namespace EcoFarm.AdminPanel
 
         private void tbPatronymic_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[а-яА-Я]") && tbPatronymic.Text.Length >= 50)
             {
                 e.Handled = true;
             }
@@ -281,6 +281,38 @@ namespace EcoFarm.AdminPanel
         private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[0-9]") || tbPhone.Text.Length >= 11)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Page_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbLogin_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbLogin.Text.Length >= 150)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void pbPassword_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (pbPassword.Password.Length >= 50)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbEmail_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbEmail.Text.Length >= 250)
             {
                 e.Handled = true;
             }

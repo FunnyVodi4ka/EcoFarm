@@ -257,5 +257,13 @@ namespace EcoFarm.CropProduction
         {
             stTabBarPlants.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
         }
+
+        private void tbAdd_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbAdd.Text.Length >= 100)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

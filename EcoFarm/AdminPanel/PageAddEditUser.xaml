@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.AdminPanel"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="500"
-      Title="PageAddEditUser" MinHeight="400" MinWidth="500">
+      Title="PageAddEditUser" MinHeight="400" MinWidth="500" PreviewKeyDown="Page_PreviewKeyDown">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,17 +31,17 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Логин:*" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}" Text="{Binding Login}"/>
+                <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}" Text="{Binding Login}" PreviewTextInput="tbLogin_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Пароль:*" Style="{StaticResource TextBlockMain}"/>
-                <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}"/>
+                <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}" PreviewTextInput="pbPassword_PreviewTextInput"/>
                 <TextBox x:Name="textBoxPassword" Style="{StaticResource TextBoxMain}" Visibility="Collapsed"/>
                 <Image x:Name="imageEye" Source="/Resources/AppImages/eye-close.png" Width="20" Height="20" Margin="5" PreviewMouseLeftButtonDown="imageEye_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="imageEye_PreviewMouseLeftButtonUp" MouseLeave="imageEye_MouseLeave"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Email:*" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}" Text="{Binding Email}"/>
+                <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" PreviewTextInput="tbEmail_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Телефон:*" Style="{StaticResource TextBlockMain}"/>

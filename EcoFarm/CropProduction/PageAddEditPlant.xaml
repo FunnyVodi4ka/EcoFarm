@@ -41,25 +41,25 @@
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
                     <TextBlock Text="Название:" Style="{StaticResource TextBlockMain}"/>
-                    <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="390" Height="90"/>
+                    <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="390" Height="90" PreviewTextInput="tbName_PreviewTextInput"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock Text="Описание:" Style="{StaticResource TextBlockMain}"/>
-                    <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="90"/>
+                    <TextBox x:Name="tbDescription" Style="{StaticResource TextBoxMain}" Text="{Binding Description}" Width="390" HorizontalAlignment="Stretch" Height="90" PreviewTextInput="tbDescription_PreviewTextInput"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
-                    <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="390" HorizontalAlignment="Stretch" Height="40"/>
+                    <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="390" HorizontalAlignment="Stretch" Height="40" PreviewTextInput="tbNote_PreviewTextInput"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}">
                     <TextBlock Text="Период созревания:" Style="{StaticResource TextBlockMain}" Width="230"/>
-                    <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="160"/>
+                    <TextBox x:Name="tbGrowthPeriodInDays" Style="{StaticResource TextBoxMain}" Text="{Binding GrowthPeriodInDays}" PreviewTextInput="tbGrowthPeriodInDays_PreviewTextInput" Width="160" PreviewKeyDown="tbGrowthPeriodInDays_PreviewKeyDown"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="5" VerticalAlignment="Center" Orientation="Vertical">
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Center">
                     <TextBlock Text="Фото:" Style="{StaticResource TextBlockMain}" Width="190"/>
-                    <Image x:Name="imagePlant" Source="{Binding CorrectImage}" Width="70" Height="70" Margin="15,0,15,0"></Image>
+                    <Image x:Name="imagePlant" Source="{Binding CorrectImage}" Width="70" Height="70" Margin="15,0,15,0" MouseLeftButtonDown="imagePlant_MouseLeftButtonDown"></Image>
                     <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Width="200">
                         <Button x:Name="btnSaveImage" Content="Загрузить изображение" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnSaveImage_Click"/>
                         <Button x:Name="btnOpenAlbum" Content="Альбом фотографий" Style="{StaticResource ButtonGreen}" VerticalAlignment="Center" FontSize="14" Click="btnOpenAlbum_Click"/>
@@ -72,7 +72,7 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
                         <TextBlock x:Name="tblPeriod" Text="Раз в (дни):" Style="{StaticResource TextBlockMain}" Width="auto"/>
-                        <TextBox x:Name="tbPeriod" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" Width="216"/>
+                        <TextBox x:Name="tbPeriod" Style="{StaticResource TextBoxMain}" Text="{Binding Email}" Width="216" PreviewKeyDown="tbPeriod_PreviewKeyDown"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource StackPanelMainStyle}" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
                         <Button x:Name="btnAdd" Content="+" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click" Width="24" Height="24" FontSize="24" Padding="0,-3,0,0" FontWeight="Bold"/>

@@ -91,5 +91,29 @@ namespace EcoFarm.Authorization
         {
             imageEye_PreviewMouseLeftButtonUp(sender, null);
         }
+
+        private void Page_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxLogin_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (textBoxLogin.Text.Length >= 150)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PasswordBoxEnter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (PasswordBoxEnter.Password.Length >= 50)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

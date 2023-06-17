@@ -40,7 +40,7 @@
         <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top" Grid.Column="1">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Номер аквариума:" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300"/>
+                <TextBox x:Name="tbNumber" Style="{StaticResource TextBoxMain}" Text="{Binding Number}" Width="300" PreviewTextInput="tbNumber_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Вид рыбы:" Style="{StaticResource TextBlockMain}" Width="270"/>
@@ -56,19 +56,19 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Количество мальков:" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbQuantity" Style="{StaticResource TextBoxMain}" Text="{Binding Quantity}" Width="300" PreviewTextInput="tbQuantity_PreviewTextInput"/>
+                <TextBox x:Name="tbQuantity" Style="{StaticResource TextBoxMain}" Text="{Binding Quantity}" Width="300" PreviewTextInput="tbQuantity_PreviewTextInput" PreviewKeyDown="tbQuantity_PreviewKeyDown"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Затраты на мальков (₽):" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbExpenses" Style="{StaticResource TextBoxMain}" Text="{Binding Expenses}" Width="300" PreviewTextInput="tbExpenses_PreviewTextInput"/>
+                <TextBox x:Name="tbExpenses" Style="{StaticResource TextBoxMain}" Text="{Binding Expenses}" Width="300" PreviewTextInput="tbExpenses_PreviewTextInput" PreviewKeyDown="tbExpenses_PreviewKeyDown"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Объём (л):" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbSize" Style="{StaticResource TextBoxMain}" Text="{Binding Size}" PreviewTextInput="tbSize_PreviewTextInput" Width="300"/>
+                <TextBox x:Name="tbSize" Style="{StaticResource TextBoxMain}" Text="{Binding Size}" PreviewTextInput="tbSize_PreviewTextInput" Width="300" PreviewKeyDown="tbSize_PreviewKeyDown"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Заметки:" Style="{StaticResource TextBlockMain}"/>
-                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="574" HorizontalAlignment="Stretch" Height="80"/>
+                <TextBox x:Name="tbNote" Style="{StaticResource TextBoxMain}" Text="{Binding Note}" Width="574" HorizontalAlignment="Stretch" Height="80" PreviewTextInput="tbNote_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Stretch">
                 <Button x:Name="btnShowHideHarvest" Content="Показать сбор урожая" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="260" Click="btnShowHideHarvest_Click"/>
@@ -76,7 +76,7 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock x:Name="tblHarvest" Text="Количество рыб (шт):" Style="{StaticResource TextBlockMain}" Width="268"/>
-                <TextBox x:Name="tbHarvest" Style="{StaticResource TextBoxMain}" Width="300" PreviewTextInput="tbHarvest_PreviewTextInput"/>
+                <TextBox x:Name="tbHarvest" Style="{StaticResource TextBoxMain}" Width="300" PreviewTextInput="tbHarvest_PreviewTextInput" PreviewKeyDown="tbHarvest_PreviewKeyDown"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>

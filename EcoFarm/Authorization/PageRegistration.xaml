@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EcoFarm.Authorization"
       mc:Ignorable="d" 
       d:DesignHeight="360" d:DesignWidth="560"
-      Title="PageRegistration" MinHeight="360" MinWidth="560">
+      Title="PageRegistration" MinHeight="360" MinWidth="560" PreviewKeyDown="Page_PreviewKeyDown">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top">
@@ -24,7 +24,7 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Email:*" Style="{StaticResource LabelMain}"/>
-                <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}"/>
+                <TextBox x:Name="tbEmail" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbEmail_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Телефон:*" Style="{StaticResource LabelMain}"/>
@@ -32,11 +32,11 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Логин:*" Style="{StaticResource LabelMain}"/>
-                <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}"/>
+                <TextBox x:Name="tbLogin" Style="{StaticResource TextBoxMain}" PreviewTextInput="tbLogin_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Label Content="Пароль:*" Style="{StaticResource LabelMain}"/>
-                <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}" />
+                <PasswordBox x:Name="pbPassword" Style="{StaticResource PasswordBoxMain}" PreviewTextInput="pbPassword_PreviewTextInput" />
                 <TextBox x:Name="textBoxPassword" Style="{StaticResource TextBoxMain}" Visibility="Collapsed"/>
                 <Image x:Name="imageEye" Source="/Resources/AppImages/eye-close.png" Width="20" Height="20" Margin="5" PreviewMouseLeftButtonDown="imageEye_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="imageEye_PreviewMouseLeftButtonUp" MouseLeave="imageEye_MouseLeave"/>
             </StackPanel>

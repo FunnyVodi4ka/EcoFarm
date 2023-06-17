@@ -36,7 +36,7 @@
         <StackPanel HorizontalAlignment="Center" Margin="30" VerticalAlignment="Top" Grid.Column="1">
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Наименование:" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="300"/>
+                <TextBox x:Name="tbName" Style="{StaticResource TextBoxMain}" Text="{Binding Name}" Width="300" PreviewTextInput="tbName_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Тип операции:" Style="{StaticResource TextBlockMain}" Width="270"/>
@@ -44,7 +44,7 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Сумма операции (₽):" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbAmount" Style="{StaticResource TextBoxMain}" Text="{Binding Amount}" Width="300" PreviewTextInput="tbExpenses_PreviewTextInput"/>
+                <TextBox x:Name="tbAmount" Style="{StaticResource TextBoxMain}" Text="{Binding Amount}" Width="300" PreviewTextInput="tbExpenses_PreviewTextInput" PreviewKeyDown="tbAmount_PreviewKeyDown"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>

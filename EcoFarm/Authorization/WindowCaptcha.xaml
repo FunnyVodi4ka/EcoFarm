@@ -18,7 +18,7 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <TextBox x:Name="tbCAPTCHA" Text="" Style="{DynamicResource TextBoxMain}" Height="40"/>
+            <TextBox x:Name="tbCAPTCHA" Text="" Style="{DynamicResource TextBoxMain}" Height="40" PreviewKeyDown="tbCAPTCHA_PreviewKeyDown"/>
             <Button x:Name="btnCAPTCHA" Content="Отправить" Style="{DynamicResource ButtonGreen}" IsDefault="True" Click="btnCAPTCHA_Click"/>
         </StackPanel>
     </Grid>

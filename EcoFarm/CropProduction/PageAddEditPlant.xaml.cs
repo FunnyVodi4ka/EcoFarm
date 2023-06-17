@@ -320,6 +320,51 @@ namespace EcoFarm.CropProduction
             }
         }
 
+        private void tbGrowthPeriodInDays_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbPeriod_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void imagePlant_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            btnSaveImage_Click(sender, e);
+        }
+
+        private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbName.Text.Length >= 150)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbDescription_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbDescription.Text.Length >= 500)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbNote_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbNote.Text.Length >= 500)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void TabBarListOfWorks_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (access.CheckMenegerAccessBoolResult())

@@ -381,5 +381,53 @@ namespace EcoFarm.FishFarming
                 e.Handled = true;
             }
         }
+
+        private void tbQuantity_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbExpenses_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbSize_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbHarvest_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbNumber.Text.Length >= 50)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbNote_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbNote.Text.Length >= 500)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

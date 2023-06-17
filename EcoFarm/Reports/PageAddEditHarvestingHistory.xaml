@@ -79,7 +79,7 @@
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <TextBlock Text="Сумма сделки (₽):" Style="{StaticResource TextBlockMain}" Width="270"/>
-                <TextBox x:Name="tbSalePrice" Style="{StaticResource TextBoxMain}" Text="{Binding SalePrice}" Width="300" PreviewTextInput="tbSalePrice_PreviewTextInput"/>
+                <TextBox x:Name="tbSalePrice" Style="{StaticResource TextBoxMain}" Text="{Binding SalePrice}" Width="300" PreviewTextInput="tbSalePrice_PreviewTextInput" PreviewKeyDown="tbSalePrice_PreviewKeyDown"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnSave" Content="Оформить продажу" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>

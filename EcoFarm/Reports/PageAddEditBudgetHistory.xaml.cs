@@ -177,5 +177,21 @@ namespace EcoFarm.Reports
                 }
             }
         }
+
+        private void tbAmount_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tbName.Text.Length >= 250)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

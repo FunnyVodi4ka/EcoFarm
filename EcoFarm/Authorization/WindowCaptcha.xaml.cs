@@ -73,5 +73,13 @@ namespace EcoFarm.Authorization
                 Timer();
             }
         }
+
+        private void tbCAPTCHA_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
