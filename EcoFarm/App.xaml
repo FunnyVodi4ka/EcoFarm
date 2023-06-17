@@ -80,7 +80,7 @@
         <Style TargetType="TextBox" x:Key="TextBoxMain">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Width" Value="250" />
-            <Setter Property="Height" Value="auto" />
+            <Setter Property="Height" Value="30" />
             <Setter Property="MinHeight" Value="30" />
             <Setter Property="FontFamily" Value="Comfortaa" />
             <Setter Property="HorizontalAlignment" Value="Left" />
@@ -95,7 +95,7 @@
         <Style TargetType="DatePicker" x:Key="DatePickerMain">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Width" Value="250" />
-            <Setter Property="Height" Value="auto" />
+            <Setter Property="Height" Value="30" />
             <Setter Property="FontFamily" Value="Comfortaa" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Style.Resources>
@@ -108,7 +108,7 @@
         <Style TargetType="PasswordBox" x:Key="PasswordBoxMain">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Width" Value="250" />
-            <Setter Property="Height" Value="auto" />
+            <Setter Property="Height" Value="30" />
             <Setter Property="FontFamily" Value="Comfortaa" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Template">
@@ -131,7 +131,7 @@
 
         <Style x:Key="TextBlockMain" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Height" Value="auto"/>
+            <Setter Property="Height" Value="30"/>
             <Setter Property="Width" Value="140"/>
             <Setter Property="FontFamily" Value="Comfortaa"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -140,6 +140,7 @@
 
         <Style TargetType="ComboBox" x:Key="ComboBoxMain">
             <Setter Property="Width" Value="250" />
+            <Setter Property="Height" Value="30" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Comfortaa"/>

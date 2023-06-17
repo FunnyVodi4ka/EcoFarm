@@ -50,6 +50,7 @@
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <TextBlock Text="Роль:*" Style="{StaticResource TextBlockMain}"/>
                 <ComboBox x:Name="comboBoxRole" Style="{StaticResource ComboBoxMain}"/>
+                <TextBlock x:Name="tblRole" Style="{StaticResource TextBlockMain}" Width="250" Visibility="Collapsed"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource ButtonGreen}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click" IsDefault="True"/>

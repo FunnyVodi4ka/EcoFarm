@@ -6,6 +6,7 @@ using EcoFarm.DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace EcoFarm.Reports
 {
@@ -59,10 +61,22 @@ namespace EcoFarm.Reports
             switch (comboBoxFilter.SelectedIndex)
             {
                 case 1:
-                    rows = rows.Where(x => x.PlaceForHistory.Name == "Поле").ToList();
+                    rows = rows.Where(x => x.DateOfWork.Day == DateTime.Now.Day).ToList();
                     break;
                 case 2:
-                    rows = rows.Where(x => x.PlaceForHistory.Name == "Аквариум").ToList();
+                    rows = rows.Where(x => x.DateOfWork >= DateTime.Now.AddDays(-7)).ToList();
+                    break;
+                case 3:
+                    rows = rows.Where(x => x.DateOfWork.Month == DateTime.Now.Month).ToList();
+                    break;
+                case 4:
+                    rows = rows.Where(x => x.DateOfWork.Month >= DateTime.Now.Month - 3).ToList();
+                    break;
+                case 5:
+                    rows = rows.Where(x => x.DateOfWork.Month >= DateTime.Now.Month - 6).ToList();
+                    break;
+                case 6:
+                    rows = rows.Where(x => x.DateOfWork.Year == DateTime.Now.Year).ToList();
                     break;
             }
 
@@ -88,9 +102,13 @@ namespace EcoFarm.Reports
 
         private void SetFilter()
         {
-            comboBoxFilter.Items.Add("Все работы");
-            comboBoxFilter.Items.Add("Растениеводство");
-            comboBoxFilter.Items.Add("Рыбоводство");
+            comboBoxFilter.Items.Add("За всё время");
+            comboBoxFilter.Items.Add("За сегодня");
+            comboBoxFilter.Items.Add("За 7 дней");
+            comboBoxFilter.Items.Add("За этот месяц");
+            comboBoxFilter.Items.Add("За три месяца");
+            comboBoxFilter.Items.Add("За полгода");
+            comboBoxFilter.Items.Add("За этот год");
 
             comboBoxFilter.SelectedIndex = 0;
         }
@@ -182,6 +200,54 @@ namespace EcoFarm.Reports
         private void TabBarBudgetHistory_MouseLeave(object sender, MouseEventArgs e)
         {
             stTabBarBudgetHistory.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var excelApp = new Excel.Application();
+                excelApp.Workbooks.Add();
+                Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
+
+                workSheet.Cells[1, "A"] = "Код записи";
+                workSheet.Cells[1, "B"] = "Область работы";
+                workSheet.Cells[1, "C"] = "Номер";
+                workSheet.Cells[1, "D"] = "Содержимое";
+                workSheet.Cells[1, "E"] = "Название работы";
+                workSheet.Cells[1, "F"] = "Дата работы";
+                workSheet.Cells[1, "G"] = "Фамилия";
+                workSheet.Cells[1, "H"] = "Имя";
+                workSheet.Cells[1, "I"] = "Отчество";
+
+                var row = 1;
+                foreach (var item in SortFilterTasks().ToArray())
+                {
+                    row++;
+                    workSheet.Cells[row, "A"] = item.IdHistory;
+                    workSheet.Cells[row, "B"] = item.PlaceForHistory.Name;
+                    workSheet.Cells[row, "C"] = item.Number;
+                    workSheet.Cells[row, "D"] = item.ContentName;
+                    workSheet.Cells[row, "E"] = item.WorkName;
+                    workSheet.Cells[row, "F"] = item.DateOfWork;
+                    workSheet.Cells[row, "G"] = item.UserSurname;
+                    workSheet.Cells[row, "H"] = item.UserName;
+                    workSheet.Cells[row, "I"] = item.UserPatronymic;
+                }
+
+                workSheet.Columns[1].AutoFit();
+                workSheet.Columns[2].AutoFit();
+                workSheet.Columns[3].AutoFit();
+                workSheet.Columns[4].AutoFit();
+                workSheet.Columns[5].AutoFit();
+                workSheet.Columns[6].AutoFit();
+                workSheet.Columns[7].AutoFit();
+                workSheet.Columns[8].AutoFit();
+                workSheet.Columns[9].AutoFit();
+
+                excelApp.Visible = true;
+            }
+            catch { }
         }
     }
 }

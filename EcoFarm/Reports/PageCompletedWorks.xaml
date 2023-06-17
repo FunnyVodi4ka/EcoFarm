@@ -117,42 +117,11 @@
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
-            
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="0">
-                            <Run Text="{Binding WorkPlaceForHistory.Name }"/>
-                            <Run Text="{Binding Number }"/>
-                            <Run Text="{Binding ContentName}"/>
-                        </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="1">
-                            <Run Text="Работа: "/>
-                            <Run Text="{Binding WorkName}"/>
-                            <Run Text=" Дата выполнения: "/>
-                            <Run Text="{Binding DateOfWork, StringFormat='dd.MM.yyyy'}"/>
-                        </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="2">
-                            <Run Text="Выполнил: "/>
-                            <Run Text="{Binding UserSurname}"/>
-                            <Run Text="{Binding UserName}"/>
-                            <Run Text="{Binding UserPatronymic}"/>
-                        </TextBlock>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
         </ListView>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
-            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
+            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" VerticalAlignment="Stretch"/>
+            <Image Source="/Resources/AppImages/excel.png" Width="24" Height="24" Margin="5,0,5,0" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
-      d:DesignHeight="440" d:DesignWidth="1000"
-      Title="PageAddEditPlant" MinHeight="440" MinWidth="1000">
+      d:DesignHeight="440" d:DesignWidth="1050"
+      Title="PageAddEditPlant" MinHeight="440" MinWidth="1050">
 
     <Grid>
         <Grid.ColumnDefinitions>

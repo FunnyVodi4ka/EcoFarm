@@ -44,7 +44,9 @@ namespace EcoFarm.AdminPanel
 
                 if(AuthorizedUser.user.IdRole == currentUser.IdRole)
                 {
-                    comboBoxRole.IsEnabled = false;
+                    comboBoxRole.Visibility = Visibility.Collapsed;
+                    tblRole.Text = currentUser.Roles.Name;
+                    tblRole.Visibility = Visibility.Visible;
                 }
             }
             else

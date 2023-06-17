@@ -6,6 +6,7 @@ using EcoFarm.DatabaseConnection;
 using EcoFarm.FishFarming;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace EcoFarm.Reports
 {
@@ -44,41 +46,6 @@ namespace EcoFarm.Reports
             List<BudgetHistory> rows = AppConnect.ModelDB.BudgetHistory.ToList();
             var CounterALL = rows;
 
-            double profit = 0, expenses = 0, total = 0;
-            foreach (var row in rows)
-            {
-                if (row.TypeOfOperation.Name == "Приход")
-                {
-                    profit += row.Amount;
-                }
-                else if(row.TypeOfOperation.Name == "Расход")
-                {
-                    expenses += row.Amount;
-                }
-            }
-            total = profit - expenses;
-
-            profit = Math.Round(profit, 2);
-            expenses = Math.Round(expenses, 2);
-            total = Math.Round(total, 2);
-
-            tblProfit.Text = profit.ToString();
-            tblExpenses.Text = expenses.ToString();
-            tblTotal.Text = total.ToString();
-
-            if(total >= 0)
-            {
-                tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#44944A");
-            }
-            else
-            {
-                tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#B00000");
-            }
-
-            if (textBoxSearch.Text != null)
-            {
-                rows = rows.Where(x => x.Name.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
-            }
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:
@@ -92,11 +59,30 @@ namespace EcoFarm.Reports
             switch (comboBoxFilter.SelectedIndex)
             {
                 case 1:
-                    rows = rows.Where(x => x.TypeOfOperation.Name == "Приход").ToList();
+                    rows = rows.Where(x => x.Date.Day == DateTime.Now.Day).ToList();
                     break;
                 case 2:
-                    rows = rows.Where(x => x.TypeOfOperation.Name == "Расход").ToList();
+                    rows = rows.Where(x => x.Date >= DateTime.Now.AddDays(-7)).ToList();
                     break;
+                case 3:
+                    rows = rows.Where(x => x.Date.Month == DateTime.Now.Month).ToList();
+                    break;
+                case 4:
+                    rows = rows.Where(x => x.Date.Month >= DateTime.Now.Month - 3).ToList();
+                    break;
+                case 5:
+                    rows = rows.Where(x => x.Date.Month >= DateTime.Now.Month - 6).ToList();
+                    break;
+                case 6:
+                    rows = rows.Where(x => x.Date.Year == DateTime.Now.Year).ToList();
+                    break;
+            }
+
+            CalculateBudget(rows);
+
+            if (textBoxSearch.Text != null)
+            {
+                rows = rows.Where(x => x.Name.ToLower().Contains(textBoxSearch.Text.ToLower())).ToList();
             }
 
             if (rows.Count != 0)
@@ -111,6 +97,40 @@ namespace EcoFarm.Reports
             return rows.ToArray();
         }
 
+        private void CalculateBudget(List<BudgetHistory> rows)
+        {
+            double profit = 0, expenses = 0;
+            foreach (var row in rows)
+            {
+                if (row.TypeOfOperation.Name == "Приход")
+                {
+                    profit += row.Amount;
+                }
+                else if (row.TypeOfOperation.Name == "Расход")
+                {
+                    expenses += row.Amount;
+                }
+            }
+            double total = profit - expenses;
+
+            profit = Math.Round(profit, 2);
+            expenses = Math.Round(expenses, 2);
+            total = Math.Round(total, 2);
+
+            tblProfit.Text = profit.ToString();
+            tblExpenses.Text = expenses.ToString();
+            tblTotal.Text = total.ToString();
+
+            if (total >= 0)
+            {
+                tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#44944A");
+            }
+            else
+            {
+                tblTotal.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#B00000");
+            }
+        }
+
         private void SetSort()
         {
             comboBoxSort.Items.Add("От новых к старым");
@@ -121,9 +141,13 @@ namespace EcoFarm.Reports
 
         private void SetFilter()
         {
-            comboBoxFilter.Items.Add("Все операции");
-            comboBoxFilter.Items.Add("Приход");
-            comboBoxFilter.Items.Add("Расход");
+            comboBoxFilter.Items.Add("За всё время");
+            comboBoxFilter.Items.Add("За сегодня");
+            comboBoxFilter.Items.Add("За 7 дней");
+            comboBoxFilter.Items.Add("За этот месяц");
+            comboBoxFilter.Items.Add("За три месяца");
+            comboBoxFilter.Items.Add("За полгода");
+            comboBoxFilter.Items.Add("За этот год");
 
             comboBoxFilter.SelectedIndex = 0;
         }
@@ -248,6 +272,52 @@ namespace EcoFarm.Reports
         private void TabBarHarvestingHistory_MouseLeave(object sender, MouseEventArgs e)
         {
             stTabBarHarvestingHistory.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#5D5D5D");
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var excelApp = new Excel.Application();
+                excelApp.Workbooks.Add();
+                Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
+
+                workSheet.Cells[1, "A"] = "Код записи";
+                workSheet.Cells[1, "B"] = "Название операции";
+                workSheet.Cells[1, "C"] = "Тип операции";
+                workSheet.Cells[1, "D"] = "Сумма";
+                workSheet.Cells[1, "E"] = "Дата операции";
+
+                var row = 1;
+                foreach (var item in SortFilterTasks().ToArray())
+                {
+                    row++;
+                    workSheet.Cells[row, "A"] = item.IdHistory;
+                    workSheet.Cells[row, "B"] = item.Name;
+                    workSheet.Cells[row, "C"] = item.TypeOfOperation.Name;
+                    workSheet.Cells[row, "D"] = item.Amount;
+                    workSheet.Cells[row, "E"] = item.Date;
+                }
+
+                workSheet.Cells[1, "F"] = "Приход";
+                workSheet.Cells[1, "G"] = "Расход";
+                workSheet.Cells[1, "H"] = "Итог";
+                workSheet.Cells[2, "F"] = tblProfit.Text;
+                workSheet.Cells[2, "G"] = tblExpenses.Text;
+                workSheet.Cells[2, "H"] = tblTotal.Text;
+
+                workSheet.Columns[1].AutoFit();
+                workSheet.Columns[2].AutoFit();
+                workSheet.Columns[3].AutoFit();
+                workSheet.Columns[4].AutoFit();
+                workSheet.Columns[5].AutoFit();
+                workSheet.Columns[6].AutoFit();
+                workSheet.Columns[7].AutoFit();
+                workSheet.Columns[8].AutoFit();
+
+                excelApp.Visible = true;
+            }
+            catch { }
         }
     }
 }

@@ -89,7 +89,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                            <GridViewColumn Header="   ФИО   " Width="auto">
+                        <GridViewColumn Header="   ФИО   " Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Padding="3" Margin="5,0,5,0" Grid.Column="1">
@@ -117,40 +117,10 @@
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
-            
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0" Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" HorizontalAlignment="Stretch">
-                            <TextBlock TextWrapping="Wrap" Padding="0,3,0,3">
-                                <Run Text="{Binding Roles.Name }"/>
-                                <Run Text="{Binding Login}"/>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Padding="0,3,0,3">
-                                <Run Text="{Binding Surname }"/>
-                                <Run Text="{Binding Name }"/>
-                                <Run Text="{Binding Patronymic}"/>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Padding="0,3,0,3">
-                                <Run Text="Email: "/>
-                                <Run Text="{Binding Email}"/>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Padding="0,3,0,3">
-                                <Run Text="Номер телефона: "/>
-                                <Run Text="{Binding Phone}"/>
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
         </ListView>
 
         <StackPanel Grid.Row="2" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
-            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
+            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" VerticalAlignment="Stretch"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm"
         mc:Ignorable="d"
-        Title="ECOFARM" Height="auto" Width="auto" MinHeight="150" MinWidth="1050" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" SizeChanged="Window_SizeChanged">
+        Title="ECOFARM" Height="auto" Width="auto" MinHeight="428" MinWidth="1050" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

@@ -119,37 +119,10 @@
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
-
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="0">
-                            <Run Text="Поле:"/>
-                            <Run Text="{Binding Fields.Number}"/>
-                        </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="1">
-                            <Run Text="   Растение:"/>
-                            <Run Text="{Binding Fields.Plants.Name }"/>
-                        </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Padding="3" Grid.Column="2">
-                            <Run Text="   Дата работы:"/>
-                            <Run Text="{Binding DateOfNextWork, StringFormat='dd.MM.yyyy'}"/>
-                        </TextBlock>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
         </ListView>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
-            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto"/>
+            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" VerticalAlignment="Stretch"/>
         </StackPanel>
     </Grid>
 </Page>
