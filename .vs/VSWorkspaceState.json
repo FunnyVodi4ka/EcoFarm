@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\EcoFarm",
-    "\\EcoFarm\\CropProduction"
+    ""
   ],
-  "SelectedNode": "\\EcoFarm\\CropProduction\\DateTimeToBrushConverter.cs",
+  "SelectedNode": "\\EcoFarm.sln",
   "PreviewInSolutionExplorer": false
 }
