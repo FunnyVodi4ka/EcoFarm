@@ -31,20 +31,28 @@ namespace EcoFarm
     {
         public MainWindow()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            HiddenButtons();
+                HiddenButtons();
 
-            this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth + 20;
-            this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+                this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth + 20;
+                this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
 
-            frmMain.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth + 20;
-            frmMain.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight - 150;
+                frmMain.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth + 20;
+                frmMain.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight - 150;
 
-            AppConnect.ModelDB = new EcoFarmDBEntities();
-            AppFrame.frameMain = frmMain;
+                AppConnect.ModelDB = new EcoFarmDBEntities();
+                AppFrame.frameMain = frmMain;
 
-            frmMain.Navigate(new PageLogin());
+                frmMain.Navigate(new PageLogin());
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка подключения к БД. Обратитесь к администратору или в техническую поддержку!", "Ошибка работы приложения", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+            }
         }
 
         private void ChangeColorMenuButtons()
