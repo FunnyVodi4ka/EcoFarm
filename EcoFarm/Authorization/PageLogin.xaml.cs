@@ -35,7 +35,7 @@ namespace EcoFarm.Authorization
         private void buttonEnter_Click(object sender, RoutedEventArgs e)
         {
             string hashUserPassword = HashMD5.hashPassword(PasswordBoxEnter.Password);
-            var userObj = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Login == textBoxLogin.Text && x.Password == hashUserPassword);
+            var userObj = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Login == textBoxLogin.Text.ToLower() && x.Password == hashUserPassword.ToLower());
             if(userObj != null)
             {
                 attemptCounter = 0;
@@ -47,8 +47,6 @@ namespace EcoFarm.Authorization
             {
                 attemptCounter++;
                 MessageBox.Show("Такого пользователя нет!", "Ошибка при авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
-                //textBoxLogin.Clear();
-                //PasswordBoxEnter.Clear();
                 if(attemptCounter >= 3)
                 {
                     WindowCaptcha captcha = new WindowCaptcha();
