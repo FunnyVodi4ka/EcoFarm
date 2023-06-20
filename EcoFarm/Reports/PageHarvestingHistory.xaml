@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.Reports"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="950"
-      Title="PageHarvestingHistory" Loaded="Page_Loaded" MinHeight="450" MinWidth="950">
+      d:DesignHeight="300" d:DesignWidth="950"
+      Title="PageHarvestingHistory" Loaded="Page_Loaded" MinHeight="300" MinWidth="950">
     <Page.Resources>
         <local:SoldCropToBrushConverter x:Key="soldCropToBrushConverter"/>
     </Page.Resources>
@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
-        <StackPanel Grid.RowSpan="3" Grid.Column="0">
+        <StackPanel Grid.RowSpan="3" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarHistoryWork" Width="4" Height="56" Background="#5D5D5D"/>
                 <Image x:Name="TabBarHistoryWork" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarHistoryWork_MouseLeftButtonDown" MouseEnter="TabBarHistoryWork_MouseEnter" MouseLeave="TabBarHistoryWork_MouseLeave"/>
@@ -53,7 +53,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="ListTasks_MouseDoubleClick">
+        <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" MinHeight="180" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="ListTasks_MouseDoubleClick">
 
             <ListView.ContextMenu>
                 <ContextMenu>

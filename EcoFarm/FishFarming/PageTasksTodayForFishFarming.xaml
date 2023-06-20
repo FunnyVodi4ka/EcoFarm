@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.FishFarming"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="950"
-      Title="PageTasksTodayForFishFarming" Loaded="Page_Loaded" MinHeight="450" MinWidth="950">
+      d:DesignHeight="300" d:DesignWidth="950"
+      Title="PageTasksTodayForFishFarming" Loaded="Page_Loaded" MinHeight="300" MinWidth="950">
     <Page.Resources>
         <local:DateTimeToBrushConverter x:Key="dateTimeToBrushConverter"/>
     </Page.Resources>
@@ -24,7 +24,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
-            <StackPanel Grid.RowSpan="3" Grid.Column="0">
+            <StackPanel Grid.RowSpan="3" Grid.Column="0" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#649138"/>
                     <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown"/>
@@ -58,7 +58,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False">
+            <ListView x:Name="ListTasks" Grid.Row="1" Grid.Column="1" Height="auto" MinHeight="180" Style="{StaticResource ListViewMain}" ScrollViewer.CanContentScroll="False">
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem x:Name="btnDone" Header="Отметить выполненой" Click="btnDone_Click">

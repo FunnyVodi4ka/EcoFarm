@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EcoFarm.CropProduction"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="950"
-      Title="PageListOfWorks" Loaded="Page_Loaded" MinHeight="450" MinWidth="950">
+      d:DesignHeight="300" d:DesignWidth="950"
+      Title="PageListOfWorks" Loaded="Page_Loaded" MinHeight="300" MinWidth="950">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.RowSpan="3" Grid.Column="0"/>
-        <StackPanel Grid.RowSpan="3" Grid.Column="0">
+        <StackPanel Grid.RowSpan="3" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
                 <StackPanel x:Name="stTabBarTasksToday" Width="4" Height="56" Background="#5D5D5D"/>
                 <Image x:Name="TabBarTasksToday" Source="/Resources/AppImages/to-do-list.png" Height="48" Width="48" Margin="4" MouseLeftButtonDown="TabBarTasksToday_MouseLeftButtonDown" MouseEnter="TabBarTasksToday_MouseEnter" MouseLeave="TabBarTasksToday_MouseLeave"/>
@@ -56,8 +56,8 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        <ListView Grid.Row="1" Grid.Column="1" Name="ListViewListOfWorks" Style="{StaticResource ListViewMain}" MouseDoubleClick="LbListOfWorks_MouseDoubleClick" ScrollViewer.CanContentScroll="False">
 
+        <ListView Grid.Row="1" Grid.Column="1" MinHeight="180" Name="ListViewListOfWorks" Style="{StaticResource ListViewMain}" MouseDoubleClick="LbListOfWorks_MouseDoubleClick" ScrollViewer.CanContentScroll="False">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="menuClickAdd" Header="Создать" Click="menuClickAdd_Click">

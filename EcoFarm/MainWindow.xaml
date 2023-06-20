@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EcoFarm"
         mc:Ignorable="d"
-        Title="ECOFARM" Height="auto" Width="auto" MinHeight="428" MinWidth="1050" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" SizeChanged="Window_SizeChanged">
+        Title="ECOFARM" Height="auto" Width="auto" MinHeight="490" MinWidth="1060" WindowStartupLocation="CenterScreen" Icon="/Resources/AppImages/SystemImages/Logo-mini.png" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -24,19 +24,19 @@
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel Style="{StaticResource StackPanelMenu}" Grid.Row="1" HorizontalAlignment="Left">
             <StackPanel x:Name="stackPanelB1" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="Растениеводство" Width="230" Click="btnPageCropProduction_Click"/>
+                <Button x:Name="btnPageCropProduction" Style="{DynamicResource ButtonMenu}" Content="  Растениеводство  " Width="auto" Click="btnPageCropProduction_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB2" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageFishFarming" Style="{DynamicResource ButtonMenu}" Content="Рыбоводство" Width="170" Click="btnPageFishFarming_Click"/>
+                <Button x:Name="btnPageFishFarming" Style="{DynamicResource ButtonMenu}" Content="  Рыбоводство  " Width="auto" Click="btnPageFishFarming_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB3" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageReports" Style="{DynamicResource ButtonMenu}" Content="Отчёты" Width="120" Click="btnPageReports_Click"/>
+                <Button x:Name="btnPageReports" Style="{DynamicResource ButtonMenu}" Content="  Отчёты  " Width="auto" Click="btnPageReports_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB4" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageUsers" Style="{DynamicResource ButtonMenu}" Content="Панель администратора" Width="320" Click="btnPageUsers_Click"/>
+                <Button x:Name="btnPageUsers" Style="{DynamicResource ButtonMenu}" Content="  Панель администратора  " Width="auto" Click="btnPageUsers_Click"/>
             </StackPanel>
             <StackPanel x:Name="stackPanelB5" Style="{StaticResource StackPanelEmpty}">
-                <Button x:Name="btnPageProfile" Style="{DynamicResource ButtonMenu}" Content="Профиль" Width="110" Click="btnPageProfile_Click"/>
+                <Button x:Name="btnPageProfile" Style="{DynamicResource ButtonMenu}" Content="  Профиль  " Width="auto" Click="btnPageProfile_Click"/>
             </StackPanel>
         </StackPanel>
 

@@ -170,15 +170,6 @@ namespace EcoFarm
             frmMain.Navigate(new PageCompletedWorks());
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            //this.MaxWidth = ActualWidth + 20;
-            //this.MaxHeight = ActualHeight;
-
-            //frmMain.MaxWidth = ActualWidth + 20;
-            //frmMain.MaxHeight = ActualHeight - 150;
-        }
-
         private void btnPageProfile_Click(object sender, RoutedEventArgs e)
         {
             SelectedMenuTab.selectedMenuTab = "PageProfile";
