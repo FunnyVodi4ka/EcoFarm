@@ -118,7 +118,7 @@
         </ListView>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right" Margin="2,2,20,2">
-            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" VerticalAlignment="Stretch"/>
+            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" Height="auto" MaxHeight="30" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>

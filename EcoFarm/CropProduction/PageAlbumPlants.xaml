@@ -84,7 +84,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Right">
-            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" VerticalAlignment="Stretch"/>
+            <TextBlock x:Name="Counter" Style="{StaticResource TextBlockMain}" FontSize="14" Width="auto" Height="auto" MaxHeight="30" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>
