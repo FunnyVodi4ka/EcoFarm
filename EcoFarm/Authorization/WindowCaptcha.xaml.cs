@@ -68,7 +68,7 @@ namespace EcoFarm.Authorization
             }
             else
             {
-                MessageBox.Show("Ошибка, повторите попытку через 10 секунд");
+                MessageBox.Show("Ошибка, повторите попытку через 10 секунд", "Неправильный код", MessageBoxButton.OK, MessageBoxImage.Error);
                 tbCAPTCHA.Text = "";
                 Timer();
             }

@@ -34,6 +34,11 @@ namespace EcoFarm.Authorization
 
         private void buttonEnter_Click(object sender, RoutedEventArgs e)
         {
+            if(textBoxLogin.Text.Length <= 0 || PasswordBoxEnter.Password.Length <= 0)
+            {
+                return;
+            }
+
             string hashUserPassword = HashMD5.hashPassword(PasswordBoxEnter.Password);
             var userObj = AppConnect.ModelDB.Users.FirstOrDefault(x => x.Login == textBoxLogin.Text.ToLower() && x.Password == hashUserPassword.ToLower());
             if(userObj != null)
