@@ -167,7 +167,6 @@
                                             <Trigger Property="ToggleButton.IsChecked" Value="true">
                                                 <Setter TargetName="Border" Property="Background" Value="White" />
                                             </Trigger>
-
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
                                 </ToggleButton.Template>

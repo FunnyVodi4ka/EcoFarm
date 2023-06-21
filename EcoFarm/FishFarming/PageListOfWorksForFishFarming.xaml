@@ -49,11 +49,11 @@
                 <TextBox x:Name="tbAdd" Style="{StaticResource TextBoxMain}" HorizontalAlignment="Left" PreviewTextInput="tbAdd_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnReset" Content="Отменить" Style="{StaticResource ButtonGreen}" Click="btnReset_Click" Visibility="Collapsed"/>
                 <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical">
                     <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource ButtonGreen}" Click="btnAdd_Click"/>
                     <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource ButtonGreen}" Click="btnDelete_Click"/>
                 </StackPanel>
+                <Button x:Name="btnReset" Content="Отменить" Style="{StaticResource ButtonGreen}" Click="btnReset_Click" Visibility="Collapsed"/>
             </StackPanel>
         </StackPanel>
         <ListView Grid.Row="1" Grid.Column="1" MinHeight="180" Name="ListViewListOfWorks" Style="{StaticResource ListViewMain}" MouseDoubleClick="LbListOfWorks_MouseDoubleClick" ScrollViewer.CanContentScroll="False">

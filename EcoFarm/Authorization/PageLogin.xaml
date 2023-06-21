@@ -12,13 +12,13 @@
         <StackPanel Style="{StaticResource StackPanelMainStyle}" Orientation="Vertical" Margin="30" VerticalAlignment="Top">
             <StackPanel Style="{StaticResource StackPanelMainStyle}" HorizontalAlignment="Left">
                 <Label Content="Введите логин:" Style="{StaticResource LabelMain}"/>
-                <TextBox x:Name="textBoxLogin" Style="{StaticResource TextBoxMain}" PreviewTextInput="textBoxLogin_PreviewTextInput"/>
+                <TextBox x:Name="textBoxLogin" Style="{StaticResource TextBoxMain}" PreviewTextInput="textBoxLogin_PreviewTextInput" Height="32.2"/>
             </StackPanel>
             
             <StackPanel Style="{StaticResource StackPanelMainStyle}">
                 <Label Content="Введите пароль:" Style="{StaticResource LabelMain}"/>
-                <PasswordBox x:Name="PasswordBoxEnter" Style="{StaticResource PasswordBoxMain}" PreviewTextInput="PasswordBoxEnter_PreviewTextInput"/>
-                <TextBox x:Name="textBoxPassword" Style="{StaticResource TextBoxMain}" Visibility="Collapsed"/>
+                <PasswordBox x:Name="PasswordBoxEnter" Style="{StaticResource PasswordBoxMain}" PreviewTextInput="PasswordBoxEnter_PreviewTextInput" Height="32.3"/>
+                <TextBox x:Name="textBoxPassword" Style="{StaticResource TextBoxMain}" Visibility="Collapsed" Height="32.3"/>
                 <Image x:Name="imageEye" Source="/Resources/AppImages/eye-close.png" Width="20" Height="20" Margin="5" PreviewMouseLeftButtonDown="imageEye_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="imageEye_PreviewMouseLeftButtonUp" MouseLeave="imageEye_MouseLeave"/>
             </StackPanel>
 

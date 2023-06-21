@@ -244,7 +244,7 @@ namespace EcoFarm.AdminPanel
                 try
                 {
                     currentUser.Login = tbLogin.Text;
-                    if (pbPassword.Password != null)
+                    if (pbPassword.Password.Length > 0)
                     {
                         string hashUserPassword = HashMD5.hashPassword(pbPassword.Password);
                         currentUser.Password = hashUserPassword;
