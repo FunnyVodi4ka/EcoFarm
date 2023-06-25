@@ -152,7 +152,7 @@ namespace EcoFarm.AdminPanel
                 if (!validation.CheckPassword(pbPassword.Password))
                 {
                     pbPassword.BorderBrush = Brushes.Red;
-                    MessageBox.Show("Ошибка: Пароль должен содержать от 8 до 50 символов (Латинские прописные и строчные буквы, специальные символы)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Ошибка: Пароль должен содержать от 8 до 50 символов (Должен содержать латинские прописные и строчные буквы, цифры, специальные символы)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
